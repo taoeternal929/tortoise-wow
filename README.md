@@ -36,7 +36,7 @@ server versions will work, too.
 * **[Git][1] / [Github for Windows][2]**: This version control software allows you to get the source files in the first place.
 * **[MySQL][3]** / **[MariaDB][4]**: These databases are used to store content and user data.
 * **[ACE][5]**: aka Adaptive Communication Environment, provides us with a solid cross-platform framework for abstracting operating system specific details.
-* **[Recast][5]**: In order to create navigation data from the client's map files, Recast is used to do the dirty work. It provides functions for rendering, pathing, etc.
+* **[Recast][21]**: In order to create navigation data from the client's map files, Recast is used to do the dirty work. It provides functions for rendering, pathing, etc.
 * **[G3D][6]**: This engine provides the basic framework for handling 3D data and is used to handle basic map data.
 * **[Stormlib][7]**: Provides an abstraction layer for reading from the client's data files.
 * **[Zlib][8]/[Zlib for Windows][9]** provides compression algorithms used in both MPQ archive handling and the client/server protocol.
@@ -82,7 +82,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 [3]: https://dev.mysql.com/downloads/ "MySQL - The world's most popular open source database"
 [4]: https://mariadb.org/download/ "MariaDB - An enhanced, drop-in replacement for MySQL"
 [5]: http://www.dre.vanderbilt.edu/~schmidt/ACE.html "ACE - The ADAPTIVE Communication Environment"
-[5]: http://github.com/memononen/recastnavigation "Recast - Navigation-mesh Toolset for Games"
 [6]: http://sourceforge.net/projects/g3d/ "G3D - G3D Innovation Engine"
 [7]: http://zezula.net/en/mpq/stormlib.html "Stormlib - A library for reading data from MPQ archives"
 [8]: http://www.zlib.net/ "Zlib"
@@ -95,3 +94,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 [15]: http://windows.microsoft.com/ "Microsoft Windows"
 [19]: https://github.com/ElunaLuaEngine/Eluna
 [20]: https://github.com/ike3/mangosbot-bots
+[21]: http://github.com/memononen/recastnavigation "Recast - Navigation-mesh Toolset for Games"
