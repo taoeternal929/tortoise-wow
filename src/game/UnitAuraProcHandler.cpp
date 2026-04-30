@@ -1541,6 +1541,20 @@ SpellAuraProcResult Unit::HandleProcTriggerSpellAuraProc(Unit* pVictim, uint32 d
             break;
         case SPELLFAMILY_WARRIOR:
             break;
+        case SPELLFAMILY_ROGUE:
+        {
+            // Improved Ambush: Pass through energy return amount from spell effect data
+            switch (auraSpellInfo->Id)
+            {
+                case 14079:
+                case 14080:
+                case 14081:
+                    basepoints[EFFECT_INDEX_0] = triggerAmount;
+                    target = this;
+                    break;
+            }
+            break;
+        }
         case SPELLFAMILY_WARLOCK:
         {
             // Pyroclasm
