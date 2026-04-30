@@ -252,6 +252,11 @@ SpellProcEventTriggerCheck Unit::IsTriggeredAtSpellProcEvent(Unit *pVictim, Spel
     if (spellProto->SpellIconID == 108 && spellProto->SpellVisual == 2759 && m_extraAttacks)
         return SPELL_PROC_TRIGGER_FAILED;
 
+    // Allow Blind to proc Irritating agent and nothing else
+    if (procSpell && procSpell->Id == 2094 &&
+        spellProto->Id != 52535 && spellProto->Id != 52536 && spellProto->Id != 52537)
+        return SPELL_PROC_TRIGGER_FAILED;
+
     /// [TODO]
     /// Delete all these spells, and manage it via the DB (spell_proc_event)
     if (procSpell && !(procExtra & PROC_EX_CAST_END))

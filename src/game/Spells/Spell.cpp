@@ -932,9 +932,19 @@ void Spell::prepareDataForTriggerSystem()
             }
             else // Ranged spell attack
             {
-                // If blind or Expose Weakness, don't add proc flags for typical ranged abilities
-                // proc none
-                if (m_spellInfo->Id == 2094 || m_spellInfo->Id == 23577)
+                // Check if ranged ability is Blind, then carve out allowed proc for Irritating Agent, could probably be implemented better.
+                if (m_spellInfo->Id == 2094)
+                {
+                    bool const hasIrritatingAgent = m_casterUnit &&
+                        (m_casterUnit->HasAura(52535) || m_casterUnit->HasAura(52536) || m_casterUnit->HasAura(52537));
+
+                    m_procAttacker = hasIrritatingAgent
+                        ? PROC_FLAG_DEAL_HARMFUL_ABILITY
+                        : PROC_FLAG_NONE;
+                    m_procVictim = PROC_FLAG_NONE;
+                }
+                // Disable proc event for Expose Weakness
+                else if (m_spellInfo->Id == 23577)
                 {
                     m_procAttacker = PROC_FLAG_NONE;
                     m_procVictim = PROC_FLAG_NONE;
