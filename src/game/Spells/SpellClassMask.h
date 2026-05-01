@@ -56,7 +56,13 @@ enum ClassFlag
     CF_MAGE_UNK29                           = 29,   // CM0 20000000
     CF_MAGE_CONJURE                         = 30,   // CM0 40000000
     CF_MAGE_PORTALS                         = 31,   // CM0 80000000
+    CF_MAGE_ARCANE_SURGE                    = 32,   // CM1 00000001
     CF_MAGE_ARCANE_RUPTURE                  = 33,   // CM1 00000002 (mask 0000000240000000 also sets CM0 40000000)
+    CF_MAGE_PRESENCE_OF_MIND                = 34,   // CM1 00000004
+    CF_MAGE_ICICLES1                        = 35,   // CM1 00000008
+    CF_MAGE_ICICLES2                        = 36,   // CM1 00000010
+    CF_MAGE_ARCANE_POWER                    = 37,   // CM1 00000020
+    CF_MAGE_RESONANCE_CASCADE               = 38,   // CM1 00000040
 
     // -- Warrior (4)
     CF_WARRIOR_CHARGE                       = 0,    // CM0 00000001
@@ -91,8 +97,12 @@ enum ClassFlag
     CF_WARRIOR_EXECUTE                      = 29,   // CM0 20000000
     CF_WARRIOR_INTERCEPT                    = 30,   // CM0 40000000
     CF_WARRIOR_RETALIATION                  = 31,   // CM0 80000000
-
     CF_WARRIOR_SHIELD_SLAM                  = 32,   // CM1 00000001
+    CF_WARRIOR_INTERVENE                    = 33,   // CM1 00000002
+    CF_WARRIOR_PIERCING_HOWL                = 34,   // CM1 00000004
+    CF_WARRIOR_WHIRLWIND                    = 35,   // CM1 00000008
+    CF_WARRIOR_SWEEPING_STRIKES             = 36,   // CM1 00000010
+    CF_WARRIOR_DEATH_WISH                   = 37,   // CM1 00000020
 
     // -- Warlock (5)
     CF_WARLOCK_SHADOW_BOLT                  = 0,    // CM0 00000001
@@ -127,10 +137,14 @@ enum ClassFlag
     CF_WARLOCK_SUMMON_SPELLS                = 29,   // CM0 20000000
     CF_WARLOCK_SUCCUBUS_SPELLS              = 30,   // CM0 40000000
     CF_WARLOCK_MISC_DEBUFFS                 = 31,   // CM0 80000000
-
     CF_WARLOCK_SIPHON_LIFE                  = 32,   // CM1 00000001
     CF_WARLOCK_CURSE_OF_DOOM                = 33,   // CM1 00000002
     CF_WARLOCK_DEMON_SKIN_ARMOR             = 34,   // CM1 00000004
+    CF_WARLOCK_TAINTED_BLOOD_EFFECT         = 35,   // CM1 00000008
+    CF_WARLOCK_FIRESTONE                    = 36,   // CM1 00000010
+    CF_WARLOCK_STONES                       = 37,   // CM1 00000020 Spellstone, Felstone, Wrathstone
+    CF_WARLOCK_DARK_HARVEST                 = 38,   // CM1 00000040
+    CF_WARLOCK_MISC1                        = 39,   // CM1 00000080 Inferno, Demon Gate
 
     // -- Priest (6)
     CF_PRIEST_POWER_WORD_SHIELD             = 0,    // CM0 00000001
@@ -165,8 +179,9 @@ enum ClassFlag
     CF_PRIEST_WEAKENED_SOUL                 = 29,   // CM0 20000000
     CF_PRIEST_MISC1                         = 30,   // CM0 40000000 Ressurection, Shackle Undead, Lightwell
     CF_PRIEST_MISC2                         = 31,   // CM0 80000000 instant cast spells
-
-    CF_PRIEST_DISPELLS                       = 32,   // CM1 00000001
+    CF_PRIEST_DISPELLS                      = 32,   // CM1 00000001
+    CF_PRIEST_MISC3                         = 33,   // CM1 00000002 Chastise Haste
+    CF_PRIEST_MISC4                         = 34,   // CM1 00000004 Lightwell Renew
 
     // -- Druid (7)
     CF_DRUID_WRATH                          = 0,    // CM0 00000001
@@ -209,6 +224,11 @@ enum ClassFlag
     CF_DRUID_TIGERS_FURY                    = 36,   // CM1 00000010
     CF_DRUID_SAVAGE_BITE                    = 37,   // CM1 00000020
     CF_DRUID_BARKSKIN                       = 38,   // CM1 00000040
+    CF_DRUID_OWLKIN_FRENZY                  = 39,   // CM1 00000080
+    CF_DRUID_BOONS                          = 40,   // CM1 00000100 Astral Boon, Natural Boon
+    CF_DRUID_AESSINAS_BLOOM                 = 41,   // CM1 00000200
+    CF_DRUID_FRENZIED_REGEN                 = 42,   // CM1 00000400
+    // CF_DRUID_BEAR_FORMS                  = 43,   // CM1 00000800 Bear Form (Passive), Dire Bear Form (Passive)
 
     // -- Rogue (8)
     CF_ROGUE_THROW                          = 0,    // CM0 00000001
@@ -243,8 +263,10 @@ enum ClassFlag
     CF_ROGUE_UNK29                          = 29,   // CM0 20000000
     CF_ROGUE_MISC1                          = 30,   // CM0 40000000 Blade Furry, Cold Blood, Ghostly Strike, Premeditation, Revealed Flaw
     CF_ROGUE_MISC2                          = 31,   // CM0 80000000 Riposte, Pick Pocket, Disarm Trap, Blind
-    CF_ROGUE_MISC3                          = 32,   // CM1 00000001 Unused
     CF_ROGUE_SURPRISE_ATTACK                = 33,   // CM1 00000002
+    CF_ROGUE_MARK_FOR_DEATH                 = 35,   // CM1 00000008
+    CF_ROGUE_ENVENOM                        = 36,   // CM1 00000010
+    CF_ROGUE_DEADLY_THROW                   = 37,   // CM1 00000020
 
     // -- Hunter (9)
     CF_HUNTER_SHOOT                         = 0,    // CM0 00000001
@@ -279,6 +301,13 @@ enum ClassFlag
     CF_HUNTER_TAMED_PET_PASSIVE_FOCUS       = 29,   // CM0 20000000
     CF_HUNTER_TAMED_PET_PASSIVE_CRIT        = 30,   // CM0 40000000
     CF_HUNTER_TAMED_PET_PASSIVE_FRENZY      = 31,   // CM0 80000000
+    CF_HUNTER_SCORPID_STING_DR              = 32,   // CM1 00000001 Scorpid Sting Damage Reduction
+    CF_HUNTER_CARVE                         = 33,   // CM1 00000002
+    CF_HUNTER_QUICK_SHOTS                   = 34,   // CM1 00000004 Quick Strikes, Quick Shots
+    CF_HUNTER_PIERCING_SHOTS                = 35,   // CM1 00000008
+    CF_HUNTER_STEADY_SHOT                   = 36,   // CM1 00000010
+    CF_HUNTER_FIRE_TRAPS                    = 37,   // CM1 00000020 Immolation Trap, Explosive Trap
+    CF_HUNTER_FIRE_BREATH                   = 42,   // CM1 00000400
 
     // -- Paladin (10)
     CF_PALADIN_RIGHTEOUS_FURY               = 0,    // CM0 00000001
@@ -313,11 +342,16 @@ enum ClassFlag
     CF_PALADIN_CRUSADER_STRIKE_DEBUFF       = 29,   // CM0 20000000
     CF_PALADIN_FLASH_OF_LIGHT2              = 30,   // CM0 40000000
     CF_PALADIN_HOLY_LIGHT2                  = 31,   // CM0 80000000
-
     CF_PALADIN_HOLY_STRIKE                  = 32,   // CM1 00000001
     CF_PALADIN_PURIFY_CLEANSE               = 33,   // CM1 00000002 Purify & Cleanse
     CF_PALADIN_JUDGEMENT_OF_COMMAND         = 34,   // CM1 00000004
     CF_PALADIN_CRUSADER_STRIKE              = 35,   // CM1 00000008
+    CF_PALADIN_SEAL_OF_RIGHTEOUSNESS        = 36,   // CM1 00000010
+    CF_PALADIN_MENDING_LIGHT                = 37,   // CM1 00000020
+    CF_PALADIN_HAND_OF_RECKONING            = 38,   // CM1 00000040
+    CF_PALADIN_ZEAL                         = 39,   // CM1 00000080
+    CF_PALADIN_EXORCISM                     = 40,   // CM1 00000100
+    CF_PALADIN_HOLY_MIGHT                   = 41,   // CM1 00000200
 
     // -- Shaman (11)
     CF_SHAMAN_LIGHTNING_BOLT                = 0,    // CM0 00000001
@@ -360,6 +394,15 @@ enum ClassFlag
     CF_SHAMAN_HEX                           = 36,   // CM1 00000010
     CF_SHAMAN_MANA_TIDE_TOTEM               = 37,   // CM1 00000020
     CF_SHAMAN_WATER_SHIELD                  = 38,   // CM1 00000040
+    CF_SHAMAN_MANA_SPRING_TOTEM             = 39,   // CM1 00000080
+    CF_SHAMAN_EARTH_SHIELD                  = 40,   // CM1 00000100
+    CF_SHAMAN_STORMSTRIKE                   = 41,   // CM1 00000200
+    CF_SHAMAN_LIGHTNING_STRIKE              = 42,   // CM1 00000400
+    CF_SHAMAN_WATER_SHIELD_EFFECT           = 43,   // CM1 00000800
+    CF_SHAMAN_FLAMETONGUE_BONUS             = 44,   // CM1 00001000
+    CF_SHAMAN_ELECTRIFIED_EFFECT            = 45,   // CM1 00002000
+    CF_SHAMAN_SPIRIT_LINK                   = 46,   // CM1 00004000
+    CF_SHAMAN_MISC1                         = 47,   // CM1 00008000 Purge, Bloodlust, Calm Elements
 };
 
 #endif // _SPELL_CLASS_MASK_H
