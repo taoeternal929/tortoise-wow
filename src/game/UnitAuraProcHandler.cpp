@@ -1116,6 +1116,24 @@ SpellAuraProcResult Unit::HandleDummyAuraProc(Unit *pVictim, uint32 damage, int3
 
             switch (dummySpell->Id)
             {
+                // Honor Among Thieves
+                case 52512:
+                case 52514:
+                {
+                    Unit* auraCaster = triggeredByAura->GetCaster();
+                    if (!auraCaster || !auraCaster->IsAlive())
+                        return SPELL_AURA_PROC_FAILED;
+
+                    if (cooldown && auraCaster->HasSpellCooldown(52513))
+                        return SPELL_AURA_PROC_FAILED;
+
+                    auraCaster->CastCustomSpell(auraCaster, 52513, &triggerAmount, nullptr, nullptr, true, nullptr, triggeredByAura);
+
+                    if (cooldown)
+                        auraCaster->AddSpellCooldown(52513, 0, time(nullptr) + cooldown);
+
+                    return SPELL_AURA_PROC_OK;
+                }
                 // Clean Escape
                 case 23582:
                     // triggered spell have same masks and etc with main Vanish spell
