@@ -4393,6 +4393,9 @@ int32 WorldObject::CalculateSpellDamage(Unit const* target, SpellEntry const* sp
         {
             modOwner->ApplySpellMod(spellProto->Id, SPELLMOD_ALL_EFFECTS, value, spell);
 
+            if (effect_index == EFFECT_INDEX_2 && spellProto->IsFitToFamily<SPELLFAMILY_ROGUE, CF_ROGUE_HEMORRHAGE>())
+                modOwner->ApplySpellMod(spellProto->Id, SPELLMOD_EFFECT_PAST_FIRST, value, spell);
+
             // Apply speed aura mods at cast time.
             // Fixes Curse of Exhaustion not removing Amplify Curse.
             switch (spellProto->EffectApplyAuraName[effect_index])
