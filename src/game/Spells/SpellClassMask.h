@@ -243,6 +243,8 @@ enum ClassFlag
     CF_ROGUE_UNK29                          = 29,   // CM0 20000000
     CF_ROGUE_MISC1                          = 30,   // CM0 40000000 Blade Furry, Cold Blood, Ghostly Strike, Premeditation, Revealed Flaw
     CF_ROGUE_MISC2                          = 31,   // CM0 80000000 Riposte, Pick Pocket, Disarm Trap, Blind
+    CF_ROGUE_MISC3                          = 32,   // CM1 00000001 Unused
+    CF_ROGUE_SURPRISE_ATTACK                = 33,   // CM1 00000002
 
     // -- Hunter (9)
     CF_HUNTER_SHOOT                         = 0,    // CM0 00000001
