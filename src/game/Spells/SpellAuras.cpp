@@ -7995,6 +7995,12 @@ void SpellAuraHolder::HandleCastOnAuraRemoval() const
                 uiTriggeredSpell = 24004;        // Tranquilizing Poison (ZG, Razzashi Serpent)
             break;
         }
+        case 52503:
+        {
+            if (mode == AURA_REMOVE_BY_EXPIRE || mode == AURA_REMOVE_BY_CANCEL)
+                uiTriggeredSpell = 52504;        // Dust of Disappearance
+            break;
+        }
         default:
             return;
     }
