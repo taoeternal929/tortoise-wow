@@ -9364,6 +9364,12 @@ void Unit::ProcDamageAndSpellFor(bool isVictim, Unit* pTarget, uint32 procFlag, 
                     static_cast<Player*>(this)->AddComboPoints(pTarget, 1);
                     StartReactiveTimer(REACTIVE_OVERPOWER, pTarget->GetObjectGuid());
                 }
+                // Surprise Attack on victim dodge
+                if (procExtra & PROC_EX_DODGE && IsPlayer() && GetClass() == CLASS_ROGUE)
+                {
+                    ModifyAuraState(AURA_STATE_TARGET_DODGED, true);
+                    StartReactiveTimer(REACTIVE_ROGUE_DODGE, pTarget->GetObjectGuid());
+                }
             }
         }
     }
@@ -9825,6 +9831,8 @@ void Unit::ClearAllReactives()
         ModifyAuraState(AURA_STATE_DEFENSE, false);
     if (GetClass() == CLASS_HUNTER && HasAuraState(AURA_STATE_HUNTER_PARRY))
         ModifyAuraState(AURA_STATE_HUNTER_PARRY, false);
+    if (GetClass() == CLASS_ROGUE && HasAuraState(AURA_STATE_TARGET_DODGED))
+        ModifyAuraState(AURA_STATE_TARGET_DODGED, false);
 
     if (GetClass() == CLASS_WARRIOR && IsPlayer())
         static_cast<Player*>(this)->ClearComboPoints();
@@ -9857,6 +9865,10 @@ void Unit::UpdateReactives(uint32 p_time)
                 case REACTIVE_OVERPOWER:
                     if (GetClass() == CLASS_WARRIOR && IsPlayer())
                         static_cast<Player*>(this)->ClearComboPoints();
+                    break;
+                case REACTIVE_ROGUE_DODGE:
+                    if (GetClass() == CLASS_ROGUE && HasAuraState(AURA_STATE_TARGET_DODGED))
+                        ModifyAuraState(AURA_STATE_TARGET_DODGED, false);
                     break;
                 default:
                     break;

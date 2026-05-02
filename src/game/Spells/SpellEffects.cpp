@@ -651,11 +651,20 @@ void Spell::EffectSchoolDMG(SpellEffectIndex effect_idx)
                 // - Eviscerate: Manual of Eviscerate (Rank 9) now drops off Blackhand
                 //   Assassins in Black Rock Spire.In addition, Eviscerate now increases
                 //   in potency with greater attack power.
-               if (m_spellInfo->IsFitToFamilyMask<CF_ROGUE_EVISCERATE>())
+                if (m_spellInfo->IsFitToFamilyMask<CF_ROGUE_EVISCERATE>())
                 {
                     if (Player* pPlayer = m_caster->ToPlayer())
                         if (uint32 combo = pPlayer->GetComboPoints())
                             damage += int32(pPlayer->GetTotalAttackPowerValue(BASE_ATTACK) * combo * 0.03f);
+                }
+
+                if (m_spellInfo->IsFitToFamilyMask<CF_ROGUE_SURPRISE_ATTACK>())
+                {
+                    if (Player* pPlayer = m_caster->ToPlayer())
+                    {
+                        damage += int32(pPlayer->GetTotalAttackPowerValue(BASE_ATTACK) * 0.25f);
+                        pPlayer->ModifyAuraState(AURA_STATE_TARGET_DODGED, false);
+                    }
                 }
                 break;
             }

@@ -5992,6 +5992,11 @@ SpellCastResult Spell::CheckCast(bool strict)
                 if (m_targets.getUnitTargetGuid() != m_casterUnit->GetReactiveTarget(REACTIVE_HUNTER_PARRY))
                     return SPELL_FAILED_BAD_TARGETS;
                 break;
+            // Surprise Attack
+            case 52511:
+                if (m_targets.getUnitTargetGuid() != m_casterUnit->GetReactiveTarget(REACTIVE_ROGUE_DODGE))
+                    return SPELL_FAILED_BAD_TARGETS;
+                break;
             // Reindeer Transformation only castable while mounted
             case 25860:
                 if (!m_casterUnit->HasAuraType(SPELL_AURA_MOUNTED))

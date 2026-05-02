@@ -527,10 +527,11 @@ enum ReactiveType
     REACTIVE_HUNTER_PARRY = 2,
     REACTIVE_CRIT = 3,
     //REACTIVE_HUNTER_CRIT  = 4,
-    REACTIVE_OVERPOWER = 5
+    REACTIVE_OVERPOWER = 5,
+    REACTIVE_ROGUE_DODGE = 6
 };
 
-#define MAX_REACTIVE 6
+#define MAX_REACTIVE 7
 
 // for Unit::AddAura
 enum AddAuraFlags

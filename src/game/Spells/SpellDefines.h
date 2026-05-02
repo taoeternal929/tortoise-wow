@@ -537,6 +537,7 @@ enum AuraState
     AURA_STATE_HEALTHLESS_5_PERCENT         = 11,
     AURA_STATE_HEALTHLESS_35_PERCENT        = 12, // custom
     AURA_STATE_SPELL_RESISTED               = 13, // custom: recently had a spell resist
+    AURA_STATE_TARGET_DODGED                = 14, // custom: target recently dodged caster attack
 };
 
 // Spell mechanics
