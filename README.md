@@ -2,8 +2,8 @@
 # Tortoise-WoW
 
 This is an unofficial, community driven, restoration of the 1.17.2 patch of Turtle-WoW, with some additions for solo play.  
-This project is not to be used for profit or to misrepresent itself, or anyone using it, as the original creators (See License)  
-This project will never target the latest major revision of Turtle-WoW, always staying one major revision behind.
+This project is not to be used for profit or to misrepresent itself, or anyone using it, as the original creators  
+This project targets version 1.17.2 build 7207, mainly because it has the most complete data available, version 1.18.x requires packet sniffs and a ton of manual reimplementation.
 
 ## Client Version
 
@@ -58,23 +58,6 @@ This will be streamlined once the core is more up to date
 Contributions are welcome, but I may be slow to review and merge PRs
 
 See `CONTRIBUTING.md` for ways to get started.
-
-
-## License
-
-Copyright (c) 2025 Penqle
-
-This license applies solely to original contributions and modifications not directly created by the original creators.
-
-Permission is granted to use, copy, modify, and distribute these contributions for non-commercial purposes only.
-
-Attribution is not required.
-
-Commercial use of these contributions is prohibited.
-
-Misrepresentation: This software may not be represented as being authored, endorsed, or maintained by the original creators or any defunct entity associated with the original project.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 
 
 [1]: http://git-scm.com/ "Git - Distributed version control system"
