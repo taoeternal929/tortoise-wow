@@ -3334,6 +3334,60 @@ void Spell::EffectDummy(SpellEffectIndex eff_idx)
             }
             break;
         }
+        case SPELLFAMILY_ROGUE:
+        {
+            // Throwing Weapon Specialization Deadly Throw Poison
+            if (m_spellInfo->Id == 45986)
+            {
+                Player* pPlayer = m_caster->ToPlayer();
+                if (!pPlayer || !unitTarget || unitTarget == pPlayer)
+                    return;
+
+                Item* offhand = pPlayer->GetWeaponForAttack(OFF_ATTACK, true, true);
+                if (!offhand)
+                    return;
+
+                uint32 enchantId = offhand->GetEnchantmentId(TEMP_ENCHANTMENT_SLOT);
+                SpellItemEnchantmentEntry const* pEnchant = sSpellItemEnchantmentStore.LookupEntry(enchantId);
+                if (!pEnchant)
+                    return;
+
+                for (int s = 0; s < 3; ++s)
+                {
+                    if (pEnchant->type[s] != ITEM_ENCHANTMENT_TYPE_COMBAT_SPELL)
+                        continue;
+
+                    uint32 procSpellId = pEnchant->spellid[s];
+                    SpellEntry const* spellInfo = sSpellMgr.GetSpellEntry(procSpellId);
+                    if (!spellInfo)
+                        continue;
+
+                    bool const isRoguePoison = spellInfo->IsFitToFamily<SPELLFAMILY_ROGUE,
+                        CF_ROGUE_INSTANT_POISON, CF_ROGUE_CRIPPLING_POISON, CF_ROGUE_MIND_NUMBING_POISON,
+                        CF_ROGUE_DEADLY_POISON, CF_ROGUE_WOUND_POISON>();
+                    if (!isRoguePoison)
+                        continue;
+
+                    if (spellInfo->IsPositiveSpell())
+                        pPlayer->CastSpell(pPlayer, procSpellId, true, offhand);
+                    else
+                        pPlayer->CastSpell(unitTarget, procSpellId, true, offhand);
+
+                    uint32 charges = offhand->GetEnchantmentCharges(TEMP_ENCHANTMENT_SLOT);
+                    if (charges > 1)
+                        offhand->SetEnchantmentCharges(TEMP_ENCHANTMENT_SLOT, charges - 1);
+                    else if (charges == 1)
+                    {
+                        pPlayer->ApplyEnchantment(offhand, TEMP_ENCHANTMENT_SLOT, false);
+                        offhand->ClearEnchantment(TEMP_ENCHANTMENT_SLOT);
+                    }
+                    return;
+                }
+
+                return;
+            }
+            break;
+        }
     }
 
     // pet auras
