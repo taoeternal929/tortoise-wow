@@ -1,470 +1,54 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `playercreateinfo_item`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for playercreateinfo_item
--- ----------------------------
 DROP TABLE IF EXISTS `playercreateinfo_item`;
-CREATE TABLE `playercreateinfo_item`  (
-  `race` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `class` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `itemid` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `amount` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
-  INDEX `playercreateinfo_race_class_index`(`race`, `class`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `playercreateinfo_item` (
+  `race` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `class` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `itemid` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `amount` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  KEY `playercreateinfo_race_class_index` (`race`,`class`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of playercreateinfo_item
--- ----------------------------
-INSERT INTO `playercreateinfo_item` VALUES (1, 1, 25, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 1, 38, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 1, 39, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 1, 40, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 1, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (1, 1, 2362, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 2, 43, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 2, 44, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 2, 45, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 2, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (1, 2, 2070, 4);
-INSERT INTO `playercreateinfo_item` VALUES (1, 2, 2361, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 2, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 4, 47, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 4, 48, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 4, 49, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 4, 2070, 4);
-INSERT INTO `playercreateinfo_item` VALUES (1, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 4, 2947, 100);
-INSERT INTO `playercreateinfo_item` VALUES (1, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 51, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 52, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 53, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 2070, 4);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 6098, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 5, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 56, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 2070, 4);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 57, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 59, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 1396, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 6097, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 9, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 1, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (2, 1, 139, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 1, 140, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 1, 6125, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 1, 12282, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 37, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 127, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 2101, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 2504, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 2512, 200);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 6126, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 6127, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 4, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (2, 4, 120, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 4, 121, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 4, 2105, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 4, 3111, 100);
-INSERT INTO `playercreateinfo_item` VALUES (2, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 7, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 7, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (2, 7, 153, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 7, 154, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 7, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (2, 7, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 9, 59, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 9, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (2, 9, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (2, 9, 1396, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 9, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 9, 6129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 9, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 1, 38, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 1, 39, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 1, 40, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 1, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (3, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 1, 12282, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 2, 43, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 2, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (3, 2, 2361, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 2, 4540, 4);
-INSERT INTO `playercreateinfo_item` VALUES (3, 2, 6117, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 2, 6118, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 2, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 37, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 147, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 148, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 2102, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 2508, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 2516, 200);
-INSERT INTO `playercreateinfo_item` VALUES (3, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 4, 47, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 4, 48, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 4, 49, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 4, 3111, 100);
-INSERT INTO `playercreateinfo_item` VALUES (3, 4, 4540, 4);
-INSERT INTO `playercreateinfo_item` VALUES (3, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 51, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 52, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 53, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 4540, 4);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 6098, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 5, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 1, 25, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 1, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (4, 1, 2362, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 1, 6120, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 1, 6121, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 1, 6122, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 147, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 148, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 2101, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 2504, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 2512, 200);
-INSERT INTO `playercreateinfo_item` VALUES (4, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 4, 47, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 4, 48, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 4, 49, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 4, 2947, 100);
-INSERT INTO `playercreateinfo_item` VALUES (4, 4, 4540, 4);
-INSERT INTO `playercreateinfo_item` VALUES (4, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 51, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 52, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 53, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 2070, 4);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 6119, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 5, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 11, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (4, 11, 3661, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 11, 4536, 4);
-INSERT INTO `playercreateinfo_item` VALUES (4, 11, 6123, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 11, 6124, 1);
-INSERT INTO `playercreateinfo_item` VALUES (4, 11, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 1, 25, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 1, 139, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 1, 140, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 1, 2362, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 1, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (5, 1, 6125, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 4, 120, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 4, 121, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 4, 2105, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 4, 2947, 100);
-INSERT INTO `playercreateinfo_item` VALUES (5, 4, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (5, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 51, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 52, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 53, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 6144, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 5, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 6140, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 9, 59, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 9, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (5, 9, 1396, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 9, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 9, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (5, 9, 6129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 9, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 1, 139, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 1, 2361, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 1, 4540, 4);
-INSERT INTO `playercreateinfo_item` VALUES (6, 1, 6125, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 37, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 127, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 2102, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 2508, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 2516, 200);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 6126, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 7, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 7, 153, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 7, 154, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 7, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (6, 7, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (6, 7, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 11, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 11, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (6, 11, 4536, 4);
-INSERT INTO `playercreateinfo_item` VALUES (6, 11, 6124, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 11, 6139, 1);
-INSERT INTO `playercreateinfo_item` VALUES (6, 11, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 1, 25, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 1, 38, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 1, 39, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 1, 40, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 1, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (7, 1, 2362, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 4, 47, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 4, 48, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 4, 49, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 4, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (7, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 4, 2947, 100);
-INSERT INTO `playercreateinfo_item` VALUES (7, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 56, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 4536, 4);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 57, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 59, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 1396, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 6097, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 9, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 1, 37, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 1, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (8, 1, 139, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 1, 2362, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 1, 3111, 200);
-INSERT INTO `playercreateinfo_item` VALUES (8, 1, 6125, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 37, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 127, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 2101, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 2504, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 2512, 200);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 6126, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 4, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (8, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 4, 3111, 100);
-INSERT INTO `playercreateinfo_item` VALUES (8, 4, 6136, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 4, 6137, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 4, 6138, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 5, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 5, 52, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 5, 53, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 5, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (8, 5, 4540, 4);
-INSERT INTO `playercreateinfo_item` VALUES (8, 5, 6144, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 5, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 7, 36, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 7, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (8, 7, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (8, 7, 6134, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 7, 6135, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 7, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 6140, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 2508, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 2516, 200);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 57, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 4, 47, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 1, 81095, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 1, 80168, 4);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 4, 2947, 200);
-INSERT INTO `playercreateinfo_item` VALUES (9, 4, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 4, 80168, 4);
-INSERT INTO `playercreateinfo_item` VALUES (9, 4, 49, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 4, 48, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 1, 40, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 80168, 4);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 80167, 2);
-INSERT INTO `playercreateinfo_item` VALUES (9, 8, 56, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 6097, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 80168, 4);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 1396, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 80167, 2);
-INSERT INTO `playercreateinfo_item` VALUES (9, 9, 59, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 1, 39, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 1, 38, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 1, 25, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 2102, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 80167, 2);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 148, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 147, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 3, 80168, 4);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 26, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 80251, 4);
-INSERT INTO `playercreateinfo_item` VALUES (10, 1, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (9, 1, 2362, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 1, 80251, 4);
-INSERT INTO `playercreateinfo_item` VALUES (10, 1, 24146, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 1, 24145, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 1, 24143, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 2512, 200);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 2504, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 2101, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 27, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 80250, 2);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 20901, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 20899, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 20900, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 4, 2947, 200);
-INSERT INTO `playercreateinfo_item` VALUES (10, 4, 27, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 4, 80251, 4);
-INSERT INTO `playercreateinfo_item` VALUES (10, 4, 20897, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 4, 20896, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 4, 20898, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 1, 25, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 20891, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 80251, 4);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 80250, 2);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 53, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 52, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 51, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 5, 28, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 4, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 80251, 4);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 80250, 2);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 20893, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 2, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 2, 23556, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 2, 80251, 4);
-INSERT INTO `playercreateinfo_item` VALUES (10, 2, 80250, 2);
-INSERT INTO `playercreateinfo_item` VALUES (10, 2, 24143, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 2, 24145, 1);
-INSERT INTO `playercreateinfo_item` VALUES (10, 2, 24146, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 2516, 200);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 2508, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 2102, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 148, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 147, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (7, 3, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 6140, 1);
-INSERT INTO `playercreateinfo_item` VALUES (2, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 49, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 2101, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 70049, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 2512, 200);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 4604, 4);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 48, 1);
-INSERT INTO `playercreateinfo_item` VALUES (5, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 6116, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 6096, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 4540, 4);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 1395, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 55, 1);
-INSERT INTO `playercreateinfo_item` VALUES (3, 8, 35, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 147, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 148, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 2101, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 2504, 1);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 2512, 200);
-INSERT INTO `playercreateinfo_item` VALUES (1, 3, 6948, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 9, 59, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 9, 117, 4);
-INSERT INTO `playercreateinfo_item` VALUES (8, 9, 159, 2);
-INSERT INTO `playercreateinfo_item` VALUES (8, 9, 1396, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 9, 2092, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 9, 6129, 1);
-INSERT INTO `playercreateinfo_item` VALUES (8, 9, 6948, 1);
+--
+-- Dumping data for table `playercreateinfo_item`
+--
 
+LOCK TABLES `playercreateinfo_item` WRITE;
+/*!40000 ALTER TABLE `playercreateinfo_item` DISABLE KEYS */;
+INSERT INTO `playercreateinfo_item` VALUES (1,1,25,1),(1,1,38,1),(1,1,39,1),(1,1,40,1),(1,1,117,4),(1,1,2362,1),(1,1,6948,1),(1,2,43,1),(1,2,44,1),(1,2,45,1),(1,2,159,2),(1,2,2070,4),(1,2,2361,1),(1,2,6948,1),(1,4,47,1),(1,4,48,1),(1,4,49,1),(1,4,2070,4),(1,4,2092,1),(1,4,2947,100),(1,4,6948,1),(1,5,36,1),(1,5,51,1),(1,5,52,1),(1,5,53,1),(1,5,159,2),(1,5,2070,4),(1,5,6098,1),(1,5,6948,1),(1,8,35,1),(1,8,55,1),(1,8,56,1),(1,8,159,2),(1,8,1395,1),(1,8,2070,4),(1,8,6096,1),(1,8,6948,1),(1,9,57,1),(1,9,59,1),(1,9,159,2),(1,9,1396,1),(1,9,2092,1),(1,9,4604,4),(1,9,6097,1),(1,9,6948,1),(2,1,117,4),(2,1,139,1),(2,1,140,1),(2,1,6125,1),(2,1,6948,1),(2,1,12282,1),(2,3,37,1),(2,3,117,4),(2,3,127,1),(2,3,159,2),(2,3,2101,1),(2,3,2504,1),(2,3,2512,200),(2,3,6126,1),(2,3,6127,1),(2,3,6948,1),(2,4,117,4),(2,4,120,1),(2,4,121,1),(2,4,2092,1),(2,4,2105,1),(2,4,3111,100),(2,4,6948,1),(2,7,36,1),(2,7,117,4),(2,7,153,1),(2,7,154,1),(2,7,159,2),(2,7,6948,1),(2,9,59,1),(2,9,117,4),(2,9,159,2),(2,9,1396,1),(2,9,2092,1),(2,9,6129,1),(2,9,6948,1),(3,1,38,1),(3,1,39,1),(3,1,40,1),(3,1,117,4),(3,1,6948,1),(3,1,12282,1),(3,2,43,1),(3,2,159,2),(3,2,2361,1),(3,2,4540,4),(3,2,6117,1),(3,2,6118,1),(3,2,6948,1),(3,3,37,1),(3,3,117,4),(3,3,129,1),(3,3,147,1),(3,3,148,1),(3,3,159,2),(3,3,2102,1),(3,3,2508,1),(3,3,2516,200),(3,3,6948,1),(3,4,47,1),(3,4,48,1),(3,4,49,1),(3,4,2092,1),(3,4,3111,100),(3,4,4540,4),(3,4,6948,1),(3,5,36,1),(3,5,51,1),(3,5,52,1),(3,5,53,1),(3,5,159,2),(3,5,4540,4),(3,5,6098,1),(3,5,6948,1),(4,1,25,1),(4,1,117,4),(4,1,2362,1),(4,1,6120,1),(4,1,6121,1),(4,1,6122,1),(4,1,6948,1),(4,3,117,4),(4,3,129,1),(4,3,147,1),(4,3,148,1),(4,3,159,2),(4,3,2092,1),(4,3,2101,1),(4,3,2504,1),(4,3,2512,200),(4,3,6948,1),(4,4,47,1),(4,4,48,1),(4,4,49,1),(4,4,2092,1),(4,4,2947,100),(4,4,4540,4),(4,4,6948,1),(4,5,36,1),(4,5,51,1),(4,5,52,1),(4,5,53,1),(4,5,159,2),(4,5,2070,4),(4,5,6119,1),(4,5,6948,1),(4,11,159,2),(4,11,3661,1),(4,11,4536,4),(4,11,6123,1),(4,11,6124,1),(4,11,6948,1),(5,1,25,1),(5,1,139,1),(5,1,140,1),(5,1,2362,1),(5,1,4604,4),(5,1,6125,1),(5,1,6948,1),(5,4,120,1),(5,4,121,1),(5,4,2092,1),(5,4,2105,1),(5,4,2947,100),(5,4,4604,4),(5,4,6948,1),(5,5,36,1),(5,5,51,1),(5,5,52,1),(5,5,53,1),(5,5,159,2),(5,5,4604,4),(5,5,6144,1),(5,5,6948,1),(5,8,35,1),(5,8,55,1),(5,8,159,2),(5,8,1395,1),(5,8,4604,4),(5,8,6096,1),(5,8,6140,1),(5,8,6948,1),(5,9,59,1),(5,9,159,2),(5,9,1396,1),(5,9,2092,1),(5,9,4604,4),(5,9,6129,1),(5,9,6948,1),(6,1,139,1),(6,1,2361,1),(6,1,4540,4),(6,1,6125,1),(6,1,6948,1),(6,3,37,1),(6,3,117,4),(6,3,127,1),(6,3,159,2),(6,3,2102,1),(6,3,2508,1),(6,3,2516,200),(6,3,6126,1),(6,3,6948,1),(6,7,36,1),(6,7,153,1),(6,7,154,1),(6,7,159,2),(6,7,4604,4),(6,7,6948,1),(6,11,35,1),(6,11,159,2),(6,11,4536,4),(6,11,6124,1),(6,11,6139,1),(6,11,6948,1),(7,1,25,1),(7,1,38,1),(7,1,39,1),(7,1,40,1),(7,1,117,4),(7,1,2362,1),(7,1,6948,1),(7,4,47,1),(7,4,48,1),(7,4,49,1),(7,4,117,4),(7,4,2092,1),(7,4,2947,100),(7,4,6948,1),(7,8,35,1),(7,8,55,1),(7,8,56,1),(7,8,159,2),(7,8,1395,1),(7,8,4536,4),(7,8,6096,1),(7,8,6948,1),(7,9,57,1),(7,9,59,1),(7,9,159,2),(7,9,1396,1),(7,9,2092,1),(7,9,4604,4),(7,9,6097,1),(7,9,6948,1),(8,1,37,1),(8,1,117,4),(8,1,139,1),(8,1,2362,1),(8,1,3111,200),(8,1,6125,1),(8,1,6948,1),(8,3,37,1),(8,3,127,1),(8,3,159,2),(8,3,2101,1),(8,3,2504,1),(8,3,2512,200),(8,3,4604,4),(8,3,6126,1),(8,3,6948,1),(8,4,117,4),(8,4,2092,1),(8,4,3111,100),(8,4,6136,1),(8,4,6137,1),(8,4,6138,1),(8,4,6948,1),(8,5,36,1),(8,5,52,1),(8,5,53,1),(8,5,159,2),(8,5,4540,4),(8,5,6144,1),(8,5,6948,1),(8,7,36,1),(8,7,117,4),(8,7,159,2),(8,7,6134,1),(8,7,6135,1),(8,7,6948,1),(8,8,35,1),(8,8,55,1),(8,8,117,4),(8,8,159,2),(8,8,1395,1),(8,8,6096,1),(8,8,6140,1),(8,8,6948,1),(9,3,6948,1),(9,3,2508,1),(9,3,2516,200),(9,9,57,1),(9,4,47,1),(9,1,6948,1),(10,1,81095,1),(9,1,80168,4),(9,8,55,1),(9,8,35,1),(9,4,6948,1),(9,4,2947,200),(9,4,2092,1),(9,4,80168,4),(9,4,49,1),(9,4,48,1),(9,1,40,1),(9,8,6948,1),(9,8,6096,1),(9,8,80168,4),(9,8,1395,1),(9,8,80167,2),(9,8,56,1),(9,9,6948,1),(9,9,6097,1),(9,9,80168,4),(9,9,2092,1),(9,9,1396,1),(9,9,80167,2),(9,9,59,1),(9,1,39,1),(9,1,38,1),(9,1,25,1),(9,3,2102,1),(9,3,2092,1),(9,3,80167,2),(9,3,148,1),(9,3,147,1),(9,3,129,1),(9,3,80168,4),(10,8,26,1),(10,3,80251,4),(10,1,6948,1),(9,1,2362,1),(10,1,80251,4),(10,1,24146,1),(10,1,24145,1),(10,1,24143,1),(10,3,2512,200),(10,3,2504,1),(10,3,2101,1),(10,3,27,1),(10,3,80250,2),(10,3,20901,1),(10,3,20899,1),(10,3,20900,1),(10,4,2947,200),(10,4,27,1),(10,4,80251,4),(10,4,20897,1),(10,4,20896,1),(10,4,20898,1),(10,3,6948,1),(10,1,25,1),(10,5,6948,1),(10,5,20891,1),(10,5,80251,4),(10,5,80250,2),(10,5,53,1),(10,5,52,1),(10,5,51,1),(10,5,28,1),(10,4,6948,1),(10,8,6948,1),(10,8,6096,1),(10,8,80251,4),(10,8,1395,1),(10,8,80250,2),(10,8,20893,1),(10,8,55,1),(10,2,6948,1),(10,2,23556,1),(10,2,80251,4),(10,2,80250,2),(10,2,24143,1),(10,2,24145,1),(10,2,24146,1),(7,3,6948,1),(7,3,2516,200),(7,3,2508,1),(7,3,2102,1),(7,3,159,2),(7,3,148,1),(7,3,147,1),(7,3,129,1),(7,3,117,4),(7,3,2092,1),(2,8,35,1),(2,8,55,1),(2,8,117,4),(2,8,159,2),(2,8,1395,1),(2,8,6096,1),(2,8,6140,1),(2,8,6948,1),(5,3,2092,1),(5,3,49,1),(5,3,159,2),(5,3,2101,1),(5,3,70049,1),(5,3,2512,200),(5,3,4604,4),(5,3,48,1),(5,3,6948,1),(3,8,6948,1),(3,8,6116,1),(3,8,6096,1),(3,8,4540,4),(3,8,1395,1),(3,8,159,2),(3,8,55,1),(3,8,35,1),(1,3,117,4),(1,3,129,1),(1,3,147,1),(1,3,148,1),(1,3,159,2),(1,3,2092,1),(1,3,2101,1),(1,3,2504,1),(1,3,2512,200),(1,3,6948,1),(8,9,59,1),(8,9,117,4),(8,9,159,2),(8,9,1396,1),(8,9,2092,1),(8,9,6129,1),(8,9,6948,1);
+/*!40000 ALTER TABLE `playercreateinfo_item` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

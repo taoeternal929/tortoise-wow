@@ -1,364 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `game_event_quest`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for game_event_quest
--- ----------------------------
 DROP TABLE IF EXISTS `game_event_quest`;
-CREATE TABLE `game_event_quest`  (
-  `quest` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'entry from quest_template',
-  `event` smallint(5) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'entry from game_event',
-  PRIMARY KEY (`quest`, `event`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Game event system' ROW_FORMAT = Fixed;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `game_event_quest` (
+  `quest` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'entry from quest_template',
+  `event` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT 'entry from game_event',
+  PRIMARY KEY (`quest`,`event`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED COMMENT='Game event system';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of game_event_quest
--- ----------------------------
-INSERT INTO `game_event_quest` VALUES (172, 10);
-INSERT INTO `game_event_quest` VALUES (1468, 10);
-INSERT INTO `game_event_quest` VALUES (1657, 12);
-INSERT INTO `game_event_quest` VALUES (1658, 12);
-INSERT INTO `game_event_quest` VALUES (8193, 15);
-INSERT INTO `game_event_quest` VALUES (8194, 40);
-INSERT INTO `game_event_quest` VALUES (8221, 40);
-INSERT INTO `game_event_quest` VALUES (8224, 40);
-INSERT INTO `game_event_quest` VALUES (8225, 40);
-INSERT INTO `game_event_quest` VALUES (8228, 14);
-INSERT INTO `game_event_quest` VALUES (8229, 14);
-INSERT INTO `game_event_quest` VALUES (8286, 164);
-INSERT INTO `game_event_quest` VALUES (8288, 164);
-INSERT INTO `game_event_quest` VALUES (8301, 164);
-INSERT INTO `game_event_quest` VALUES (8302, 164);
-INSERT INTO `game_event_quest` VALUES (8303, 164);
-INSERT INTO `game_event_quest` VALUES (8305, 164);
-INSERT INTO `game_event_quest` VALUES (8311, 12);
-INSERT INTO `game_event_quest` VALUES (8312, 12);
-INSERT INTO `game_event_quest` VALUES (8322, 12);
-INSERT INTO `game_event_quest` VALUES (8353, 12);
-INSERT INTO `game_event_quest` VALUES (8354, 12);
-INSERT INTO `game_event_quest` VALUES (8355, 12);
-INSERT INTO `game_event_quest` VALUES (8356, 12);
-INSERT INTO `game_event_quest` VALUES (8357, 12);
-INSERT INTO `game_event_quest` VALUES (8358, 12);
-INSERT INTO `game_event_quest` VALUES (8359, 12);
-INSERT INTO `game_event_quest` VALUES (8360, 12);
-INSERT INTO `game_event_quest` VALUES (8373, 12);
-INSERT INTO `game_event_quest` VALUES (8409, 12);
-INSERT INTO `game_event_quest` VALUES (8492, 164);
-INSERT INTO `game_event_quest` VALUES (8493, 164);
-INSERT INTO `game_event_quest` VALUES (8494, 164);
-INSERT INTO `game_event_quest` VALUES (8495, 164);
-INSERT INTO `game_event_quest` VALUES (8496, 164);
-INSERT INTO `game_event_quest` VALUES (8497, 164);
-INSERT INTO `game_event_quest` VALUES (8498, 164);
-INSERT INTO `game_event_quest` VALUES (8499, 164);
-INSERT INTO `game_event_quest` VALUES (8500, 164);
-INSERT INTO `game_event_quest` VALUES (8501, 164);
-INSERT INTO `game_event_quest` VALUES (8502, 164);
-INSERT INTO `game_event_quest` VALUES (8503, 164);
-INSERT INTO `game_event_quest` VALUES (8504, 164);
-INSERT INTO `game_event_quest` VALUES (8505, 164);
-INSERT INTO `game_event_quest` VALUES (8506, 164);
-INSERT INTO `game_event_quest` VALUES (8507, 86);
-INSERT INTO `game_event_quest` VALUES (8508, 164);
-INSERT INTO `game_event_quest` VALUES (8509, 164);
-INSERT INTO `game_event_quest` VALUES (8510, 164);
-INSERT INTO `game_event_quest` VALUES (8511, 164);
-INSERT INTO `game_event_quest` VALUES (8512, 164);
-INSERT INTO `game_event_quest` VALUES (8513, 164);
-INSERT INTO `game_event_quest` VALUES (8514, 164);
-INSERT INTO `game_event_quest` VALUES (8515, 164);
-INSERT INTO `game_event_quest` VALUES (8516, 164);
-INSERT INTO `game_event_quest` VALUES (8517, 164);
-INSERT INTO `game_event_quest` VALUES (8518, 164);
-INSERT INTO `game_event_quest` VALUES (8519, 164);
-INSERT INTO `game_event_quest` VALUES (8520, 164);
-INSERT INTO `game_event_quest` VALUES (8521, 164);
-INSERT INTO `game_event_quest` VALUES (8522, 164);
-INSERT INTO `game_event_quest` VALUES (8523, 164);
-INSERT INTO `game_event_quest` VALUES (8524, 164);
-INSERT INTO `game_event_quest` VALUES (8525, 164);
-INSERT INTO `game_event_quest` VALUES (8526, 164);
-INSERT INTO `game_event_quest` VALUES (8527, 164);
-INSERT INTO `game_event_quest` VALUES (8528, 164);
-INSERT INTO `game_event_quest` VALUES (8529, 164);
-INSERT INTO `game_event_quest` VALUES (8530, 164);
-INSERT INTO `game_event_quest` VALUES (8532, 164);
-INSERT INTO `game_event_quest` VALUES (8533, 164);
-INSERT INTO `game_event_quest` VALUES (8534, 164);
-INSERT INTO `game_event_quest` VALUES (8535, 164);
-INSERT INTO `game_event_quest` VALUES (8536, 164);
-INSERT INTO `game_event_quest` VALUES (8537, 164);
-INSERT INTO `game_event_quest` VALUES (8538, 164);
-INSERT INTO `game_event_quest` VALUES (8539, 164);
-INSERT INTO `game_event_quest` VALUES (8540, 164);
-INSERT INTO `game_event_quest` VALUES (8541, 164);
-INSERT INTO `game_event_quest` VALUES (8542, 164);
-INSERT INTO `game_event_quest` VALUES (8543, 164);
-INSERT INTO `game_event_quest` VALUES (8544, 164);
-INSERT INTO `game_event_quest` VALUES (8545, 164);
-INSERT INTO `game_event_quest` VALUES (8546, 164);
-INSERT INTO `game_event_quest` VALUES (8548, 164);
-INSERT INTO `game_event_quest` VALUES (8549, 164);
-INSERT INTO `game_event_quest` VALUES (8550, 164);
-INSERT INTO `game_event_quest` VALUES (8555, 164);
-INSERT INTO `game_event_quest` VALUES (8556, 86);
-INSERT INTO `game_event_quest` VALUES (8557, 86);
-INSERT INTO `game_event_quest` VALUES (8558, 86);
-INSERT INTO `game_event_quest` VALUES (8559, 164);
-INSERT INTO `game_event_quest` VALUES (8560, 164);
-INSERT INTO `game_event_quest` VALUES (8561, 164);
-INSERT INTO `game_event_quest` VALUES (8562, 164);
-INSERT INTO `game_event_quest` VALUES (8572, 164);
-INSERT INTO `game_event_quest` VALUES (8573, 164);
-INSERT INTO `game_event_quest` VALUES (8574, 164);
-INSERT INTO `game_event_quest` VALUES (8575, 164);
-INSERT INTO `game_event_quest` VALUES (8576, 164);
-INSERT INTO `game_event_quest` VALUES (8577, 164);
-INSERT INTO `game_event_quest` VALUES (8578, 164);
-INSERT INTO `game_event_quest` VALUES (8579, 164);
-INSERT INTO `game_event_quest` VALUES (8580, 164);
-INSERT INTO `game_event_quest` VALUES (8581, 164);
-INSERT INTO `game_event_quest` VALUES (8582, 164);
-INSERT INTO `game_event_quest` VALUES (8583, 164);
-INSERT INTO `game_event_quest` VALUES (8584, 164);
-INSERT INTO `game_event_quest` VALUES (8585, 164);
-INSERT INTO `game_event_quest` VALUES (8586, 164);
-INSERT INTO `game_event_quest` VALUES (8587, 164);
-INSERT INTO `game_event_quest` VALUES (8588, 164);
-INSERT INTO `game_event_quest` VALUES (8589, 164);
-INSERT INTO `game_event_quest` VALUES (8590, 164);
-INSERT INTO `game_event_quest` VALUES (8591, 164);
-INSERT INTO `game_event_quest` VALUES (8592, 164);
-INSERT INTO `game_event_quest` VALUES (8593, 164);
-INSERT INTO `game_event_quest` VALUES (8594, 164);
-INSERT INTO `game_event_quest` VALUES (8595, 164);
-INSERT INTO `game_event_quest` VALUES (8596, 164);
-INSERT INTO `game_event_quest` VALUES (8597, 164);
-INSERT INTO `game_event_quest` VALUES (8598, 164);
-INSERT INTO `game_event_quest` VALUES (8599, 164);
-INSERT INTO `game_event_quest` VALUES (8600, 164);
-INSERT INTO `game_event_quest` VALUES (8601, 164);
-INSERT INTO `game_event_quest` VALUES (8602, 164);
-INSERT INTO `game_event_quest` VALUES (8603, 164);
-INSERT INTO `game_event_quest` VALUES (8604, 164);
-INSERT INTO `game_event_quest` VALUES (8605, 164);
-INSERT INTO `game_event_quest` VALUES (8606, 164);
-INSERT INTO `game_event_quest` VALUES (8607, 164);
-INSERT INTO `game_event_quest` VALUES (8608, 164);
-INSERT INTO `game_event_quest` VALUES (8609, 164);
-INSERT INTO `game_event_quest` VALUES (8610, 164);
-INSERT INTO `game_event_quest` VALUES (8611, 164);
-INSERT INTO `game_event_quest` VALUES (8612, 164);
-INSERT INTO `game_event_quest` VALUES (8613, 164);
-INSERT INTO `game_event_quest` VALUES (8614, 164);
-INSERT INTO `game_event_quest` VALUES (8615, 164);
-INSERT INTO `game_event_quest` VALUES (8616, 164);
-INSERT INTO `game_event_quest` VALUES (8617, 164);
-INSERT INTO `game_event_quest` VALUES (8620, 164);
-INSERT INTO `game_event_quest` VALUES (8621, 164);
-INSERT INTO `game_event_quest` VALUES (8622, 164);
-INSERT INTO `game_event_quest` VALUES (8623, 164);
-INSERT INTO `game_event_quest` VALUES (8624, 164);
-INSERT INTO `game_event_quest` VALUES (8625, 164);
-INSERT INTO `game_event_quest` VALUES (8626, 164);
-INSERT INTO `game_event_quest` VALUES (8627, 164);
-INSERT INTO `game_event_quest` VALUES (8628, 164);
-INSERT INTO `game_event_quest` VALUES (8629, 164);
-INSERT INTO `game_event_quest` VALUES (8630, 164);
-INSERT INTO `game_event_quest` VALUES (8631, 164);
-INSERT INTO `game_event_quest` VALUES (8632, 164);
-INSERT INTO `game_event_quest` VALUES (8633, 164);
-INSERT INTO `game_event_quest` VALUES (8634, 164);
-INSERT INTO `game_event_quest` VALUES (8637, 164);
-INSERT INTO `game_event_quest` VALUES (8638, 164);
-INSERT INTO `game_event_quest` VALUES (8639, 164);
-INSERT INTO `game_event_quest` VALUES (8640, 164);
-INSERT INTO `game_event_quest` VALUES (8641, 164);
-INSERT INTO `game_event_quest` VALUES (8655, 164);
-INSERT INTO `game_event_quest` VALUES (8656, 164);
-INSERT INTO `game_event_quest` VALUES (8657, 164);
-INSERT INTO `game_event_quest` VALUES (8658, 164);
-INSERT INTO `game_event_quest` VALUES (8659, 164);
-INSERT INTO `game_event_quest` VALUES (8660, 164);
-INSERT INTO `game_event_quest` VALUES (8661, 164);
-INSERT INTO `game_event_quest` VALUES (8662, 164);
-INSERT INTO `game_event_quest` VALUES (8663, 164);
-INSERT INTO `game_event_quest` VALUES (8664, 164);
-INSERT INTO `game_event_quest` VALUES (8665, 164);
-INSERT INTO `game_event_quest` VALUES (8666, 164);
-INSERT INTO `game_event_quest` VALUES (8667, 164);
-INSERT INTO `game_event_quest` VALUES (8668, 164);
-INSERT INTO `game_event_quest` VALUES (8669, 164);
-INSERT INTO `game_event_quest` VALUES (8687, 164);
-INSERT INTO `game_event_quest` VALUES (8689, 86);
-INSERT INTO `game_event_quest` VALUES (8690, 86);
-INSERT INTO `game_event_quest` VALUES (8691, 86);
-INSERT INTO `game_event_quest` VALUES (8692, 86);
-INSERT INTO `game_event_quest` VALUES (8693, 86);
-INSERT INTO `game_event_quest` VALUES (8694, 86);
-INSERT INTO `game_event_quest` VALUES (8695, 86);
-INSERT INTO `game_event_quest` VALUES (8696, 86);
-INSERT INTO `game_event_quest` VALUES (8697, 86);
-INSERT INTO `game_event_quest` VALUES (8698, 86);
-INSERT INTO `game_event_quest` VALUES (8699, 86);
-INSERT INTO `game_event_quest` VALUES (8700, 86);
-INSERT INTO `game_event_quest` VALUES (8701, 86);
-INSERT INTO `game_event_quest` VALUES (8702, 86);
-INSERT INTO `game_event_quest` VALUES (8703, 86);
-INSERT INTO `game_event_quest` VALUES (8704, 86);
-INSERT INTO `game_event_quest` VALUES (8705, 86);
-INSERT INTO `game_event_quest` VALUES (8706, 86);
-INSERT INTO `game_event_quest` VALUES (8707, 86);
-INSERT INTO `game_event_quest` VALUES (8708, 86);
-INSERT INTO `game_event_quest` VALUES (8709, 86);
-INSERT INTO `game_event_quest` VALUES (8710, 86);
-INSERT INTO `game_event_quest` VALUES (8711, 86);
-INSERT INTO `game_event_quest` VALUES (8712, 86);
-INSERT INTO `game_event_quest` VALUES (8728, 164);
-INSERT INTO `game_event_quest` VALUES (8729, 164);
-INSERT INTO `game_event_quest` VALUES (8730, 164);
-INSERT INTO `game_event_quest` VALUES (8731, 86);
-INSERT INTO `game_event_quest` VALUES (8732, 164);
-INSERT INTO `game_event_quest` VALUES (8733, 164);
-INSERT INTO `game_event_quest` VALUES (8734, 164);
-INSERT INTO `game_event_quest` VALUES (8735, 164);
-INSERT INTO `game_event_quest` VALUES (8736, 164);
-INSERT INTO `game_event_quest` VALUES (8737, 164);
-INSERT INTO `game_event_quest` VALUES (8738, 164);
-INSERT INTO `game_event_quest` VALUES (8739, 164);
-INSERT INTO `game_event_quest` VALUES (8740, 164);
-INSERT INTO `game_event_quest` VALUES (8741, 164);
-INSERT INTO `game_event_quest` VALUES (8742, 164);
-INSERT INTO `game_event_quest` VALUES (8743, 85);
-INSERT INTO `game_event_quest` VALUES (8745, 164);
-INSERT INTO `game_event_quest` VALUES (8747, 164);
-INSERT INTO `game_event_quest` VALUES (8748, 164);
-INSERT INTO `game_event_quest` VALUES (8749, 164);
-INSERT INTO `game_event_quest` VALUES (8750, 164);
-INSERT INTO `game_event_quest` VALUES (8751, 164);
-INSERT INTO `game_event_quest` VALUES (8752, 164);
-INSERT INTO `game_event_quest` VALUES (8753, 164);
-INSERT INTO `game_event_quest` VALUES (8754, 164);
-INSERT INTO `game_event_quest` VALUES (8755, 164);
-INSERT INTO `game_event_quest` VALUES (8756, 164);
-INSERT INTO `game_event_quest` VALUES (8757, 164);
-INSERT INTO `game_event_quest` VALUES (8758, 164);
-INSERT INTO `game_event_quest` VALUES (8759, 164);
-INSERT INTO `game_event_quest` VALUES (8760, 164);
-INSERT INTO `game_event_quest` VALUES (8761, 164);
-INSERT INTO `game_event_quest` VALUES (8764, 164);
-INSERT INTO `game_event_quest` VALUES (8765, 164);
-INSERT INTO `game_event_quest` VALUES (8766, 164);
-INSERT INTO `game_event_quest` VALUES (8770, 164);
-INSERT INTO `game_event_quest` VALUES (8771, 164);
-INSERT INTO `game_event_quest` VALUES (8772, 164);
-INSERT INTO `game_event_quest` VALUES (8773, 164);
-INSERT INTO `game_event_quest` VALUES (8774, 164);
-INSERT INTO `game_event_quest` VALUES (8775, 164);
-INSERT INTO `game_event_quest` VALUES (8776, 164);
-INSERT INTO `game_event_quest` VALUES (8777, 164);
-INSERT INTO `game_event_quest` VALUES (8778, 164);
-INSERT INTO `game_event_quest` VALUES (8779, 164);
-INSERT INTO `game_event_quest` VALUES (8780, 164);
-INSERT INTO `game_event_quest` VALUES (8781, 164);
-INSERT INTO `game_event_quest` VALUES (8782, 164);
-INSERT INTO `game_event_quest` VALUES (8783, 164);
-INSERT INTO `game_event_quest` VALUES (8784, 164);
-INSERT INTO `game_event_quest` VALUES (8785, 164);
-INSERT INTO `game_event_quest` VALUES (8786, 164);
-INSERT INTO `game_event_quest` VALUES (8787, 164);
-INSERT INTO `game_event_quest` VALUES (8789, 164);
-INSERT INTO `game_event_quest` VALUES (8790, 164);
-INSERT INTO `game_event_quest` VALUES (8791, 164);
-INSERT INTO `game_event_quest` VALUES (8792, 22);
-INSERT INTO `game_event_quest` VALUES (8793, 22);
-INSERT INTO `game_event_quest` VALUES (8794, 22);
-INSERT INTO `game_event_quest` VALUES (8795, 22);
-INSERT INTO `game_event_quest` VALUES (8796, 22);
-INSERT INTO `game_event_quest` VALUES (8797, 22);
-INSERT INTO `game_event_quest` VALUES (8800, 86);
-INSERT INTO `game_event_quest` VALUES (8801, 164);
-INSERT INTO `game_event_quest` VALUES (8802, 164);
-INSERT INTO `game_event_quest` VALUES (8804, 164);
-INSERT INTO `game_event_quest` VALUES (8805, 164);
-INSERT INTO `game_event_quest` VALUES (8806, 164);
-INSERT INTO `game_event_quest` VALUES (8807, 164);
-INSERT INTO `game_event_quest` VALUES (8808, 164);
-INSERT INTO `game_event_quest` VALUES (8809, 164);
-INSERT INTO `game_event_quest` VALUES (8810, 164);
-INSERT INTO `game_event_quest` VALUES (8811, 164);
-INSERT INTO `game_event_quest` VALUES (8812, 164);
-INSERT INTO `game_event_quest` VALUES (8813, 164);
-INSERT INTO `game_event_quest` VALUES (8814, 164);
-INSERT INTO `game_event_quest` VALUES (8815, 164);
-INSERT INTO `game_event_quest` VALUES (8816, 164);
-INSERT INTO `game_event_quest` VALUES (8817, 164);
-INSERT INTO `game_event_quest` VALUES (8818, 164);
-INSERT INTO `game_event_quest` VALUES (8819, 164);
-INSERT INTO `game_event_quest` VALUES (8820, 164);
-INSERT INTO `game_event_quest` VALUES (8821, 164);
-INSERT INTO `game_event_quest` VALUES (8822, 164);
-INSERT INTO `game_event_quest` VALUES (8823, 164);
-INSERT INTO `game_event_quest` VALUES (8824, 164);
-INSERT INTO `game_event_quest` VALUES (8825, 164);
-INSERT INTO `game_event_quest` VALUES (8826, 164);
-INSERT INTO `game_event_quest` VALUES (8827, 21);
-INSERT INTO `game_event_quest` VALUES (8828, 21);
-INSERT INTO `game_event_quest` VALUES (8829, 164);
-INSERT INTO `game_event_quest` VALUES (8830, 164);
-INSERT INTO `game_event_quest` VALUES (8831, 164);
-INSERT INTO `game_event_quest` VALUES (8832, 164);
-INSERT INTO `game_event_quest` VALUES (8833, 164);
-INSERT INTO `game_event_quest` VALUES (8834, 164);
-INSERT INTO `game_event_quest` VALUES (8835, 164);
-INSERT INTO `game_event_quest` VALUES (8836, 164);
-INSERT INTO `game_event_quest` VALUES (8837, 164);
-INSERT INTO `game_event_quest` VALUES (8838, 164);
-INSERT INTO `game_event_quest` VALUES (8839, 164);
-INSERT INTO `game_event_quest` VALUES (8840, 164);
-INSERT INTO `game_event_quest` VALUES (8841, 164);
-INSERT INTO `game_event_quest` VALUES (8842, 164);
-INSERT INTO `game_event_quest` VALUES (8843, 164);
-INSERT INTO `game_event_quest` VALUES (8844, 164);
-INSERT INTO `game_event_quest` VALUES (8845, 164);
-INSERT INTO `game_event_quest` VALUES (8846, 164);
-INSERT INTO `game_event_quest` VALUES (8847, 164);
-INSERT INTO `game_event_quest` VALUES (8848, 164);
-INSERT INTO `game_event_quest` VALUES (8849, 164);
-INSERT INTO `game_event_quest` VALUES (8850, 164);
-INSERT INTO `game_event_quest` VALUES (8851, 164);
-INSERT INTO `game_event_quest` VALUES (8852, 164);
-INSERT INTO `game_event_quest` VALUES (8853, 164);
-INSERT INTO `game_event_quest` VALUES (8854, 164);
-INSERT INTO `game_event_quest` VALUES (8855, 164);
-INSERT INTO `game_event_quest` VALUES (8856, 164);
-INSERT INTO `game_event_quest` VALUES (8857, 164);
-INSERT INTO `game_event_quest` VALUES (8858, 164);
-INSERT INTO `game_event_quest` VALUES (8859, 164);
-INSERT INTO `game_event_quest` VALUES (8860, 34);
-INSERT INTO `game_event_quest` VALUES (8861, 34);
-INSERT INTO `game_event_quest` VALUES (8869, 164);
-INSERT INTO `game_event_quest` VALUES (8980, 8);
-INSERT INTO `game_event_quest` VALUES (8983, 8);
-INSERT INTO `game_event_quest` VALUES (9025, 8);
-INSERT INTO `game_event_quest` VALUES (9027, 8);
+--
+-- Dumping data for table `game_event_quest`
+--
 
+LOCK TABLES `game_event_quest` WRITE;
+/*!40000 ALTER TABLE `game_event_quest` DISABLE KEYS */;
+INSERT INTO `game_event_quest` VALUES (172,10),(1468,10),(1657,12),(1658,12),(8193,15),(8194,40),(8221,40),(8224,40),(8225,40),(8228,14),(8229,14),(8286,164),(8288,164),(8301,164),(8302,164),(8303,164),(8305,164),(8311,12),(8312,12),(8322,12),(8353,12),(8354,12),(8355,12),(8356,12),(8357,12),(8358,12),(8359,12),(8360,12),(8373,12),(8409,12),(8492,164),(8493,164),(8494,164),(8495,164),(8496,164),(8497,164),(8498,164),(8499,164),(8500,164),(8501,164),(8502,164),(8503,164),(8504,164),(8505,164),(8506,164),(8507,86),(8508,164),(8509,164),(8510,164),(8511,164),(8512,164),(8513,164),(8514,164),(8515,164),(8516,164),(8517,164),(8518,164),(8519,164),(8520,164),(8521,164),(8522,164),(8523,164),(8524,164),(8525,164),(8526,164),(8527,164),(8528,164),(8529,164),(8530,164),(8532,164),(8533,164),(8534,164),(8535,164),(8536,164),(8537,164),(8538,164),(8539,164),(8540,164),(8541,164),(8542,164),(8543,164),(8544,164),(8545,164),(8546,164),(8548,164),(8549,164),(8550,164),(8555,164),(8556,86),(8557,86),(8558,86),(8559,164),(8560,164),(8561,164),(8562,164),(8572,164),(8573,164),(8574,164),(8575,164),(8576,164),(8577,164),(8578,164),(8579,164),(8580,164),(8581,164),(8582,164),(8583,164),(8584,164),(8585,164),(8586,164),(8587,164),(8588,164),(8589,164),(8590,164),(8591,164),(8592,164),(8593,164),(8594,164),(8595,164),(8596,164),(8597,164),(8598,164),(8599,164),(8600,164),(8601,164),(8602,164),(8603,164),(8604,164),(8605,164),(8606,164),(8607,164),(8608,164),(8609,164),(8610,164),(8611,164),(8612,164),(8613,164),(8614,164),(8615,164),(8616,164),(8617,164),(8620,164),(8621,164),(8622,164),(8623,164),(8624,164),(8625,164),(8626,164),(8627,164),(8628,164),(8629,164),(8630,164),(8631,164),(8632,164),(8633,164),(8634,164),(8637,164),(8638,164),(8639,164),(8640,164),(8641,164),(8655,164),(8656,164),(8657,164),(8658,164),(8659,164),(8660,164),(8661,164),(8662,164),(8663,164),(8664,164),(8665,164),(8666,164),(8667,164),(8668,164),(8669,164),(8687,164),(8689,86),(8690,86),(8691,86),(8692,86),(8693,86),(8694,86),(8695,86),(8696,86),(8697,86),(8698,86),(8699,86),(8700,86),(8701,86),(8702,86),(8703,86),(8704,86),(8705,86),(8706,86),(8707,86),(8708,86),(8709,86),(8710,86),(8711,86),(8712,86),(8728,164),(8729,164),(8730,164),(8731,86),(8732,164),(8733,164),(8734,164),(8735,164),(8736,164),(8737,164),(8738,164),(8739,164),(8740,164),(8741,164),(8742,164),(8743,85),(8745,164),(8747,164),(8748,164),(8749,164),(8750,164),(8751,164),(8752,164),(8753,164),(8754,164),(8755,164),(8756,164),(8757,164),(8758,164),(8759,164),(8760,164),(8761,164),(8764,164),(8765,164),(8766,164),(8770,164),(8771,164),(8772,164),(8773,164),(8774,164),(8775,164),(8776,164),(8777,164),(8778,164),(8779,164),(8780,164),(8781,164),(8782,164),(8783,164),(8784,164),(8785,164),(8786,164),(8787,164),(8789,164),(8790,164),(8791,164),(8792,22),(8793,22),(8794,22),(8795,22),(8796,22),(8797,22),(8800,86),(8801,164),(8802,164),(8804,164),(8805,164),(8806,164),(8807,164),(8808,164),(8809,164),(8810,164),(8811,164),(8812,164),(8813,164),(8814,164),(8815,164),(8816,164),(8817,164),(8818,164),(8819,164),(8820,164),(8821,164),(8822,164),(8823,164),(8824,164),(8825,164),(8826,164),(8827,21),(8828,21),(8829,164),(8830,164),(8831,164),(8832,164),(8833,164),(8834,164),(8835,164),(8836,164),(8837,164),(8838,164),(8839,164),(8840,164),(8841,164),(8842,164),(8843,164),(8844,164),(8845,164),(8846,164),(8847,164),(8848,164),(8849,164),(8850,164),(8851,164),(8852,164),(8853,164),(8854,164),(8855,164),(8856,164),(8857,164),(8858,164),(8859,164),(8860,34),(8861,34),(8869,164),(8980,8),(8983,8),(9025,8),(9027,8),(41274,8);
+/*!40000 ALTER TABLE `game_event_quest` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:17

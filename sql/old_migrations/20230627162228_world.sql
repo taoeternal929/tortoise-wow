@@ -1,1 +1,0 @@
-UPDATE item_template SET required_skill_rank = 125 WHERE entry in (83510, 83511);

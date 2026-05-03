@@ -1,1 +1,0 @@
-UPDATE quest_template SET RewMoneyMaxLevel = 0, RewXP = 0 WHERE entry = 50316;

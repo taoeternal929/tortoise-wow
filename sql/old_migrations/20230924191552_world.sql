@@ -1,2 +1,0 @@
--- Change "The Dry Rock Pit" to "The Dryrock Pit".
-update quest_template set objectives = 'Reclaim the Signet of Silverlaine from High Officer Osmark at The Dryrock Pit for Baron Caliban Silverlaine at Ravenshire in Gilneas.' where entry = 40924;

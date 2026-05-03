@@ -1,45 +1,54 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `shop_categories`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for shop_categories
--- ----------------------------
 DROP TABLE IF EXISTS `shop_categories`;
-CREATE TABLE `shop_categories`  (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `name_loc4` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `icon` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shop_categories` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` text DEFAULT NULL,
+  `name_loc4` text DEFAULT NULL,
+  `icon` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of shop_categories
--- ----------------------------
-INSERT INTO `shop_categories` VALUES (1, 'Miscellaneous', '杂项', 'default');
-INSERT INTO `shop_categories` VALUES (2, 'Skins', '外观', 'ticket');
-INSERT INTO `shop_categories` VALUES (3, 'Gameplay', '玩法玩具', 'toys');
-INSERT INTO `shop_categories` VALUES (4, 'Glyphs', '雕文', 'service');
-INSERT INTO `shop_categories` VALUES (5, 'Mounts', '坐骑', 'mount');
-INSERT INTO `shop_categories` VALUES (6, 'Companions', '小宠物', 'pet');
-INSERT INTO `shop_categories` VALUES (7, 'Fashion', '战袍', 'tabard');
-INSERT INTO `shop_categories` VALUES (8, 'Illusions', '幻象', 'scroll');
+--
+-- Dumping data for table `shop_categories`
+--
 
+LOCK TABLES `shop_categories` WRITE;
+/*!40000 ALTER TABLE `shop_categories` DISABLE KEYS */;
+INSERT INTO `shop_categories` VALUES (1,'Miscellaneous','杂项','default'),(2,'Skins','外观','ticket'),(3,'Gameplay','玩法玩具','toys'),(4,'Glyphs','雕文','service'),(5,'Mounts','坐骑','mount'),(6,'Companions','小宠物','pet'),(7,'Fashion','时尚','tabard'),(8,'Illusions','幻象','scroll');
+/*!40000 ALTER TABLE `shop_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

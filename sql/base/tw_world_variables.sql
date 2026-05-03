@@ -1,120 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `variables`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for variables
--- ----------------------------
 DROP TABLE IF EXISTS `variables`;
-CREATE TABLE `variables`  (
-  `index` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `value` int(10) UNSIGNED NOT NULL DEFAULT 0,
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `variables` (
+  `index` int(10) unsigned NOT NULL DEFAULT 0,
+  `value` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`index`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of variables
--- ----------------------------
-INSERT INTO `variables` VALUES (12, 1618618081);
-INSERT INTO `variables` VALUES (13, 1618618081);
-INSERT INTO `variables` VALUES (10, 139);
-INSERT INTO `variables` VALUES (11, 440);
-INSERT INTO `variables` VALUES (14, 4);
-INSERT INTO `variables` VALUES (15, 0);
-INSERT INTO `variables` VALUES (16, 0);
-INSERT INTO `variables` VALUES (17, 0);
-INSERT INTO `variables` VALUES (18, 0);
-INSERT INTO `variables` VALUES (19, 0);
-INSERT INTO `variables` VALUES (20, 0);
-INSERT INTO `variables` VALUES (21, 0);
-INSERT INTO `variables` VALUES (22, 0);
-INSERT INTO `variables` VALUES (23, 0);
-INSERT INTO `variables` VALUES (30002, 1697135773);
-INSERT INTO `variables` VALUES (30054, 1603586531);
-INSERT INTO `variables` VALUES (30050, 5);
-INSERT INTO `variables` VALUES (30016, 1697186410);
-INSERT INTO `variables` VALUES (30017, 0);
-INSERT INTO `variables` VALUES (30012, 0);
-INSERT INTO `variables` VALUES (30008, 5);
-INSERT INTO `variables` VALUES (30020, 0);
-INSERT INTO `variables` VALUES (30015, 0);
-INSERT INTO `variables` VALUES (30011, 5);
-INSERT INTO `variables` VALUES (30019, 0);
-INSERT INTO `variables` VALUES (30014, 0);
-INSERT INTO `variables` VALUES (30010, 5);
-INSERT INTO `variables` VALUES (30018, 0);
-INSERT INTO `variables` VALUES (30013, 0);
-INSERT INTO `variables` VALUES (30009, 5);
-INSERT INTO `variables` VALUES (2318, 30000);
-INSERT INTO `variables` VALUES (30032, 100000);
-INSERT INTO `variables` VALUES (1251, 100000);
-INSERT INTO `variables` VALUES (6450, 100000);
-INSERT INTO `variables` VALUES (3575, 14000);
-INSERT INTO `variables` VALUES (2447, 12000);
-INSERT INTO `variables` VALUES (30027, 4340);
-INSERT INTO `variables` VALUES (13935, 2500);
-INSERT INTO `variables` VALUES (2319, 27500);
-INSERT INTO `variables` VALUES (30028, 13340);
-INSERT INTO `variables` VALUES (12359, 12000);
-INSERT INTO `variables` VALUES (8836, 10000);
-INSERT INTO `variables` VALUES (30033, 100000);
-INSERT INTO `variables` VALUES (3820, 5500);
-INSERT INTO `variables` VALUES (30026, 4340);
-INSERT INTO `variables` VALUES (30029, 13340);
-INSERT INTO `variables` VALUES (8544, 41680);
-INSERT INTO `variables` VALUES (30024, 15000);
-INSERT INTO `variables` VALUES (3576, 5500);
-INSERT INTO `variables` VALUES (3860, 9000);
-INSERT INTO `variables` VALUES (8170, 15000);
-INSERT INTO `variables` VALUES (3530, 41680);
-INSERT INTO `variables` VALUES (5095, 2340);
-INSERT INTO `variables` VALUES (12210, 5000);
-INSERT INTO `variables` VALUES (30030, 5680);
-INSERT INTO `variables` VALUES (1, 0);
-INSERT INTO `variables` VALUES (0, 0);
-INSERT INTO `variables` VALUES (30025, 15000);
-INSERT INTO `variables` VALUES (4234, 15000);
-INSERT INTO `variables` VALUES (4625, 4760);
-INSERT INTO `variables` VALUES (30031, 5680);
-INSERT INTO `variables` VALUES (12209, 1680);
-INSERT INTO `variables` VALUES (30022, 0);
-INSERT INTO `variables` VALUES (30023, 1);
-INSERT INTO `variables` VALUES (30021, 1696771352);
-INSERT INTO `variables` VALUES (2313, 26);
-INSERT INTO `variables` VALUES (2314, 1);
-INSERT INTO `variables` VALUES (2317, 200);
-INSERT INTO `variables` VALUES (30051, 1603912309);
-INSERT INTO `variables` VALUES (30053, 1);
-INSERT INTO `variables` VALUES (30052, 1604007207);
-INSERT INTO `variables` VALUES (30055, 5);
-INSERT INTO `variables` VALUES (2200, 0);
-INSERT INTO `variables` VALUES (2204, 0);
-INSERT INTO `variables` VALUES (2201, 0);
-INSERT INTO `variables` VALUES (2206, 0);
-INSERT INTO `variables` VALUES (2203, 0);
-INSERT INTO `variables` VALUES (2205, 0);
-INSERT INTO `variables` VALUES (2207, 62);
-INSERT INTO `variables` VALUES (2202, 0);
-INSERT INTO `variables` VALUES (30001, 300);
-INSERT INTO `variables` VALUES (30004, 14888);
-INSERT INTO `variables` VALUES (30005, 14890);
-INSERT INTO `variables` VALUES (30006, 14887);
-INSERT INTO `variables` VALUES (30007, 14889);
+--
+-- Dumping data for table `variables`
+--
 
+LOCK TABLES `variables` WRITE;
+/*!40000 ALTER TABLE `variables` DISABLE KEYS */;
+INSERT INTO `variables` VALUES (12,1618618081),(13,1618618081),(10,139),(11,440),(14,4),(15,0),(16,0),(17,0),(18,0),(19,0),(20,0),(21,0),(22,0),(23,0),(30002,1697135773),(30054,1603586531),(30050,5),(30016,1697186410),(30017,0),(30012,0),(30008,5),(30020,0),(30015,0),(30011,5),(30019,0),(30014,0),(30010,5),(30018,0),(30013,0),(30009,5),(2318,30000),(30032,100000),(1251,100000),(6450,100000),(3575,14000),(2447,12000),(30027,4340),(13935,2500),(2319,27500),(30028,13340),(12359,12000),(8836,10000),(30033,100000),(3820,5500),(30026,4340),(30029,13340),(8544,41680),(30024,15000),(3576,5500),(3860,9000),(8170,15000),(3530,41680),(5095,2340),(12210,5000),(30030,5680),(1,0),(0,0),(30025,15000),(4234,15000),(4625,4760),(30031,5680),(12209,1680),(30022,0),(30023,1),(30021,1696771352),(2313,26),(2314,1),(2317,200),(30051,1603912309),(30053,1),(30052,1604007207),(30055,5),(2200,0),(2204,0),(2201,0),(2206,0),(2203,0),(2205,0),(2207,62),(2202,0),(30001,300),(30004,14888),(30005,14890),(30006,14887),(30007,14889);
+/*!40000 ALTER TABLE `variables` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:19

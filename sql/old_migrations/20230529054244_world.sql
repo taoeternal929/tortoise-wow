@@ -1,1 +1,0 @@
-UPDATE quest_template SET RewItemId1 = 0, RewItemCount1 = 0, RewOrReqMoney = 3000 WHERE entry = 60132;

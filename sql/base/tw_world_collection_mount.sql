@@ -1,229 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `collection_mount`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for collection_mount
--- ----------------------------
 DROP TABLE IF EXISTS `collection_mount`;
-CREATE TABLE `collection_mount`  (
-  `itemId` int(10) UNSIGNED NOT NULL,
-  `spellId` int(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`itemId`, `spellId`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `collection_mount` (
+  `itemId` int(10) unsigned NOT NULL,
+  `spellId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`itemId`,`spellId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of collection_mount
--- ----------------------------
-INSERT INTO `collection_mount` VALUES (1041, 578);
-INSERT INTO `collection_mount` VALUES (1132, 580);
-INSERT INTO `collection_mount` VALUES (1134, 459);
-INSERT INTO `collection_mount` VALUES (2411, 470);
-INSERT INTO `collection_mount` VALUES (2413, 471);
-INSERT INTO `collection_mount` VALUES (2414, 472);
-INSERT INTO `collection_mount` VALUES (5655, 6648);
-INSERT INTO `collection_mount` VALUES (5656, 458);
-INSERT INTO `collection_mount` VALUES (5663, 579);
-INSERT INTO `collection_mount` VALUES (5665, 6653);
-INSERT INTO `collection_mount` VALUES (5668, 6654);
-INSERT INTO `collection_mount` VALUES (5864, 6777);
-INSERT INTO `collection_mount` VALUES (5872, 6899);
-INSERT INTO `collection_mount` VALUES (5873, 6898);
-INSERT INTO `collection_mount` VALUES (8563, 10873);
-INSERT INTO `collection_mount` VALUES (8588, 8395);
-INSERT INTO `collection_mount` VALUES (8589, 10795);
-INSERT INTO `collection_mount` VALUES (8591, 10796);
-INSERT INTO `collection_mount` VALUES (8592, 10799);
-INSERT INTO `collection_mount` VALUES (8595, 10969);
-INSERT INTO `collection_mount` VALUES (8629, 10793);
-INSERT INTO `collection_mount` VALUES (8630, 10790);
-INSERT INTO `collection_mount` VALUES (8631, 8394);
-INSERT INTO `collection_mount` VALUES (8632, 10789);
-INSERT INTO `collection_mount` VALUES (8635, 16055);
-INSERT INTO `collection_mount` VALUES (12302, 16056);
-INSERT INTO `collection_mount` VALUES (12303, 10787);
-INSERT INTO `collection_mount` VALUES (12325, 16058);
-INSERT INTO `collection_mount` VALUES (12326, 16059);
-INSERT INTO `collection_mount` VALUES (12327, 16060);
-INSERT INTO `collection_mount` VALUES (12351, 16081);
-INSERT INTO `collection_mount` VALUES (12353, 16083);
-INSERT INTO `collection_mount` VALUES (12354, 16082);
-INSERT INTO `collection_mount` VALUES (13086, 17229);
-INSERT INTO `collection_mount` VALUES (13321, 17453);
-INSERT INTO `collection_mount` VALUES (13322, 17454);
-INSERT INTO `collection_mount` VALUES (13323, 17455);
-INSERT INTO `collection_mount` VALUES (13324, 17456);
-INSERT INTO `collection_mount` VALUES (13325, 17458);
-INSERT INTO `collection_mount` VALUES (13326, 15779);
-INSERT INTO `collection_mount` VALUES (13327, 17459);
-INSERT INTO `collection_mount` VALUES (13328, 17461);
-INSERT INTO `collection_mount` VALUES (13329, 17460);
-INSERT INTO `collection_mount` VALUES (13331, 17462);
-INSERT INTO `collection_mount` VALUES (13332, 17463);
-INSERT INTO `collection_mount` VALUES (13333, 17464);
-INSERT INTO `collection_mount` VALUES (13334, 17465);
-INSERT INTO `collection_mount` VALUES (13335, 17481);
-INSERT INTO `collection_mount` VALUES (15277, 18989);
-INSERT INTO `collection_mount` VALUES (15290, 18990);
-INSERT INTO `collection_mount` VALUES (15292, 18991);
-INSERT INTO `collection_mount` VALUES (15293, 18992);
-INSERT INTO `collection_mount` VALUES (16339, 16082);
-INSERT INTO `collection_mount` VALUES (18241, 22717);
-INSERT INTO `collection_mount` VALUES (18242, 22723);
-INSERT INTO `collection_mount` VALUES (18243, 22719);
-INSERT INTO `collection_mount` VALUES (18244, 22720);
-INSERT INTO `collection_mount` VALUES (18245, 22724);
-INSERT INTO `collection_mount` VALUES (18246, 22721);
-INSERT INTO `collection_mount` VALUES (18247, 22718);
-INSERT INTO `collection_mount` VALUES (18248, 22722);
-INSERT INTO `collection_mount` VALUES (18766, 23221);
-INSERT INTO `collection_mount` VALUES (18767, 23219);
-INSERT INTO `collection_mount` VALUES (18768, 23220);
-INSERT INTO `collection_mount` VALUES (18772, 23225);
-INSERT INTO `collection_mount` VALUES (18773, 23223);
-INSERT INTO `collection_mount` VALUES (18774, 23222);
-INSERT INTO `collection_mount` VALUES (18776, 23227);
-INSERT INTO `collection_mount` VALUES (18777, 23229);
-INSERT INTO `collection_mount` VALUES (18778, 23228);
-INSERT INTO `collection_mount` VALUES (18785, 23240);
-INSERT INTO `collection_mount` VALUES (18786, 23238);
-INSERT INTO `collection_mount` VALUES (18787, 23239);
-INSERT INTO `collection_mount` VALUES (18788, 23241);
-INSERT INTO `collection_mount` VALUES (18789, 23242);
-INSERT INTO `collection_mount` VALUES (18790, 23243);
-INSERT INTO `collection_mount` VALUES (18791, 23246);
-INSERT INTO `collection_mount` VALUES (18793, 23247);
-INSERT INTO `collection_mount` VALUES (18794, 23249);
-INSERT INTO `collection_mount` VALUES (18795, 23248);
-INSERT INTO `collection_mount` VALUES (18796, 23250);
-INSERT INTO `collection_mount` VALUES (18797, 23251);
-INSERT INTO `collection_mount` VALUES (18798, 23252);
-INSERT INTO `collection_mount` VALUES (18902, 23338);
-INSERT INTO `collection_mount` VALUES (19029, 23509);
-INSERT INTO `collection_mount` VALUES (19030, 23510);
-INSERT INTO `collection_mount` VALUES (19872, 24242);
-INSERT INTO `collection_mount` VALUES (19902, 24252);
-INSERT INTO `collection_mount` VALUES (21044, 25675);
-INSERT INTO `collection_mount` VALUES (21176, 26656);
-INSERT INTO `collection_mount` VALUES (21218, 25953);
-INSERT INTO `collection_mount` VALUES (21321, 26054);
-INSERT INTO `collection_mount` VALUES (21323, 26056);
-INSERT INTO `collection_mount` VALUES (21324, 26055);
-INSERT INTO `collection_mount` VALUES (23193, 29059);
-INSERT INTO `collection_mount` VALUES (23720, 30174);
-INSERT INTO `collection_mount` VALUES (50066, 15781);
-INSERT INTO `collection_mount` VALUES (50071, 8396);
-INSERT INTO `collection_mount` VALUES (50072, 10800);
-INSERT INTO `collection_mount` VALUES (50073, 10801);
-INSERT INTO `collection_mount` VALUES (50074, 10802);
-INSERT INTO `collection_mount` VALUES (50075, 10803);
-INSERT INTO `collection_mount` VALUES (50076, 10804);
-INSERT INTO `collection_mount` VALUES (50399, 46445);
-INSERT INTO `collection_mount` VALUES (50400, 46453);
-INSERT INTO `collection_mount` VALUES (50401, 46447);
-INSERT INTO `collection_mount` VALUES (50402, 10799);
-INSERT INTO `collection_mount` VALUES (50402, 46501);
-INSERT INTO `collection_mount` VALUES (50403, 46502);
-INSERT INTO `collection_mount` VALUES (50404, 10798);
-INSERT INTO `collection_mount` VALUES (50404, 46503);
-INSERT INTO `collection_mount` VALUES (50405, 10801);
-INSERT INTO `collection_mount` VALUES (50406, 46449);
-INSERT INTO `collection_mount` VALUES (50407, 46450);
-INSERT INTO `collection_mount` VALUES (50426, 46446);
-INSERT INTO `collection_mount` VALUES (50535, 33395);
-INSERT INTO `collection_mount` VALUES (50536, 33396);
-INSERT INTO `collection_mount` VALUES (51249, 46452);
-INSERT INTO `collection_mount` VALUES (51252, 46212);
-INSERT INTO `collection_mount` VALUES (80425, 45053);
-INSERT INTO `collection_mount` VALUES (80430, 45001);
-INSERT INTO `collection_mount` VALUES (80431, 45007);
-INSERT INTO `collection_mount` VALUES (80433, 45009);
-INSERT INTO `collection_mount` VALUES (80438, 45013);
-INSERT INTO `collection_mount` VALUES (80443, 45033);
-INSERT INTO `collection_mount` VALUES (80446, 45036);
-INSERT INTO `collection_mount` VALUES (80447, 45037);
-INSERT INTO `collection_mount` VALUES (80449, 45039);
-INSERT INTO `collection_mount` VALUES (80455, 45045);
-INSERT INTO `collection_mount` VALUES (80457, 45047);
-INSERT INTO `collection_mount` VALUES (80458, 45048);
-INSERT INTO `collection_mount` VALUES (80459, 45049);
-INSERT INTO `collection_mount` VALUES (80460, 45050);
-INSERT INTO `collection_mount` VALUES (80461, 45052);
-INSERT INTO `collection_mount` VALUES (80462, 45051);
-INSERT INTO `collection_mount` VALUES (80692, 46216);
-INSERT INTO `collection_mount` VALUES (81091, 46203);
-INSERT INTO `collection_mount` VALUES (81100, 46443);
-INSERT INTO `collection_mount` VALUES (81102, 46444);
-INSERT INTO `collection_mount` VALUES (81120, 46451);
-INSERT INTO `collection_mount` VALUES (81121, 46221);
-INSERT INTO `collection_mount` VALUES (81153, 46525);
-INSERT INTO `collection_mount` VALUES (81154, 46524);
-INSERT INTO `collection_mount` VALUES (81155, 46526);
-INSERT INTO `collection_mount` VALUES (81156, 46206);
-INSERT INTO `collection_mount` VALUES (81158, 46202);
-INSERT INTO `collection_mount` VALUES (81182, 45041);
-INSERT INTO `collection_mount` VALUES (81185, 46219);
-INSERT INTO `collection_mount` VALUES (81186, 46220);
-INSERT INTO `collection_mount` VALUES (81190, 46504);
-INSERT INTO `collection_mount` VALUES (81191, 46505);
-INSERT INTO `collection_mount` VALUES (81192, 46507);
-INSERT INTO `collection_mount` VALUES (81193, 46508);
-INSERT INTO `collection_mount` VALUES (81194, 46509);
-INSERT INTO `collection_mount` VALUES (81195, 46506);
-INSERT INTO `collection_mount` VALUES (81198, 45044);
-INSERT INTO `collection_mount` VALUES (81224, 46441);
-INSERT INTO `collection_mount` VALUES (81225, 46442);
-INSERT INTO `collection_mount` VALUES (81226, 46204);
-INSERT INTO `collection_mount` VALUES (81227, 45035);
-INSERT INTO `collection_mount` VALUES (81231, 46208);
-INSERT INTO `collection_mount` VALUES (81232, 46207);
-INSERT INTO `collection_mount` VALUES (81233, 45032);
-INSERT INTO `collection_mount` VALUES (81234, 45034);
-INSERT INTO `collection_mount` VALUES (81235, 45042);
-INSERT INTO `collection_mount` VALUES (81236, 45040);
-INSERT INTO `collection_mount` VALUES (81237, 18363);
-INSERT INTO `collection_mount` VALUES (81238, 46225);
-INSERT INTO `collection_mount` VALUES (81239, 46519);
-INSERT INTO `collection_mount` VALUES (81240, 46520);
-INSERT INTO `collection_mount` VALUES (81241, 45038);
-INSERT INTO `collection_mount` VALUES (81242, 46451);
-INSERT INTO `collection_mount` VALUES (81242, 46523);
-INSERT INTO `collection_mount` VALUES (81244, 46514);
-INSERT INTO `collection_mount` VALUES (81245, 46515);
-INSERT INTO `collection_mount` VALUES (81246, 46516);
-INSERT INTO `collection_mount` VALUES (81247, 46517);
-INSERT INTO `collection_mount` VALUES (81250, 46510);
-INSERT INTO `collection_mount` VALUES (81251, 46511);
-INSERT INTO `collection_mount` VALUES (81252, 46512);
-INSERT INTO `collection_mount` VALUES (81253, 46513);
-INSERT INTO `collection_mount` VALUES (83150, 50050);
-INSERT INTO `collection_mount` VALUES (83151, 50051);
-INSERT INTO `collection_mount` VALUES (83152, 50052);
-INSERT INTO `collection_mount` VALUES (83153, 50053);
-INSERT INTO `collection_mount` VALUES (83154, 50054);
-INSERT INTO `collection_mount` VALUES (83155, 50055);
-INSERT INTO `collection_mount` VALUES (83156, 50056);
-INSERT INTO `collection_mount` VALUES (83157, 50057);
-INSERT INTO `collection_mount` VALUES (83158, 50058);
-INSERT INTO `collection_mount` VALUES (83159, 50059);
-INSERT INTO `collection_mount` VALUES (83475, 46521);
-INSERT INTO `collection_mount` VALUES (83476, 46522);
-INSERT INTO `collection_mount` VALUES (83520, 16083);
+--
+-- Dumping data for table `collection_mount`
+--
 
+LOCK TABLES `collection_mount` WRITE;
+/*!40000 ALTER TABLE `collection_mount` DISABLE KEYS */;
+INSERT INTO `collection_mount` VALUES (1041,578),(1132,580),(1134,459),(2411,470),(2413,471),(2414,472),(5655,6648),(5656,458),(5663,579),(5665,6653),(5668,6654),(5864,6777),(5872,6899),(5873,6898),(8563,10873),(8588,8395),(8589,10795),(8591,10796),(8592,10799),(8595,10969),(8629,10793),(8630,10790),(8631,8394),(8632,10789),(8635,16055),(12302,16056),(12303,10787),(12325,16058),(12326,16059),(12327,16060),(12351,16081),(12353,16083),(12354,16082),(13086,17229),(13321,17453),(13322,17454),(13323,17455),(13324,17456),(13325,17458),(13326,15779),(13327,17459),(13328,17461),(13329,17460),(13331,17462),(13332,17463),(13333,17464),(13334,17465),(13335,17481),(15277,18989),(15290,18990),(15292,18991),(15293,18992),(16339,16082),(18241,22717),(18242,22723),(18243,22719),(18244,22720),(18245,22724),(18246,22721),(18247,22718),(18248,22722),(18766,23221),(18767,23219),(18768,23220),(18772,23225),(18773,23223),(18774,23222),(18776,23227),(18777,23229),(18778,23228),(18785,23240),(18786,23238),(18787,23239),(18788,23241),(18789,23242),(18790,23243),(18791,23246),(18793,23247),(18794,23249),(18795,23248),(18796,23250),(18797,23251),(18798,23252),(18902,23338),(19029,23509),(19030,23510),(19872,24242),(19902,24252),(21044,25675),(21176,26656),(21218,25953),(21321,26054),(21323,26056),(21324,26055),(23193,29059),(23720,30174),(50066,15781),(50071,8396),(50072,10800),(50073,10801),(50074,10802),(50075,10803),(50076,10804),(50399,46445),(50400,46453),(50401,46447),(50402,10799),(50402,46501),(50403,46502),(50404,10798),(50404,46503),(50405,10801),(50406,46449),(50407,46450),(50426,46446),(50535,33395),(50536,33396),(51249,46452),(51252,46212),(69170,45993),(69171,45994),(69172,45995),(69173,45996),(80425,45053),(80430,45001),(80431,45007),(80433,45009),(80438,45013),(80443,45033),(80446,45036),(80447,45037),(80449,45039),(80455,45045),(80457,45047),(80458,45048),(80459,45049),(80460,45050),(80461,45052),(80462,45051),(80692,46216),(81091,46203),(81100,46443),(81102,46444),(81120,46451),(81121,46221),(81153,46525),(81154,46524),(81155,46526),(81156,46206),(81158,46202),(81182,45041),(81185,46219),(81186,46220),(81190,46504),(81191,46505),(81192,46507),(81193,46508),(81194,46509),(81195,46506),(81198,45044),(81224,46441),(81225,46442),(81226,46204),(81227,45035),(81231,46208),(81232,46207),(81233,45032),(81234,45034),(81235,45042),(81236,45040),(81237,18363),(81238,46225),(81239,46519),(81240,46520),(81241,45038),(81242,46451),(81242,46523),(81244,46514),(81245,46515),(81246,46516),(81247,46517),(81250,46510),(81251,46511),(81252,46512),(81253,46513),(83150,50050),(83151,50051),(83152,50052),(83153,50053),(83154,50054),(83155,50055),(83156,50056),(83157,50057),(83158,50058),(83159,50059),(83475,46521),(83476,46522),(83477,46539),(83520,16083),(92017,46527),(92050,57575),(92051,57576),(92052,57577);
+/*!40000 ALTER TABLE `collection_mount` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:16

@@ -1,95 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `player_xp_for_level`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for player_xp_for_level
--- ----------------------------
 DROP TABLE IF EXISTS `player_xp_for_level`;
-CREATE TABLE `player_xp_for_level`  (
-  `lvl` int(10) UNSIGNED NOT NULL,
-  `xp_for_next_level` int(10) UNSIGNED NOT NULL,
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `player_xp_for_level` (
+  `lvl` int(10) unsigned NOT NULL,
+  `xp_for_next_level` int(10) unsigned NOT NULL,
   PRIMARY KEY (`lvl`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of player_xp_for_level
--- ----------------------------
-INSERT INTO `player_xp_for_level` VALUES (1, 400);
-INSERT INTO `player_xp_for_level` VALUES (2, 900);
-INSERT INTO `player_xp_for_level` VALUES (3, 1400);
-INSERT INTO `player_xp_for_level` VALUES (4, 2100);
-INSERT INTO `player_xp_for_level` VALUES (5, 2800);
-INSERT INTO `player_xp_for_level` VALUES (6, 3600);
-INSERT INTO `player_xp_for_level` VALUES (7, 4500);
-INSERT INTO `player_xp_for_level` VALUES (8, 5400);
-INSERT INTO `player_xp_for_level` VALUES (9, 6500);
-INSERT INTO `player_xp_for_level` VALUES (10, 7600);
-INSERT INTO `player_xp_for_level` VALUES (11, 8800);
-INSERT INTO `player_xp_for_level` VALUES (12, 10100);
-INSERT INTO `player_xp_for_level` VALUES (13, 11400);
-INSERT INTO `player_xp_for_level` VALUES (14, 12900);
-INSERT INTO `player_xp_for_level` VALUES (15, 14400);
-INSERT INTO `player_xp_for_level` VALUES (16, 16000);
-INSERT INTO `player_xp_for_level` VALUES (17, 17700);
-INSERT INTO `player_xp_for_level` VALUES (18, 19400);
-INSERT INTO `player_xp_for_level` VALUES (19, 21300);
-INSERT INTO `player_xp_for_level` VALUES (20, 23200);
-INSERT INTO `player_xp_for_level` VALUES (21, 25200);
-INSERT INTO `player_xp_for_level` VALUES (22, 27300);
-INSERT INTO `player_xp_for_level` VALUES (23, 29400);
-INSERT INTO `player_xp_for_level` VALUES (24, 31700);
-INSERT INTO `player_xp_for_level` VALUES (25, 34000);
-INSERT INTO `player_xp_for_level` VALUES (26, 36400);
-INSERT INTO `player_xp_for_level` VALUES (27, 38900);
-INSERT INTO `player_xp_for_level` VALUES (28, 41400);
-INSERT INTO `player_xp_for_level` VALUES (29, 44300);
-INSERT INTO `player_xp_for_level` VALUES (30, 47400);
-INSERT INTO `player_xp_for_level` VALUES (31, 50800);
-INSERT INTO `player_xp_for_level` VALUES (32, 54500);
-INSERT INTO `player_xp_for_level` VALUES (33, 58600);
-INSERT INTO `player_xp_for_level` VALUES (34, 62800);
-INSERT INTO `player_xp_for_level` VALUES (35, 67100);
-INSERT INTO `player_xp_for_level` VALUES (36, 71600);
-INSERT INTO `player_xp_for_level` VALUES (37, 76100);
-INSERT INTO `player_xp_for_level` VALUES (38, 80800);
-INSERT INTO `player_xp_for_level` VALUES (39, 85700);
-INSERT INTO `player_xp_for_level` VALUES (40, 90700);
-INSERT INTO `player_xp_for_level` VALUES (41, 95800);
-INSERT INTO `player_xp_for_level` VALUES (42, 101000);
-INSERT INTO `player_xp_for_level` VALUES (43, 106300);
-INSERT INTO `player_xp_for_level` VALUES (44, 111800);
-INSERT INTO `player_xp_for_level` VALUES (45, 117500);
-INSERT INTO `player_xp_for_level` VALUES (46, 123200);
-INSERT INTO `player_xp_for_level` VALUES (47, 129100);
-INSERT INTO `player_xp_for_level` VALUES (48, 135100);
-INSERT INTO `player_xp_for_level` VALUES (49, 141200);
-INSERT INTO `player_xp_for_level` VALUES (50, 147500);
-INSERT INTO `player_xp_for_level` VALUES (51, 153900);
-INSERT INTO `player_xp_for_level` VALUES (52, 160400);
-INSERT INTO `player_xp_for_level` VALUES (53, 167100);
-INSERT INTO `player_xp_for_level` VALUES (54, 173900);
-INSERT INTO `player_xp_for_level` VALUES (55, 180800);
-INSERT INTO `player_xp_for_level` VALUES (56, 187900);
-INSERT INTO `player_xp_for_level` VALUES (57, 195000);
-INSERT INTO `player_xp_for_level` VALUES (58, 202300);
-INSERT INTO `player_xp_for_level` VALUES (59, 209800);
-INSERT INTO `player_xp_for_level` VALUES (60, 217400);
+--
+-- Dumping data for table `player_xp_for_level`
+--
 
+LOCK TABLES `player_xp_for_level` WRITE;
+/*!40000 ALTER TABLE `player_xp_for_level` DISABLE KEYS */;
+INSERT INTO `player_xp_for_level` VALUES (1,400),(2,900),(3,1400),(4,2100),(5,2800),(6,3600),(7,4500),(8,5400),(9,6500),(10,7600),(11,8800),(12,10100),(13,11400),(14,12900),(15,14400),(16,16000),(17,17700),(18,19400),(19,21300),(20,23200),(21,25200),(22,27300),(23,29400),(24,31700),(25,34000),(26,36400),(27,38900),(28,41400),(29,44300),(30,47400),(31,50800),(32,54500),(33,58600),(34,62800),(35,67100),(36,71600),(37,76100),(38,80800),(39,85700),(40,90700),(41,95800),(42,101000),(43,106300),(44,111800),(45,117500),(46,123200),(47,129100),(48,135100),(49,141200),(50,147500),(51,153900),(52,160400),(53,167100),(54,173900),(55,180800),(56,187900),(57,195000),(58,202300),(59,209800),(60,217400);
+/*!40000 ALTER TABLE `player_xp_for_level` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

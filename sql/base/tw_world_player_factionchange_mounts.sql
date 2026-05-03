@@ -1,105 +1,54 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `player_factionchange_mounts`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for player_factionchange_mounts
--- ----------------------------
 DROP TABLE IF EXISTS `player_factionchange_mounts`;
-CREATE TABLE `player_factionchange_mounts`  (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `player_factionchange_mounts` (
   `RaceId` int(11) NOT NULL,
   `MountNum` int(11) NOT NULL,
   `ItemEntry` int(11) NOT NULL,
-  `Comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`RaceId`, `MountNum`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  `Comment` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`RaceId`,`MountNum`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of player_factionchange_mounts
--- ----------------------------
-INSERT INTO `player_factionchange_mounts` VALUES (1, 0, 2414, 'Pinto');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 1, 5655, 'Chestnut Mare');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 2, 5656, 'Brown Horse');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 3, 2411, 'Black Stallion');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 4, 18777, 'Swift Brown Steed');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 5, 18778, 'Swift White Steed');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 6, 18776, 'Swift Palomino');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 7, 12354, 'Palomino');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 8, 12353, 'White Stallion');
-INSERT INTO `player_factionchange_mounts` VALUES (1, 11, 18241, 'Black War Steed');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 0, 1132, 'Timber Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 1, 5665, 'Dire Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 2, 5668, 'Brown Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 4, 18796, 'Swift Brown Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 5, 18798, 'Swift Gray Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 6, 18797, 'Swift Timber Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 7, 2679, 'Red Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 8, 12351, 'Winter Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (2, 11, 18245, 'Black War Wolf');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 0, 5864, 'Gray Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 1, 5873, 'White Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 2, 5872, 'Brown Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 4, 18787, 'Swift Gray Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 5, 18785, 'Swift White Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 6, 18786, 'Swift Brown Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 7, 13328, 'Black Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 8, 13329, 'Frost Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (3, 11, 18244, 'Black War Ram');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 0, 8631, 'Striped Frostsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 1, 8632, 'Spotted Frostsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 2, 8629, 'Striped Nightsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 4, 18902, 'Swift Stormsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 5, 18767, 'Swift Mistsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 6, 18766, 'Swift Frostsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 7, 12302, 'Ancient Frostsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 8, 12303, 'Black Nightsaber');
-INSERT INTO `player_factionchange_mounts` VALUES (4, 11, 18242, 'Black War Tiger');
-INSERT INTO `player_factionchange_mounts` VALUES (5, 1, 13333, 'Brown Skeletal Horse');
-INSERT INTO `player_factionchange_mounts` VALUES (5, 2, 13332, 'Blue Skeletal Horse');
-INSERT INTO `player_factionchange_mounts` VALUES (5, 3, 13331, 'Red Skeletal Horse');
-INSERT INTO `player_factionchange_mounts` VALUES (5, 4, 13334, 'Green Skeletal Warhorse');
-INSERT INTO `player_factionchange_mounts` VALUES (5, 5, 18791, 'Purple Skeletal Warhorse');
-INSERT INTO `player_factionchange_mounts` VALUES (5, 11, 18248, 'Red Skeletal Warhorse');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 0, 15290, 'Brown Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 1, 15277, 'Gray Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 4, 18794, 'Great Brown Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 5, 18795, 'Great Gray Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 6, 18793, 'Great White Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 7, 15292, 'Green Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 8, 15293, 'Teal Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (6, 11, 18247, 'Black War Kodo');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 0, 8595, 'Blue Mechanostrider');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 1, 13321, 'Green Mechanostrider');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 2, 8563, 'Red Mechanostrider');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 3, 13322, 'Unpainted Mechanostrider');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 4, 18772, 'Swift Green Mechanostrider');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 5, 18773, 'Swift White Mechanostrider');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 6, 18774, 'Swift Yellow Mechanostrider');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 7, 13327, 'Icy Blue Mechanostrider Mod A');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 8, 13326, 'White Mechanostrider Mod B');
-INSERT INTO `player_factionchange_mounts` VALUES (7, 11, 18243, 'Black Battlestrider');
-INSERT INTO `player_factionchange_mounts` VALUES (8, 0, 8588, 'Emerald Raptor');
-INSERT INTO `player_factionchange_mounts` VALUES (8, 1, 8591, 'Turquoise Raptor');
-INSERT INTO `player_factionchange_mounts` VALUES (8, 2, 8592, 'Violet Raptor');
-INSERT INTO `player_factionchange_mounts` VALUES (8, 4, 18788, 'Swift Blue Raptor');
-INSERT INTO `player_factionchange_mounts` VALUES (8, 5, 18789, 'Swift Olive Raptor');
-INSERT INTO `player_factionchange_mounts` VALUES (8, 6, 18790, 'Swift Orange Raptor');
-INSERT INTO `player_factionchange_mounts` VALUES (8, 11, 18246, 'Black War Raptor');
+--
+-- Dumping data for table `player_factionchange_mounts`
+--
 
+LOCK TABLES `player_factionchange_mounts` WRITE;
+/*!40000 ALTER TABLE `player_factionchange_mounts` DISABLE KEYS */;
+INSERT INTO `player_factionchange_mounts` VALUES (1,0,2414,'Pinto'),(1,1,5655,'Chestnut Mare'),(1,2,5656,'Brown Horse'),(1,3,2411,'Black Stallion'),(1,4,18777,'Swift Brown Steed'),(1,5,18778,'Swift White Steed'),(1,6,18776,'Swift Palomino'),(1,7,12354,'Palomino'),(1,8,12353,'White Stallion'),(1,11,18241,'Black War Steed'),(2,0,1132,'Timber Wolf'),(2,1,5665,'Dire Wolf'),(2,2,5668,'Brown Wolf'),(2,4,18796,'Swift Brown Wolf'),(2,5,18798,'Swift Gray Wolf'),(2,6,18797,'Swift Timber Wolf'),(2,7,2679,'Red Wolf'),(2,8,12351,'Winter Wolf'),(2,11,18245,'Black War Wolf'),(3,0,5864,'Gray Ram'),(3,1,5873,'White Ram'),(3,2,5872,'Brown Ram'),(3,4,18787,'Swift Gray Ram'),(3,5,18785,'Swift White Ram'),(3,6,18786,'Swift Brown Ram'),(3,7,13328,'Black Ram'),(3,8,13329,'Frost Ram'),(3,11,18244,'Black War Ram'),(4,0,8631,'Striped Frostsaber'),(4,1,8632,'Spotted Frostsaber'),(4,2,8629,'Striped Nightsaber'),(4,4,18902,'Swift Stormsaber'),(4,5,18767,'Swift Mistsaber'),(4,6,18766,'Swift Frostsaber'),(4,7,12302,'Ancient Frostsaber'),(4,8,12303,'Black Nightsaber'),(4,11,18242,'Black War Tiger'),(5,1,13333,'Brown Skeletal Horse'),(5,2,13332,'Blue Skeletal Horse'),(5,3,13331,'Red Skeletal Horse'),(5,4,13334,'Green Skeletal Warhorse'),(5,5,18791,'Purple Skeletal Warhorse'),(5,11,18248,'Red Skeletal Warhorse'),(6,0,15290,'Brown Kodo'),(6,1,15277,'Gray Kodo'),(6,4,18794,'Great Brown Kodo'),(6,5,18795,'Great Gray Kodo'),(6,6,18793,'Great White Kodo'),(6,7,15292,'Green Kodo'),(6,8,15293,'Teal Kodo'),(6,11,18247,'Black War Kodo'),(7,0,8595,'Blue Mechanostrider'),(7,1,13321,'Green Mechanostrider'),(7,2,8563,'Red Mechanostrider'),(7,3,13322,'Unpainted Mechanostrider'),(7,4,18772,'Swift Green Mechanostrider'),(7,5,18773,'Swift White Mechanostrider'),(7,6,18774,'Swift Yellow Mechanostrider'),(7,7,13327,'Icy Blue Mechanostrider Mod A'),(7,8,13326,'White Mechanostrider Mod B'),(7,11,18243,'Black Battlestrider'),(8,0,8588,'Emerald Raptor'),(8,1,8591,'Turquoise Raptor'),(8,2,8592,'Violet Raptor'),(8,4,18788,'Swift Blue Raptor'),(8,5,18789,'Swift Olive Raptor'),(8,6,18790,'Swift Orange Raptor'),(8,11,18246,'Black War Raptor');
+/*!40000 ALTER TABLE `player_factionchange_mounts` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

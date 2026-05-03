@@ -1,316 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `gameobject_questrelation`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for gameobject_questrelation
--- ----------------------------
 DROP TABLE IF EXISTS `gameobject_questrelation`;
-CREATE TABLE `gameobject_questrelation`  (
-  `id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `quest` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Quest Identifier',
-  PRIMARY KEY (`id`, `quest`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gameobject_questrelation` (
+  `id` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `quest` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Quest Identifier',
+  PRIMARY KEY (`id`,`quest`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of gameobject_questrelation
--- ----------------------------
-INSERT INTO `gameobject_questrelation` VALUES (31, 248);
-INSERT INTO `gameobject_questrelation` VALUES (31, 249);
-INSERT INTO `gameobject_questrelation` VALUES (34, 140);
-INSERT INTO `gameobject_questrelation` VALUES (35, 138);
-INSERT INTO `gameobject_questrelation` VALUES (36, 139);
-INSERT INTO `gameobject_questrelation` VALUES (47, 180);
-INSERT INTO `gameobject_questrelation` VALUES (55, 45);
-INSERT INTO `gameobject_questrelation` VALUES (56, 71);
-INSERT INTO `gameobject_questrelation` VALUES (59, 230);
-INSERT INTO `gameobject_questrelation` VALUES (60, 169);
-INSERT INTO `gameobject_questrelation` VALUES (61, 225);
-INSERT INTO `gameobject_questrelation` VALUES (68, 176);
-INSERT INTO `gameobject_questrelation` VALUES (256, 256);
-INSERT INTO `gameobject_questrelation` VALUES (257, 199);
-INSERT INTO `gameobject_questrelation` VALUES (259, 286);
-INSERT INTO `gameobject_questrelation` VALUES (261, 284);
-INSERT INTO `gameobject_questrelation` VALUES (269, 403);
-INSERT INTO `gameobject_questrelation` VALUES (270, 311);
-INSERT INTO `gameobject_questrelation` VALUES (287, 328);
-INSERT INTO `gameobject_questrelation` VALUES (288, 329);
-INSERT INTO `gameobject_questrelation` VALUES (711, 398);
-INSERT INTO `gameobject_questrelation` VALUES (1557, 410);
-INSERT INTO `gameobject_questrelation` VALUES (1561, 74);
-INSERT INTO `gameobject_questrelation` VALUES (1585, 283);
-INSERT INTO `gameobject_questrelation` VALUES (1586, 431);
-INSERT INTO `gameobject_questrelation` VALUES (1593, 439);
-INSERT INTO `gameobject_questrelation` VALUES (1599, 461);
-INSERT INTO `gameobject_questrelation` VALUES (1609, 474);
-INSERT INTO `gameobject_questrelation` VALUES (1627, 478);
-INSERT INTO `gameobject_questrelation` VALUES (1740, 510);
-INSERT INTO `gameobject_questrelation` VALUES (1740, 511);
-INSERT INTO `gameobject_questrelation` VALUES (1763, 549);
-INSERT INTO `gameobject_questrelation` VALUES (1763, 566);
-INSERT INTO `gameobject_questrelation` VALUES (2008, 567);
-INSERT INTO `gameobject_questrelation` VALUES (2059, 417);
-INSERT INTO `gameobject_questrelation` VALUES (2076, 585);
-INSERT INTO `gameobject_questrelation` VALUES (2076, 586);
-INSERT INTO `gameobject_questrelation` VALUES (2076, 588);
-INSERT INTO `gameobject_questrelation` VALUES (2076, 1261);
-INSERT INTO `gameobject_questrelation` VALUES (2083, 597);
-INSERT INTO `gameobject_questrelation` VALUES (2289, 619);
-INSERT INTO `gameobject_questrelation` VALUES (2553, 625);
-INSERT INTO `gameobject_questrelation` VALUES (2555, 626);
-INSERT INTO `gameobject_questrelation` VALUES (2652, 632);
-INSERT INTO `gameobject_questrelation` VALUES (2688, 653);
-INSERT INTO `gameobject_questrelation` VALUES (2688, 688);
-INSERT INTO `gameobject_questrelation` VALUES (2701, 651);
-INSERT INTO `gameobject_questrelation` VALUES (2702, 652);
-INSERT INTO `gameobject_questrelation` VALUES (2703, 646);
-INSERT INTO `gameobject_questrelation` VALUES (2713, 684);
-INSERT INTO `gameobject_questrelation` VALUES (2713, 685);
-INSERT INTO `gameobject_questrelation` VALUES (2734, 324);
-INSERT INTO `gameobject_questrelation` VALUES (2868, 720);
-INSERT INTO `gameobject_questrelation` VALUES (2875, 739);
-INSERT INTO `gameobject_questrelation` VALUES (2908, 751);
-INSERT INTO `gameobject_questrelation` VALUES (2933, 779);
-INSERT INTO `gameobject_questrelation` VALUES (2933, 795);
-INSERT INTO `gameobject_questrelation` VALUES (3643, 68);
-INSERT INTO `gameobject_questrelation` VALUES (3972, 895);
-INSERT INTO `gameobject_questrelation` VALUES (4141, 900);
-INSERT INTO `gameobject_questrelation` VALUES (4141, 901);
-INSERT INTO `gameobject_questrelation` VALUES (4141, 902);
-INSERT INTO `gameobject_questrelation` VALUES (5619, 926);
-INSERT INTO `gameobject_questrelation` VALUES (5620, 926);
-INSERT INTO `gameobject_questrelation` VALUES (5621, 926);
-INSERT INTO `gameobject_questrelation` VALUES (6751, 930);
-INSERT INTO `gameobject_questrelation` VALUES (6752, 931);
-INSERT INTO `gameobject_questrelation` VALUES (7510, 2399);
-INSERT INTO `gameobject_questrelation` VALUES (10076, 949);
-INSERT INTO `gameobject_questrelation` VALUES (12666, 950);
-INSERT INTO `gameobject_questrelation` VALUES (17182, 1001);
-INSERT INTO `gameobject_questrelation` VALUES (17183, 1002);
-INSERT INTO `gameobject_questrelation` VALUES (17184, 1003);
-INSERT INTO `gameobject_questrelation` VALUES (19024, 1055);
-INSERT INTO `gameobject_questrelation` VALUES (20805, 1194);
-INSERT INTO `gameobject_questrelation` VALUES (20985, 1219);
-INSERT INTO `gameobject_questrelation` VALUES (20985, 1238);
-INSERT INTO `gameobject_questrelation` VALUES (20985, 1239);
-INSERT INTO `gameobject_questrelation` VALUES (20992, 1251);
-INSERT INTO `gameobject_questrelation` VALUES (20992, 1253);
-INSERT INTO `gameobject_questrelation` VALUES (21015, 1268);
-INSERT INTO `gameobject_questrelation` VALUES (21015, 1284);
-INSERT INTO `gameobject_questrelation` VALUES (21016, 1268);
-INSERT INTO `gameobject_questrelation` VALUES (21016, 1284);
-INSERT INTO `gameobject_questrelation` VALUES (21042, 1252);
-INSERT INTO `gameobject_questrelation` VALUES (21042, 1269);
-INSERT INTO `gameobject_questrelation` VALUES (35251, 1455);
-INSERT INTO `gameobject_questrelation` VALUES (50961, 1465);
-INSERT INTO `gameobject_questrelation` VALUES (51708, 254);
-INSERT INTO `gameobject_questrelation` VALUES (61934, 1527);
-INSERT INTO `gameobject_questrelation` VALUES (89931, 1714);
-INSERT INTO `gameobject_questrelation` VALUES (112877, 2204);
-INSERT INTO `gameobject_questrelation` VALUES (112888, 491);
-INSERT INTO `gameobject_questrelation` VALUES (112948, 292);
-INSERT INTO `gameobject_questrelation` VALUES (113791, 100);
-INSERT INTO `gameobject_questrelation` VALUES (131474, 2278);
-INSERT INTO `gameobject_questrelation` VALUES (131474, 2279);
-INSERT INTO `gameobject_questrelation` VALUES (131474, 2280);
-INSERT INTO `gameobject_questrelation` VALUES (138492, 642);
-INSERT INTO `gameobject_questrelation` VALUES (142071, 2741);
-INSERT INTO `gameobject_questrelation` VALUES (142071, 8893);
-INSERT INTO `gameobject_questrelation` VALUES (142127, 2782);
-INSERT INTO `gameobject_questrelation` VALUES (142151, 285);
-INSERT INTO `gameobject_questrelation` VALUES (142179, 2867);
-INSERT INTO `gameobject_questrelation` VALUES (142195, 2903);
-INSERT INTO `gameobject_questrelation` VALUES (142343, 2967);
-INSERT INTO `gameobject_questrelation` VALUES (142343, 2977);
-INSERT INTO `gameobject_questrelation` VALUES (142343, 40107);
-INSERT INTO `gameobject_questrelation` VALUES (142343, 40115);
-INSERT INTO `gameobject_questrelation` VALUES (142487, 2947);
-INSERT INTO `gameobject_questrelation` VALUES (142487, 2949);
-INSERT INTO `gameobject_questrelation` VALUES (142487, 2951);
-INSERT INTO `gameobject_questrelation` VALUES (142487, 2952);
-INSERT INTO `gameobject_questrelation` VALUES (142487, 2953);
-INSERT INTO `gameobject_questrelation` VALUES (142702, 2933);
-INSERT INTO `gameobject_questrelation` VALUES (142958, 2940);
-INSERT INTO `gameobject_questrelation` VALUES (144063, 2942);
-INSERT INTO `gameobject_questrelation` VALUES (148504, 3914);
-INSERT INTO `gameobject_questrelation` VALUES (148836, 3447);
-INSERT INTO `gameobject_questrelation` VALUES (149502, 3481);
-INSERT INTO `gameobject_questrelation` VALUES (150075, 2781);
-INSERT INTO `gameobject_questrelation` VALUES (150075, 2875);
-INSERT INTO `gameobject_questrelation` VALUES (151286, 3506);
-INSERT INTO `gameobject_questrelation` VALUES (152097, 3525);
-INSERT INTO `gameobject_questrelation` VALUES (161504, 3845);
-INSERT INTO `gameobject_questrelation` VALUES (161505, 3844);
-INSERT INTO `gameobject_questrelation` VALUES (164867, 4081);
-INSERT INTO `gameobject_questrelation` VALUES (164868, 4082);
-INSERT INTO `gameobject_questrelation` VALUES (164869, 4083);
-INSERT INTO `gameobject_questrelation` VALUES (164885, 4119);
-INSERT INTO `gameobject_questrelation` VALUES (164886, 2523);
-INSERT INTO `gameobject_questrelation` VALUES (164887, 996);
-INSERT INTO `gameobject_questrelation` VALUES (164888, 4117);
-INSERT INTO `gameobject_questrelation` VALUES (164909, 4127);
-INSERT INTO `gameobject_questrelation` VALUES (164953, 4135);
-INSERT INTO `gameobject_questrelation` VALUES (164954, 4265);
-INSERT INTO `gameobject_questrelation` VALUES (164955, 4381);
-INSERT INTO `gameobject_questrelation` VALUES (164955, 4385);
-INSERT INTO `gameobject_questrelation` VALUES (164956, 4383);
-INSERT INTO `gameobject_questrelation` VALUES (164956, 4384);
-INSERT INTO `gameobject_questrelation` VALUES (164957, 4382);
-INSERT INTO `gameobject_questrelation` VALUES (164957, 4386);
-INSERT INTO `gameobject_questrelation` VALUES (171939, 2878);
-INSERT INTO `gameobject_questrelation` VALUES (171942, 3363);
-INSERT INTO `gameobject_questrelation` VALUES (173265, 4449);
-INSERT INTO `gameobject_questrelation` VALUES (173265, 4450);
-INSERT INTO `gameobject_questrelation` VALUES (173284, 4443);
-INSERT INTO `gameobject_questrelation` VALUES (173324, 4448);
-INSERT INTO `gameobject_questrelation` VALUES (173327, 998);
-INSERT INTO `gameobject_questrelation` VALUES (174594, 4113);
-INSERT INTO `gameobject_questrelation` VALUES (174595, 4114);
-INSERT INTO `gameobject_questrelation` VALUES (174596, 4116);
-INSERT INTO `gameobject_questrelation` VALUES (174598, 4401);
-INSERT INTO `gameobject_questrelation` VALUES (174599, 1514);
-INSERT INTO `gameobject_questrelation` VALUES (174600, 4115);
-INSERT INTO `gameobject_questrelation` VALUES (174601, 4221);
-INSERT INTO `gameobject_questrelation` VALUES (174602, 4222);
-INSERT INTO `gameobject_questrelation` VALUES (174603, 4343);
-INSERT INTO `gameobject_questrelation` VALUES (174604, 4403);
-INSERT INTO `gameobject_questrelation` VALUES (174605, 4444);
-INSERT INTO `gameobject_questrelation` VALUES (174606, 4445);
-INSERT INTO `gameobject_questrelation` VALUES (174607, 4446);
-INSERT INTO `gameobject_questrelation` VALUES (174608, 4462);
-INSERT INTO `gameobject_questrelation` VALUES (174682, 4501);
-INSERT INTO `gameobject_questrelation` VALUES (174684, 4447);
-INSERT INTO `gameobject_questrelation` VALUES (174686, 4461);
-INSERT INTO `gameobject_questrelation` VALUES (174708, 4466);
-INSERT INTO `gameobject_questrelation` VALUES (174709, 4467);
-INSERT INTO `gameobject_questrelation` VALUES (174712, 4464);
-INSERT INTO `gameobject_questrelation` VALUES (174713, 4465);
-INSERT INTO `gameobject_questrelation` VALUES (174848, 4661);
-INSERT INTO `gameobject_questrelation` VALUES (175084, 4601);
-INSERT INTO `gameobject_questrelation` VALUES (175084, 4603);
-INSERT INTO `gameobject_questrelation` VALUES (175084, 4605);
-INSERT INTO `gameobject_questrelation` VALUES (175085, 4602);
-INSERT INTO `gameobject_questrelation` VALUES (175085, 4604);
-INSERT INTO `gameobject_questrelation` VALUES (175085, 4606);
-INSERT INTO `gameobject_questrelation` VALUES (175226, 4728);
-INSERT INTO `gameobject_questrelation` VALUES (175227, 4730);
-INSERT INTO `gameobject_questrelation` VALUES (175230, 4733);
-INSERT INTO `gameobject_questrelation` VALUES (175233, 4723);
-INSERT INTO `gameobject_questrelation` VALUES (175265, 4561);
-INSERT INTO `gameobject_questrelation` VALUES (175320, 4740);
-INSERT INTO `gameobject_questrelation` VALUES (175524, 4813);
-INSERT INTO `gameobject_questrelation` VALUES (175586, 4864);
-INSERT INTO `gameobject_questrelation` VALUES (175587, 4863);
-INSERT INTO `gameobject_questrelation` VALUES (175704, 3368);
-INSERT INTO `gameobject_questrelation` VALUES (175894, 5022);
-INSERT INTO `gameobject_questrelation` VALUES (175894, 5023);
-INSERT INTO `gameobject_questrelation` VALUES (175924, 5060);
-INSERT INTO `gameobject_questrelation` VALUES (175925, 5059);
-INSERT INTO `gameobject_questrelation` VALUES (175926, 5058);
-INSERT INTO `gameobject_questrelation` VALUES (175927, 5063);
-INSERT INTO `gameobject_questrelation` VALUES (175927, 5067);
-INSERT INTO `gameobject_questrelation` VALUES (175927, 5068);
-INSERT INTO `gameobject_questrelation` VALUES (176090, 5103);
-INSERT INTO `gameobject_questrelation` VALUES (176091, 5085);
-INSERT INTO `gameobject_questrelation` VALUES (176115, 5147);
-INSERT INTO `gameobject_questrelation` VALUES (176190, 4722);
-INSERT INTO `gameobject_questrelation` VALUES (176191, 4732);
-INSERT INTO `gameobject_questrelation` VALUES (176192, 5166);
-INSERT INTO `gameobject_questrelation` VALUES (176192, 5167);
-INSERT INTO `gameobject_questrelation` VALUES (176196, 4727);
-INSERT INTO `gameobject_questrelation` VALUES (176197, 4725);
-INSERT INTO `gameobject_questrelation` VALUES (176198, 4731);
-INSERT INTO `gameobject_questrelation` VALUES (176361, 5217);
-INSERT INTO `gameobject_questrelation` VALUES (176361, 5218);
-INSERT INTO `gameobject_questrelation` VALUES (176361, 5230);
-INSERT INTO `gameobject_questrelation` VALUES (176392, 5226);
-INSERT INTO `gameobject_questrelation` VALUES (176392, 5227);
-INSERT INTO `gameobject_questrelation` VALUES (176392, 5236);
-INSERT INTO `gameobject_questrelation` VALUES (176393, 5223);
-INSERT INTO `gameobject_questrelation` VALUES (176393, 5224);
-INSERT INTO `gameobject_questrelation` VALUES (176393, 5234);
-INSERT INTO `gameobject_questrelation` VALUES (176631, 5464);
-INSERT INTO `gameobject_questrelation` VALUES (177289, 5220);
-INSERT INTO `gameobject_questrelation` VALUES (177289, 5221);
-INSERT INTO `gameobject_questrelation` VALUES (177289, 5232);
-INSERT INTO `gameobject_questrelation` VALUES (177491, 6389);
-INSERT INTO `gameobject_questrelation` VALUES (177491, 6390);
-INSERT INTO `gameobject_questrelation` VALUES (177667, 6024);
-INSERT INTO `gameobject_questrelation` VALUES (177787, 6161);
-INSERT INTO `gameobject_questrelation` VALUES (177904, 6284);
-INSERT INTO `gameobject_questrelation` VALUES (179437, 7402);
-INSERT INTO `gameobject_questrelation` VALUES (179438, 7401);
-INSERT INTO `gameobject_questrelation` VALUES (179485, 1193);
-INSERT INTO `gameobject_questrelation` VALUES (179827, 7701);
-INSERT INTO `gameobject_questrelation` VALUES (179827, 7728);
-INSERT INTO `gameobject_questrelation` VALUES (179827, 7729);
-INSERT INTO `gameobject_questrelation` VALUES (179913, 7861);
-INSERT INTO `gameobject_questrelation` VALUES (179913, 7862);
-INSERT INTO `gameobject_questrelation` VALUES (180366, 8227);
-INSERT INTO `gameobject_questrelation` VALUES (180448, 8283);
-INSERT INTO `gameobject_questrelation` VALUES (180503, 8313);
-INSERT INTO `gameobject_questrelation` VALUES (180570, 8409);
-INSERT INTO `gameobject_questrelation` VALUES (180633, 8519);
-INSERT INTO `gameobject_questrelation` VALUES (180642, 8578);
-INSERT INTO `gameobject_questrelation` VALUES (180652, 8598);
-INSERT INTO `gameobject_questrelation` VALUES (180717, 8743);
-INSERT INTO `gameobject_questrelation` VALUES (180743, 8744);
-INSERT INTO `gameobject_questrelation` VALUES (180746, 8767);
-INSERT INTO `gameobject_questrelation` VALUES (180746, 8788);
-INSERT INTO `gameobject_questrelation` VALUES (180747, 8768);
-INSERT INTO `gameobject_questrelation` VALUES (180748, 8769);
-INSERT INTO `gameobject_questrelation` VALUES (180793, 8803);
-INSERT INTO `gameobject_questrelation` VALUES (181073, 9029);
-INSERT INTO `gameobject_questrelation` VALUES (186420, 510);
-INSERT INTO `gameobject_questrelation` VALUES (186420, 511);
-INSERT INTO `gameobject_questrelation` VALUES (1000171, 80707);
-INSERT INTO `gameobject_questrelation` VALUES (1000172, 80705);
-INSERT INTO `gameobject_questrelation` VALUES (1000173, 80706);
-INSERT INTO `gameobject_questrelation` VALUES (1000504, 55048);
-INSERT INTO `gameobject_questrelation` VALUES (1000504, 55049);
-INSERT INTO `gameobject_questrelation` VALUES (2010810, 40052);
-INSERT INTO `gameobject_questrelation` VALUES (2010811, 40053);
-INSERT INTO `gameobject_questrelation` VALUES (2010812, 40054);
-INSERT INTO `gameobject_questrelation` VALUES (2010813, 40055);
-INSERT INTO `gameobject_questrelation` VALUES (2010814, 40056);
-INSERT INTO `gameobject_questrelation` VALUES (2010829, 40149);
-INSERT INTO `gameobject_questrelation` VALUES (2010830, 40153);
-INSERT INTO `gameobject_questrelation` VALUES (2010854, 40273);
-INSERT INTO `gameobject_questrelation` VALUES (2010870, 40357);
-INSERT INTO `gameobject_questrelation` VALUES (2010871, 40361);
-INSERT INTO `gameobject_questrelation` VALUES (2010873, 40362);
-INSERT INTO `gameobject_questrelation` VALUES (2010884, 40395);
-INSERT INTO `gameobject_questrelation` VALUES (2010920, 40556);
-INSERT INTO `gameobject_questrelation` VALUES (2010923, 40581);
-INSERT INTO `gameobject_questrelation` VALUES (2010924, 40583);
-INSERT INTO `gameobject_questrelation` VALUES (2010927, 40593);
-INSERT INTO `gameobject_questrelation` VALUES (2010969, 40751);
-INSERT INTO `gameobject_questrelation` VALUES (2010972, 40785);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40915);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40917);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40918);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40919);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40920);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40921);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40922);
-INSERT INTO `gameobject_questrelation` VALUES (2020028, 40923);
-INSERT INTO `gameobject_questrelation` VALUES (2020062, 41149);
-INSERT INTO `gameobject_questrelation` VALUES (7000030, 50227);
+--
+-- Dumping data for table `gameobject_questrelation`
+--
 
+LOCK TABLES `gameobject_questrelation` WRITE;
+/*!40000 ALTER TABLE `gameobject_questrelation` DISABLE KEYS */;
+INSERT INTO `gameobject_questrelation` VALUES (31,248),(31,249),(34,140),(35,138),(36,139),(47,180),(55,45),(56,71),(59,230),(60,169),(61,225),(68,176),(256,256),(257,199),(259,286),(261,284),(269,403),(270,311),(287,328),(288,329),(711,398),(1557,410),(1561,74),(1585,283),(1586,431),(1593,439),(1599,461),(1609,474),(1627,478),(1740,510),(1740,511),(1763,549),(1763,566),(2008,567),(2059,417),(2076,585),(2076,586),(2076,588),(2076,1261),(2083,597),(2289,619),(2553,625),(2555,626),(2652,632),(2688,653),(2688,688),(2701,651),(2702,652),(2703,646),(2713,684),(2713,685),(2734,324),(2868,720),(2875,739),(2908,751),(2933,779),(2933,795),(3643,68),(3972,895),(4141,900),(4141,901),(4141,902),(5619,926),(5620,926),(5621,926),(6751,930),(6752,931),(7510,2399),(10076,949),(12666,950),(17182,1001),(17183,1002),(17184,1003),(19024,1055),(20805,1194),(20985,1219),(20985,1238),(20985,1239),(20992,1251),(20992,1253),(21015,1268),(21015,1284),(21016,1268),(21016,1284),(21042,1252),(21042,1269),(35251,1455),(50961,1465),(51708,254),(61934,1527),(89931,1714),(112877,2204),(112888,491),(112948,292),(113791,100),(131474,2278),(131474,2279),(131474,2280),(138492,642),(142071,2741),(142071,8893),(142127,2782),(142151,285),(142179,2867),(142195,2903),(142343,2967),(142343,2977),(142343,40107),(142343,40115),(142487,2947),(142487,2949),(142487,2951),(142487,2952),(142487,2953),(142702,2933),(142958,2940),(144063,2942),(148504,3914),(148836,3447),(149502,3481),(150075,2781),(150075,2875),(151286,3506),(152097,3525),(161504,3845),(161505,3844),(164867,4081),(164868,4082),(164869,4083),(164885,4119),(164886,4113),(164887,4115),(164888,4117),(164909,4127),(164953,4135),(164954,4265),(164955,4381),(164955,4385),(164956,4383),(164956,4384),(164957,4382),(164957,4386),(171939,4401),(171942,2523),(173265,4449),(173265,4450),(173284,4443),(173324,4447),(173327,1514),(173594,2878),(174595,3363),(174596,4114),(174597,4116),(174598,4118),(174599,998),(174600,996),(174601,4403),(174602,4343),(174603,4222),(174604,4221),(174605,4444),(174606,4445),(174607,4446),(174608,4448),(174682,4501),(174684,4462),(174686,4461),(174708,4466),(174709,4467),(174712,4464),(174713,4465),(174848,4661),(175084,4601),(175084,4603),(175084,4605),(175085,4602),(175085,4604),(175085,4606),(175226,4728),(175227,4730),(175230,4733),(175233,4723),(175265,4561),(175320,4740),(175524,4813),(175586,4864),(175587,4863),(175704,3368),(175894,5022),(175894,5023),(175924,5060),(175925,5059),(175926,5058),(175927,5063),(175927,5067),(175927,5068),(176090,5103),(176091,5085),(176115,5147),(176190,4722),(176191,4732),(176192,5166),(176192,5167),(176196,4727),(176197,4725),(176198,4731),(176361,5217),(176361,5218),(176361,5230),(176392,5226),(176392,5227),(176392,5236),(176393,5223),(176393,5224),(176393,5234),(176631,5464),(177289,5220),(177289,5221),(177289,5232),(177491,6389),(177491,6390),(177667,6024),(177787,6161),(177904,6284),(179437,7402),(179438,7401),(179485,1193),(179827,7701),(179827,7728),(179827,7729),(179913,7861),(179913,7862),(180366,8227),(180448,8283),(180503,8313),(180570,8409),(180633,8519),(180642,8578),(180652,8598),(180717,8743),(180743,8744),(180746,8767),(180746,8788),(180747,8768),(180748,8769),(180793,8803),(181073,9029),(186420,510),(186420,511),(1000075,39980),(1000075,39981),(1000076,39980),(1000076,39981),(1000171,80707),(1000172,80705),(1000173,80706),(1000223,39980),(1000223,39981),(1000504,55048),(1000504,55049),(2010810,40052),(2010811,40053),(2010812,40054),(2010813,40055),(2010814,40056),(2010829,40149),(2010830,40153),(2010854,40273),(2010870,40357),(2010871,40361),(2010873,40362),(2010884,40395),(2010920,40556),(2010923,40581),(2010924,40583),(2010927,40593),(2010969,40751),(2010972,40785),(2020028,40915),(2020028,40917),(2020028,40918),(2020028,40919),(2020028,40920),(2020028,40921),(2020028,40922),(2020028,40923),(2020062,41149),(2020098,41310),(2020105,41345),(2020106,41346),(2020107,41349),(2020108,41350),(2020110,41361),(2020111,41373),(2020112,41375),(7000030,50227);
+/*!40000 ALTER TABLE `gameobject_questrelation` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:17

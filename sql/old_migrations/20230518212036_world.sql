@@ -1,1 +1,0 @@
-UPDATE `map_template` SET `script_name` = 'instance_gilneas_city' WHERE `entry` = 815;

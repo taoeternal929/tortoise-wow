@@ -1,98 +1,58 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `playercreateinfo`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for playercreateinfo
--- ----------------------------
 DROP TABLE IF EXISTS `playercreateinfo`;
-CREATE TABLE `playercreateinfo`  (
-  `race` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `class` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `map` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
-  `zone` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `playercreateinfo` (
+  `race` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `class` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `map` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `zone` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `position_x` float NOT NULL DEFAULT 0,
   `position_y` float NOT NULL DEFAULT 0,
   `position_z` float NOT NULL DEFAULT 0,
   `orientation` float NOT NULL DEFAULT 0,
-  PRIMARY KEY (`race`, `class`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+  PRIMARY KEY (`race`,`class`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of playercreateinfo
--- ----------------------------
-INSERT INTO `playercreateinfo` VALUES (1, 1, 0, 12, -8949.95, -132.493, 83.5312, 0);
-INSERT INTO `playercreateinfo` VALUES (1, 2, 0, 12, -8949.95, -132.493, 83.5312, 0);
-INSERT INTO `playercreateinfo` VALUES (1, 4, 0, 12, -8949.95, -132.493, 83.5312, 0);
-INSERT INTO `playercreateinfo` VALUES (1, 5, 0, 12, -8949.95, -132.493, 83.5312, 0);
-INSERT INTO `playercreateinfo` VALUES (1, 8, 0, 12, -8949.95, -132.493, 83.5312, 0);
-INSERT INTO `playercreateinfo` VALUES (1, 9, 0, 12, -8949.95, -132.493, 83.5312, 0);
-INSERT INTO `playercreateinfo` VALUES (2, 1, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (2, 3, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (2, 4, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (2, 7, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (2, 9, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (3, 1, 0, 1, -6240.32, 331.033, 382.758, 6.17716);
-INSERT INTO `playercreateinfo` VALUES (3, 2, 0, 1, -6240.32, 331.033, 382.758, 6.17716);
-INSERT INTO `playercreateinfo` VALUES (3, 3, 0, 1, -6240.32, 331.033, 382.758, 6.17716);
-INSERT INTO `playercreateinfo` VALUES (3, 4, 0, 1, -6240.32, 331.033, 382.758, 6.17716);
-INSERT INTO `playercreateinfo` VALUES (3, 5, 0, 1, -6240.32, 331.033, 382.758, 6.17716);
-INSERT INTO `playercreateinfo` VALUES (4, 1, 1, 141, 10311.3, 831.463, 1326.41, 5.48033);
-INSERT INTO `playercreateinfo` VALUES (4, 3, 1, 141, 10311.3, 831.463, 1326.41, 5.48033);
-INSERT INTO `playercreateinfo` VALUES (4, 4, 1, 141, 10311.3, 831.463, 1326.41, 5.48033);
-INSERT INTO `playercreateinfo` VALUES (4, 5, 1, 141, 10311.3, 831.463, 1326.41, 5.48033);
-INSERT INTO `playercreateinfo` VALUES (4, 11, 1, 141, 10311.3, 831.463, 1326.41, 5.48033);
-INSERT INTO `playercreateinfo` VALUES (5, 1, 0, 85, 1676.35, 1677.45, 121.67, 2.70526);
-INSERT INTO `playercreateinfo` VALUES (5, 4, 0, 85, 1676.35, 1677.45, 121.67, 2.70526);
-INSERT INTO `playercreateinfo` VALUES (5, 5, 0, 85, 1676.35, 1677.45, 121.67, 2.70526);
-INSERT INTO `playercreateinfo` VALUES (5, 8, 0, 85, 1676.35, 1677.45, 121.67, 2.70526);
-INSERT INTO `playercreateinfo` VALUES (5, 9, 0, 85, 1676.35, 1677.45, 121.67, 2.70526);
-INSERT INTO `playercreateinfo` VALUES (6, 1, 1, 215, -2917.58, -257.98, 52.9968, 0);
-INSERT INTO `playercreateinfo` VALUES (6, 3, 1, 215, -2917.58, -257.98, 52.9968, 0);
-INSERT INTO `playercreateinfo` VALUES (6, 7, 1, 215, -2917.58, -257.98, 52.9968, 0);
-INSERT INTO `playercreateinfo` VALUES (6, 11, 1, 215, -2917.58, -257.98, 52.9968, 0);
-INSERT INTO `playercreateinfo` VALUES (7, 1, 0, 1, -6240.32, 331.033, 382.758, 0);
-INSERT INTO `playercreateinfo` VALUES (7, 4, 0, 1, -6240.32, 331.033, 382.758, 0);
-INSERT INTO `playercreateinfo` VALUES (7, 8, 0, 1, -6240.32, 331.033, 382.758, 0);
-INSERT INTO `playercreateinfo` VALUES (7, 9, 0, 1, -6240.32, 331.033, 382.758, 0);
-INSERT INTO `playercreateinfo` VALUES (8, 1, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (8, 3, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (8, 4, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (8, 5, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (8, 7, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (8, 8, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (9, 1, 1, 5536, -233, -7177, 16.52, 1.76);
-INSERT INTO `playercreateinfo` VALUES (9, 3, 1, 5536, -233, -7177, 16.52, 1.76);
-INSERT INTO `playercreateinfo` VALUES (9, 4, 1, 5536, -233, -7177, 16.52, 1.76);
-INSERT INTO `playercreateinfo` VALUES (9, 8, 1, 5536, -233, -7177, 16.52, 1.76);
-INSERT INTO `playercreateinfo` VALUES (9, 9, 1, 5536, -233, -7177, 16.52, 1.76);
-INSERT INTO `playercreateinfo` VALUES (10, 1, 0, 5225, 3212.63, -2501.44, 111.71, 0.79);
-INSERT INTO `playercreateinfo` VALUES (10, 2, 0, 5225, 3212.63, -2501.44, 111.71, 0.79);
-INSERT INTO `playercreateinfo` VALUES (10, 3, 0, 5225, 3212.63, -2501.44, 111.71, 0.79);
-INSERT INTO `playercreateinfo` VALUES (10, 4, 0, 5225, 3212.63, -2501.44, 111.71, 0.79);
-INSERT INTO `playercreateinfo` VALUES (10, 5, 0, 5225, 3212.63, -2501.44, 111.71, 0.79);
-INSERT INTO `playercreateinfo` VALUES (10, 8, 0, 5225, 3212.63, -2501.44, 111.71, 0.79);
-INSERT INTO `playercreateinfo` VALUES (7, 3, 0, 1, -6240.32, 331.033, 382.758, 6.17716);
-INSERT INTO `playercreateinfo` VALUES (2, 8, 1, 14, -618.518, -4251.67, 38.718, 0);
-INSERT INTO `playercreateinfo` VALUES (5, 3, 0, 85, 1676.35, 1677.45, 121.67, 2.70526);
-INSERT INTO `playercreateinfo` VALUES (3, 8, 0, 1, -6240.32, 331.033, 382.758, 6.17716);
-INSERT INTO `playercreateinfo` VALUES (1, 3, 0, 12, -8949.95, -132.493, 83.5312, 0);
-INSERT INTO `playercreateinfo` VALUES (8, 9, 1, 14, -618.518, -4251.67, 38.718, 0);
+--
+-- Dumping data for table `playercreateinfo`
+--
 
+LOCK TABLES `playercreateinfo` WRITE;
+/*!40000 ALTER TABLE `playercreateinfo` DISABLE KEYS */;
+INSERT INTO `playercreateinfo` VALUES (1,1,0,12,-8949.95,-132.493,83.5312,0),(1,2,0,12,-8949.95,-132.493,83.5312,0),(1,4,0,12,-8949.95,-132.493,83.5312,0),(1,5,0,12,-8949.95,-132.493,83.5312,0),(1,8,0,12,-8949.95,-132.493,83.5312,0),(1,9,0,12,-8949.95,-132.493,83.5312,0),(2,1,1,14,-618.518,-4251.67,38.718,0),(2,3,1,14,-618.518,-4251.67,38.718,0),(2,4,1,14,-618.518,-4251.67,38.718,0),(2,7,1,14,-618.518,-4251.67,38.718,0),(2,9,1,14,-618.518,-4251.67,38.718,0),(3,1,0,1,-6240.32,331.033,382.758,6.17716),(3,2,0,1,-6240.32,331.033,382.758,6.17716),(3,3,0,1,-6240.32,331.033,382.758,6.17716),(3,4,0,1,-6240.32,331.033,382.758,6.17716),(3,5,0,1,-6240.32,331.033,382.758,6.17716),(4,1,1,141,10311.3,831.463,1326.41,5.48033),(4,3,1,141,10311.3,831.463,1326.41,5.48033),(4,4,1,141,10311.3,831.463,1326.41,5.48033),(4,5,1,141,10311.3,831.463,1326.41,5.48033),(4,11,1,141,10311.3,831.463,1326.41,5.48033),(5,1,0,85,1676.35,1677.45,121.67,2.70526),(5,4,0,85,1676.35,1677.45,121.67,2.70526),(5,5,0,85,1676.35,1677.45,121.67,2.70526),(5,8,0,85,1676.35,1677.45,121.67,2.70526),(5,9,0,85,1676.35,1677.45,121.67,2.70526),(6,1,1,215,-2917.58,-257.98,52.9968,0),(6,3,1,215,-2917.58,-257.98,52.9968,0),(6,7,1,215,-2917.58,-257.98,52.9968,0),(6,11,1,215,-2917.58,-257.98,52.9968,0),(7,1,0,1,-6240.32,331.033,382.758,0),(7,4,0,1,-6240.32,331.033,382.758,0),(7,8,0,1,-6240.32,331.033,382.758,0),(7,9,0,1,-6240.32,331.033,382.758,0),(8,1,1,14,-618.518,-4251.67,38.718,0),(8,3,1,14,-618.518,-4251.67,38.718,0),(8,4,1,14,-618.518,-4251.67,38.718,0),(8,5,1,14,-618.518,-4251.67,38.718,0),(8,7,1,14,-618.518,-4251.67,38.718,0),(8,8,1,14,-618.518,-4251.67,38.718,0),(9,1,1,5536,-233,-7177,16.52,1.76),(9,3,1,5536,-233,-7177,16.52,1.76),(9,4,1,5536,-233,-7177,16.52,1.76),(9,8,1,5536,-233,-7177,16.52,1.76),(9,9,1,5536,-233,-7177,16.52,1.76),(10,1,0,5225,3212.63,-2501.44,111.71,0.79),(10,2,0,5225,3212.63,-2501.44,111.71,0.79),(10,3,0,5225,3212.63,-2501.44,111.71,0.79),(10,4,0,5225,3212.63,-2501.44,111.71,0.79),(10,5,0,5225,3212.63,-2501.44,111.71,0.79),(10,8,0,5225,3212.63,-2501.44,111.71,0.79),(7,3,0,1,-6240.32,331.033,382.758,6.17716),(2,8,1,14,-618.518,-4251.67,38.718,0),(5,3,0,85,1676.35,1677.45,121.67,2.70526),(3,8,0,1,-6240.32,331.033,382.758,6.17716),(1,3,0,12,-8949.95,-132.493,83.5312,0),(8,9,1,14,-618.518,-4251.67,38.718,0);
+/*!40000 ALTER TABLE `playercreateinfo` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

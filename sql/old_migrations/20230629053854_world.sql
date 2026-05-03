@@ -1,1 +1,0 @@
-UPDATE quest_template SET Type = 1 WHERE entry = 40628;

@@ -1,453 +1,57 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `npc_vendor_template`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for npc_vendor_template
--- ----------------------------
 DROP TABLE IF EXISTS `npc_vendor_template`;
-CREATE TABLE `npc_vendor_template`  (
-  `entry` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `slot` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
-  `item` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  `maxcount` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `incrtime` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `itemflags` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `condition_id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0,
-  PRIMARY KEY (`entry`, `item`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Npc System' ROW_FORMAT = Fixed;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `npc_vendor_template` (
+  `entry` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `slot` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `item` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `maxcount` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `incrtime` int(10) unsigned NOT NULL DEFAULT 0,
+  `itemflags` int(10) unsigned NOT NULL DEFAULT 0,
+  `condition_id` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`entry`,`item`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED COMMENT='Npc System';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of npc_vendor_template
--- ----------------------------
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 5565, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 16583, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17020, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17021, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17026, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17028, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17029, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17030, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17031, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17032, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17033, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17034, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17035, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17036, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17037, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279501, 0, 17038, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16533, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16534, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16535, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16536, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16539, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16540, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16541, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16542, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16543, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16544, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16545, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16548, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16549, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16550, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16551, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16552, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16554, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16555, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16558, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16560, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16561, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16562, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16563, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16564, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16565, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16566, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16567, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16568, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16569, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16571, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16573, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16574, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16577, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16578, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16579, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 16580, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17586, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17588, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17590, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17591, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17592, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17593, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17618, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17620, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17622, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17623, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17624, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 17625, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22843, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22852, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22855, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22856, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22857, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22858, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22859, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22860, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22862, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22863, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22864, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22865, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22867, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22868, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22869, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22870, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22872, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22873, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22874, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22875, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22876, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22877, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22878, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22879, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22880, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22881, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22882, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22883, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22884, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22885, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22886, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 22887, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23243, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23244, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23251, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23252, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23253, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23254, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23255, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23256, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23257, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23258, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23259, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23260, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23261, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23262, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23263, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279202, 0, 23264, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 117, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 159, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 1179, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 1205, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 1645, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 1708, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 2287, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 2593, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 2594, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 2595, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 2596, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 2723, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 3770, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 3771, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4536, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4537, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4538, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4539, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4540, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4541, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4542, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4544, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4599, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4601, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4602, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4604, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4605, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4606, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4607, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 4608, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 8766, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 8948, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 8950, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 8952, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278501, 0, 8953, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16437, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16440, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16441, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16442, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16443, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16444, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16446, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16448, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16449, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16450, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16451, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16452, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16453, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16454, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16455, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16456, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16457, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16459, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16462, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16463, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16465, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16466, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16467, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16468, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16471, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16472, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16473, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16474, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16475, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16476, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16477, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16478, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16479, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16480, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16483, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 16484, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17578, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17579, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17580, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17581, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17583, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17584, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17602, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17603, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17604, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17605, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17607, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 17608, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23272, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23273, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23274, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23275, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23276, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23277, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23278, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23279, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23280, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23281, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23282, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23283, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23284, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23285, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23286, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23287, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23288, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23289, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23290, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23291, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23292, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23293, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23294, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23295, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23296, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23297, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23298, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23299, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23300, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23301, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23302, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23303, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23304, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23305, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23306, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23307, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23308, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23309, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23310, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23311, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23312, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23313, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23314, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23315, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23316, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23317, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23318, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1277702, 0, 23319, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 5565, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 16583, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17020, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17021, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17026, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17028, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17029, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 21177, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17031, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17032, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17033, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17034, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17035, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17036, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17037, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278401, 0, 17038, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 12584, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18825, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18827, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18830, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18833, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18836, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18838, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18843, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18847, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18855, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18865, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18867, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18869, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18873, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 18876, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 23451, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 23452, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 23453, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 23454, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 23455, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1278202, 0, 23456, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 117, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 159, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 1179, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 1205, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 1645, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 1708, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 2287, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 2593, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 2594, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 2595, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 2596, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 2723, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 3770, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 3771, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4536, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4537, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4538, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4539, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4540, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4541, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4542, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4544, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4599, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4601, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4602, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4604, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4605, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4606, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4607, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 4608, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 8766, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 8948, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 8950, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 8952, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1279401, 0, 8953, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 16345, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18826, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18828, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18831, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18835, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18837, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18840, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18844, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18848, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18860, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18866, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18868, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18871, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18874, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 18877, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 23464, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 23465, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 23466, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 23467, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 23468, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (1458102, 0, 23469, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (100, 0, 21833, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (100, 0, 21829, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (100, 0, 21815, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3371, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3372, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3419, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3420, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3421, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3422, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3423, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 3424, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 8925, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (301401, 0, 18256, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 23176, 20, 3600, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 19299, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 23161, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 5265, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 18300, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 4600, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 17405, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50534, 0, 19300, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 17196, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 17194, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 21236, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 21254, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 21240, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 21235, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 22324, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 21721, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 17200, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50638, 0, 17201, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50653, 0, 17202, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50647, 0, 17402, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50647, 0, 2888, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50647, 0, 17222, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50647, 0, 19222, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50640, 0, 21215, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50640, 0, 17407, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50640, 0, 8950, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50640, 0, 21030, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50640, 0, 17405, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (50650, 0, 5859, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 159, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 1179, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 1205, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 1645, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 1708, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 8766, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 2512, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 2515, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 2516, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 2519, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 2946, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 2947, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3030, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3033, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3107, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3108, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3111, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3131, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3135, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 3137, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 4470, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 4471, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 4496, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 4497, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 4498, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 5048, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 11284, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 11285, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 15326, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (455502, 0, 15327, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (101, 0, 50520, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (101, 0, 51230, 0, 0, 0, 80000);
-INSERT INTO `npc_vendor_template` VALUES (101, 0, 80060, 0, 0, 0, 0);
-INSERT INTO `npc_vendor_template` VALUES (101, 0, 51029, 0, 0, 0, 80000);
-INSERT INTO `npc_vendor_template` VALUES (101, 0, 50745, 0, 0, 0, 0);
+--
+-- Dumping data for table `npc_vendor_template`
+--
 
+LOCK TABLES `npc_vendor_template` WRITE;
+/*!40000 ALTER TABLE `npc_vendor_template` DISABLE KEYS */;
+INSERT INTO `npc_vendor_template` VALUES (1279501,0,5565,0,0,0,0),(1279501,0,16583,0,0,0,0),(1279501,0,17020,0,0,0,0),(1279501,0,17021,0,0,0,0),(1279501,0,17026,0,0,0,0),(1279501,0,17028,0,0,0,0),(1279501,0,17029,0,0,0,0),(1279501,0,17030,0,0,0,0),(1279501,0,17031,0,0,0,0),(1279501,0,17032,0,0,0,0),(1279501,0,17033,0,0,0,0),(1279501,0,17034,0,0,0,0),(1279501,0,17035,0,0,0,0),(1279501,0,17036,0,0,0,0),(1279501,0,17037,0,0,0,0),(1279501,0,17038,0,0,0,0),(1279202,0,16533,0,0,0,0),(1279202,0,16534,0,0,0,0),(1279202,0,16535,0,0,0,0),(1279202,0,16536,0,0,0,0),(1279202,0,16539,0,0,0,0),(1279202,0,16540,0,0,0,0),(1279202,0,16541,0,0,0,0),(1279202,0,16542,0,0,0,0),(1279202,0,16543,0,0,0,0),(1279202,0,16544,0,0,0,0),(1279202,0,16545,0,0,0,0),(1279202,0,16548,0,0,0,0),(1279202,0,16549,0,0,0,0),(1279202,0,16550,0,0,0,0),(1279202,0,16551,0,0,0,0),(1279202,0,16552,0,0,0,0),(1279202,0,16554,0,0,0,0),(1279202,0,16555,0,0,0,0),(1279202,0,16558,0,0,0,0),(1279202,0,16560,0,0,0,0),(1279202,0,16561,0,0,0,0),(1279202,0,16562,0,0,0,0),(1279202,0,16563,0,0,0,0),(1279202,0,16564,0,0,0,0),(1279202,0,16565,0,0,0,0),(1279202,0,16566,0,0,0,0),(1279202,0,16567,0,0,0,0),(1279202,0,16568,0,0,0,0),(1279202,0,16569,0,0,0,0),(1279202,0,16571,0,0,0,0),(1279202,0,16573,0,0,0,0),(1279202,0,16574,0,0,0,0),(1279202,0,16577,0,0,0,0),(1279202,0,16578,0,0,0,0),(1279202,0,16579,0,0,0,0),(1279202,0,16580,0,0,0,0),(1279202,0,17586,0,0,0,0),(1279202,0,17588,0,0,0,0),(1279202,0,17590,0,0,0,0),(1279202,0,17591,0,0,0,0),(1279202,0,17592,0,0,0,0),(1279202,0,17593,0,0,0,0),(1279202,0,17618,0,0,0,0),(1279202,0,17620,0,0,0,0),(1279202,0,17622,0,0,0,0),(1279202,0,17623,0,0,0,0),(1279202,0,17624,0,0,0,0),(1279202,0,17625,0,0,0,0),(1279202,0,22843,0,0,0,0),(1279202,0,22852,0,0,0,0),(1279202,0,22855,0,0,0,0),(1279202,0,22856,0,0,0,0),(1279202,0,22857,0,0,0,0),(1279202,0,22858,0,0,0,0),(1279202,0,22859,0,0,0,0),(1279202,0,22860,0,0,0,0),(1279202,0,22862,0,0,0,0),(1279202,0,22863,0,0,0,0),(1279202,0,22864,0,0,0,0),(1279202,0,22865,0,0,0,0),(1279202,0,22867,0,0,0,0),(1279202,0,22868,0,0,0,0),(1279202,0,22869,0,0,0,0),(1279202,0,22870,0,0,0,0),(1279202,0,22872,0,0,0,0),(1279202,0,22873,0,0,0,0),(1279202,0,22874,0,0,0,0),(1279202,0,22875,0,0,0,0),(1279202,0,22876,0,0,0,0),(1279202,0,22877,0,0,0,0),(1279202,0,22878,0,0,0,0),(1279202,0,22879,0,0,0,0),(1279202,0,22880,0,0,0,0),(1279202,0,22881,0,0,0,0),(1279202,0,22882,0,0,0,0),(1279202,0,22883,0,0,0,0),(1279202,0,22884,0,0,0,0),(1279202,0,22885,0,0,0,0),(1279202,0,22886,0,0,0,0),(1279202,0,22887,0,0,0,0),(1279202,0,23243,0,0,0,0),(1279202,0,23244,0,0,0,0),(1279202,0,23251,0,0,0,0),(1279202,0,23252,0,0,0,0),(1279202,0,23253,0,0,0,0),(1279202,0,23254,0,0,0,0),(1279202,0,23255,0,0,0,0),(1279202,0,23256,0,0,0,0),(1279202,0,23257,0,0,0,0),(1279202,0,23258,0,0,0,0),(1279202,0,23259,0,0,0,0),(1279202,0,23260,0,0,0,0),(1279202,0,23261,0,0,0,0),(1279202,0,23262,0,0,0,0),(1279202,0,23263,0,0,0,0),(1279202,0,23264,0,0,0,0),(1278501,0,117,0,0,0,0),(1278501,0,159,0,0,0,0),(1278501,0,1179,0,0,0,0),(1278501,0,1205,0,0,0,0),(1278501,0,1645,0,0,0,0),(1278501,0,1708,0,0,0,0),(1278501,0,2287,0,0,0,0),(1278501,0,2593,0,0,0,0),(1278501,0,2594,0,0,0,0),(1278501,0,2595,0,0,0,0),(1278501,0,2596,0,0,0,0),(1278501,0,2723,0,0,0,0),(1278501,0,3770,0,0,0,0),(1278501,0,3771,0,0,0,0),(1278501,0,4536,0,0,0,0),(1278501,0,4537,0,0,0,0),(1278501,0,4538,0,0,0,0),(1278501,0,4539,0,0,0,0),(1278501,0,4540,0,0,0,0),(1278501,0,4541,0,0,0,0),(1278501,0,4542,0,0,0,0),(1278501,0,4544,0,0,0,0),(1278501,0,4599,0,0,0,0),(1278501,0,4601,0,0,0,0),(1278501,0,4602,0,0,0,0),(1278501,0,4604,0,0,0,0),(1278501,0,4605,0,0,0,0),(1278501,0,4606,0,0,0,0),(1278501,0,4607,0,0,0,0),(1278501,0,4608,0,0,0,0),(1278501,0,8766,0,0,0,0),(1278501,0,8948,0,0,0,0),(1278501,0,8950,0,0,0,0),(1278501,0,8952,0,0,0,0),(1278501,0,8953,0,0,0,0),(1277702,0,16437,0,0,0,0),(1277702,0,16440,0,0,0,0),(1277702,0,16441,0,0,0,0),(1277702,0,16442,0,0,0,0),(1277702,0,16443,0,0,0,0),(1277702,0,16444,0,0,0,0),(1277702,0,16446,0,0,0,0),(1277702,0,16448,0,0,0,0),(1277702,0,16449,0,0,0,0),(1277702,0,16450,0,0,0,0),(1277702,0,16451,0,0,0,0),(1277702,0,16452,0,0,0,0),(1277702,0,16453,0,0,0,0),(1277702,0,16454,0,0,0,0),(1277702,0,16455,0,0,0,0),(1277702,0,16456,0,0,0,0),(1277702,0,16457,0,0,0,0),(1277702,0,16459,0,0,0,0),(1277702,0,16462,0,0,0,0),(1277702,0,16463,0,0,0,0),(1277702,0,16465,0,0,0,0),(1277702,0,16466,0,0,0,0),(1277702,0,16467,0,0,0,0),(1277702,0,16468,0,0,0,0),(1277702,0,16471,0,0,0,0),(1277702,0,16472,0,0,0,0),(1277702,0,16473,0,0,0,0),(1277702,0,16474,0,0,0,0),(1277702,0,16475,0,0,0,0),(1277702,0,16476,0,0,0,0),(1277702,0,16477,0,0,0,0),(1277702,0,16478,0,0,0,0),(1277702,0,16479,0,0,0,0),(1277702,0,16480,0,0,0,0),(1277702,0,16483,0,0,0,0),(1277702,0,16484,0,0,0,0),(1277702,0,17578,0,0,0,0),(1277702,0,17579,0,0,0,0),(1277702,0,17580,0,0,0,0),(1277702,0,17581,0,0,0,0),(1277702,0,17583,0,0,0,0),(1277702,0,17584,0,0,0,0),(1277702,0,17602,0,0,0,0),(1277702,0,17603,0,0,0,0),(1277702,0,17604,0,0,0,0),(1277702,0,17605,0,0,0,0),(1277702,0,17607,0,0,0,0),(1277702,0,17608,0,0,0,0),(1277702,0,23272,0,0,0,0),(1277702,0,23273,0,0,0,0),(1277702,0,23274,0,0,0,0),(1277702,0,23275,0,0,0,0),(1277702,0,23276,0,0,0,0),(1277702,0,23277,0,0,0,0),(1277702,0,23278,0,0,0,0),(1277702,0,23279,0,0,0,0),(1277702,0,23280,0,0,0,0),(1277702,0,23281,0,0,0,0),(1277702,0,23282,0,0,0,0),(1277702,0,23283,0,0,0,0),(1277702,0,23284,0,0,0,0),(1277702,0,23285,0,0,0,0),(1277702,0,23286,0,0,0,0),(1277702,0,23287,0,0,0,0),(1277702,0,23288,0,0,0,0),(1277702,0,23289,0,0,0,0),(1277702,0,23290,0,0,0,0),(1277702,0,23291,0,0,0,0),(1277702,0,23292,0,0,0,0),(1277702,0,23293,0,0,0,0),(1277702,0,23294,0,0,0,0),(1277702,0,23295,0,0,0,0),(1277702,0,23296,0,0,0,0),(1277702,0,23297,0,0,0,0),(1277702,0,23298,0,0,0,0),(1277702,0,23299,0,0,0,0),(1277702,0,23300,0,0,0,0),(1277702,0,23301,0,0,0,0),(1277702,0,23302,0,0,0,0),(1277702,0,23303,0,0,0,0),(1277702,0,23304,0,0,0,0),(1277702,0,23305,0,0,0,0),(1277702,0,23306,0,0,0,0),(1277702,0,23307,0,0,0,0),(1277702,0,23308,0,0,0,0),(1277702,0,23309,0,0,0,0),(1277702,0,23310,0,0,0,0),(1277702,0,23311,0,0,0,0),(1277702,0,23312,0,0,0,0),(1277702,0,23313,0,0,0,0),(1277702,0,23314,0,0,0,0),(1277702,0,23315,0,0,0,0),(1277702,0,23316,0,0,0,0),(1277702,0,23317,0,0,0,0),(1277702,0,23318,0,0,0,0),(1277702,0,23319,0,0,0,0),(1278401,0,5565,0,0,0,0),(1278401,0,16583,0,0,0,0),(1278401,0,17020,0,0,0,0),(1278401,0,17021,0,0,0,0),(1278401,0,17026,0,0,0,0),(1278401,0,17028,0,0,0,0),(1278401,0,17029,0,0,0,0),(1278401,0,21177,0,0,0,0),(1278401,0,17031,0,0,0,0),(1278401,0,17032,0,0,0,0),(1278401,0,17033,0,0,0,0),(1278401,0,17034,0,0,0,0),(1278401,0,17035,0,0,0,0),(1278401,0,17036,0,0,0,0),(1278401,0,17037,0,0,0,0),(1278401,0,17038,0,0,0,0),(1278202,0,12584,0,0,0,0),(1278202,0,18825,0,0,0,0),(1278202,0,18827,0,0,0,0),(1278202,0,18830,0,0,0,0),(1278202,0,18833,0,0,0,0),(1278202,0,18836,0,0,0,0),(1278202,0,18838,0,0,0,0),(1278202,0,18843,0,0,0,0),(1278202,0,18847,0,0,0,0),(1278202,0,18855,0,0,0,0),(1278202,0,18865,0,0,0,0),(1278202,0,18867,0,0,0,0),(1278202,0,18869,0,0,0,0),(1278202,0,18873,0,0,0,0),(1278202,0,18876,0,0,0,0),(1278202,0,23451,0,0,0,0),(1278202,0,23452,0,0,0,0),(1278202,0,23453,0,0,0,0),(1278202,0,23454,0,0,0,0),(1278202,0,23455,0,0,0,0),(1278202,0,23456,0,0,0,0),(1279401,0,117,0,0,0,0),(1279401,0,159,0,0,0,0),(1279401,0,1179,0,0,0,0),(1279401,0,1205,0,0,0,0),(1279401,0,1645,0,0,0,0),(1279401,0,1708,0,0,0,0),(1279401,0,2287,0,0,0,0),(1279401,0,2593,0,0,0,0),(1279401,0,2594,0,0,0,0),(1279401,0,2595,0,0,0,0),(1279401,0,2596,0,0,0,0),(1279401,0,2723,0,0,0,0),(1279401,0,3770,0,0,0,0),(1279401,0,3771,0,0,0,0),(1279401,0,4536,0,0,0,0),(1279401,0,4537,0,0,0,0),(1279401,0,4538,0,0,0,0),(1279401,0,4539,0,0,0,0),(1279401,0,4540,0,0,0,0),(1279401,0,4541,0,0,0,0),(1279401,0,4542,0,0,0,0),(1279401,0,4544,0,0,0,0),(1279401,0,4599,0,0,0,0),(1279401,0,4601,0,0,0,0),(1279401,0,4602,0,0,0,0),(1279401,0,4604,0,0,0,0),(1279401,0,4605,0,0,0,0),(1279401,0,4606,0,0,0,0),(1279401,0,4607,0,0,0,0),(1279401,0,4608,0,0,0,0),(1279401,0,8766,0,0,0,0),(1279401,0,8948,0,0,0,0),(1279401,0,8950,0,0,0,0),(1279401,0,8952,0,0,0,0),(1279401,0,8953,0,0,0,0),(1458102,0,16345,0,0,0,0),(1458102,0,18826,0,0,0,0),(1458102,0,18828,0,0,0,0),(1458102,0,18831,0,0,0,0),(1458102,0,18835,0,0,0,0),(1458102,0,18837,0,0,0,0),(1458102,0,18840,0,0,0,0),(1458102,0,18844,0,0,0,0),(1458102,0,18848,0,0,0,0),(1458102,0,18860,0,0,0,0),(1458102,0,18866,0,0,0,0),(1458102,0,18868,0,0,0,0),(1458102,0,18871,0,0,0,0),(1458102,0,18874,0,0,0,0),(1458102,0,18877,0,0,0,0),(1458102,0,23464,0,0,0,0),(1458102,0,23465,0,0,0,0),(1458102,0,23466,0,0,0,0),(1458102,0,23467,0,0,0,0),(1458102,0,23468,0,0,0,0),(1458102,0,23469,0,0,0,0),(100,0,21833,0,0,0,0),(100,0,21829,0,0,0,0),(100,0,21815,0,0,0,0),(301401,0,3371,0,0,0,0),(301401,0,3372,0,0,0,0),(301401,0,3419,0,0,0,0),(301401,0,3420,0,0,0,0),(301401,0,3421,0,0,0,0),(301401,0,3422,0,0,0,0),(301401,0,3423,0,0,0,0),(301401,0,3424,0,0,0,0),(301401,0,8925,0,0,0,0),(301401,0,18256,0,0,0,0),(50534,0,23176,20,3600,0,0),(50534,0,19299,0,0,0,0),(50534,0,23161,0,0,0,0),(50534,0,5265,0,0,0,0),(101,0,49000,0,0,0,80000),(50534,0,4600,0,0,0,0),(50534,0,17405,0,0,0,0),(50534,0,19300,0,0,0,0),(50638,0,17196,0,0,0,0),(50638,0,17194,0,0,0,0),(50638,0,21236,0,0,0,0),(50638,0,21254,0,0,0,0),(50638,0,21240,0,0,0,0),(50638,0,21235,0,0,0,0),(50638,0,22324,0,0,0,0),(50638,0,21721,0,0,0,0),(50638,0,17200,0,0,0,0),(50638,0,17201,0,0,0,0),(50653,0,17202,0,0,0,0),(50647,0,17402,0,0,0,0),(50647,0,2888,0,0,0,0),(50647,0,17222,0,0,0,0),(50647,0,19222,0,0,0,0),(50640,0,21215,0,0,0,0),(50640,0,17407,0,0,0,0),(50640,0,8950,0,0,0,0),(50640,0,21030,0,0,0,0),(50640,0,17405,0,0,0,0),(50650,0,5859,0,0,0,0),(455502,0,159,0,0,0,0),(455502,0,1179,0,0,0,0),(455502,0,1205,0,0,0,0),(455502,0,1645,0,0,0,0),(455502,0,1708,0,0,0,0),(455502,0,8766,0,0,0,0),(455502,0,2512,0,0,0,0),(455502,0,2515,0,0,0,0),(455502,0,2516,0,0,0,0),(455502,0,2519,0,0,0,0),(455502,0,2946,0,0,0,0),(455502,0,2947,0,0,0,0),(455502,0,3030,0,0,0,0),(455502,0,3033,0,0,0,0),(455502,0,3107,0,0,0,0),(455502,0,3108,0,0,0,0),(455502,0,3111,0,0,0,0),(455502,0,3131,0,0,0,0),(455502,0,3135,0,0,0,0),(455502,0,3137,0,0,0,0),(455502,0,4470,0,0,0,0),(455502,0,4471,0,0,0,0),(455502,0,4496,0,0,0,0),(455502,0,4497,0,0,0,0),(455502,0,4498,0,0,0,0),(455502,0,5048,0,0,0,0),(455502,0,11284,0,0,0,0),(455502,0,11285,0,0,0,0),(455502,0,15326,0,0,0,0),(455502,0,15327,0,0,0,0),(101,0,50520,0,0,0,0),(101,0,51230,0,0,0,80000),(101,0,80060,0,0,0,0),(101,0,51029,0,0,0,80000),(101,0,50745,0,0,0,0);
+/*!40000 ALTER TABLE `npc_vendor_template` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18
