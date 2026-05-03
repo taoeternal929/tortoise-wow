@@ -8828,12 +8828,32 @@ void Player::CastItemCombatSpell(Unit* Target, WeaponAttackType attType, float c
                 else
                     CastSpell(Target, spellInfo->Id, true, item);
 
-                if (charges > 1)
-                    item->SetEnchantmentCharges(TEMP_ENCHANTMENT_SLOT, charges - 1);
-                else if (charges == 1)
+                float consumeChance = 100.0f;
+                ApplySpellMod(spellInfo->Id, SPELLMOD_CHANCE_TO_NOT_CONSUME, consumeChance);
+                if (consumeChance == 100.0f &&
+                        spellInfo->IsFitToFamily(SPELLFAMILY_ROGUE, UI64LIT(268558336)))
                 {
-                    ApplyEnchantment(item, TEMP_ENCHANTMENT_SLOT, false);
-                    item->ClearEnchantment(TEMP_ENCHANTMENT_SLOT);
+                    if (Aura* aura = GetAura(52520, EFFECT_INDEX_1))
+                        consumeChance += aura->GetModifier()->m_amount;
+                    else if (Aura* aura = GetAura(52519, EFFECT_INDEX_1))
+                        consumeChance += aura->GetModifier()->m_amount;
+                    else if (Aura* aura = GetAura(52518, EFFECT_INDEX_1))
+                        consumeChance += aura->GetModifier()->m_amount;
+                }
+                if (consumeChance < 0.0f)
+                    consumeChance = 0.0f;
+                else if (consumeChance > 100.0f)
+                    consumeChance = 100.0f;
+
+                if (roll_chance_f(consumeChance))
+                {
+                    if (charges > 1)
+                        item->SetEnchantmentCharges(TEMP_ENCHANTMENT_SLOT, charges - 1);
+                    else if (charges == 1)
+                    {
+                        ApplyEnchantment(item, TEMP_ENCHANTMENT_SLOT, false);
+                        item->ClearEnchantment(TEMP_ENCHANTMENT_SLOT);
+                    }
                 }
             }
         }

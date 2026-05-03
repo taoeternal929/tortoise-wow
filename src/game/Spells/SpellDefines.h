@@ -517,7 +517,8 @@ enum SpellModOp
     SPELLMOD_SPELL_BONUS_DAMAGE     = 24,
     SPELLMOD_MULTIPLE_VALUE         = 27,
     SPELLMOD_RESIST_DISPEL_CHANCE   = 28,
-    MAX_SPELLMOD                    = 29,
+    SPELLMOD_CHANCE_TO_NOT_CONSUME  = 33,
+    MAX_SPELLMOD                    = 34,
 };
 
 // Spell aura states
