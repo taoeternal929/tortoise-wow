@@ -90,6 +90,38 @@ bool FileExists(const char* file)
     return false;
 }
 
+bool ResolveMPQFilename(char* file)
+{
+    if (FileExists(file))
+        return true;
+
+    size_t len = strlen(file);
+    if (len < 4 || file[len - 4] != '.')
+        return false;
+
+    char originalExt[4];
+    memcpy(originalExt, file + len - 3, sizeof(originalExt));
+
+    for (int mask = 0; mask < 8; ++mask)
+    {
+        file[len - 3] = (mask & 1) ? 'M' : 'm';
+        file[len - 2] = (mask & 2) ? 'P' : 'p';
+        file[len - 1] = (mask & 4) ? 'Q' : 'q';
+
+        if (FileExists(file))
+            return true;
+    }
+
+    memcpy(file + len - 3, originalExt, sizeof(originalExt));
+    return false;
+}
+
+void AddArchiveNameIfExists(char* file, std::vector<std::string>& pArchiveNames)
+{
+    if (ResolveMPQFilename(file))
+        pArchiveNames.push_back(file);
+}
+
 void strToLower(char* str)
 {
     while (*str)
@@ -324,12 +356,8 @@ bool scan_patches(char* scanmatch, std::vector<std::string>& pArchiveNames)
         {
             sprintf(path, "%s.MPQ", scanmatch);
         }
-        if (FILE* h = fopen(path, "rb"))
-        {
-            fclose(h);
-            //matches.push_back(path);
+        if (ResolveMPQFilename(path))
             pArchiveNames.push_back(path);
-        }
     }
 
     return true;
@@ -347,18 +375,18 @@ bool fillArchiveNameVector(std::vector<std::string>& pArchiveNames)
     // open expansion and common files
     printf("Opening data files from data directory.\n");
     sprintf(path, "%sterrain.MPQ", input_path);
-    pArchiveNames.push_back(path);
+    AddArchiveNameIfExists(path, pArchiveNames);
     sprintf(path, "%smodel.MPQ", input_path);
     //pArchiveNames.push_back(path);
-    pArchiveNames.push_back(path);
+    AddArchiveNameIfExists(path, pArchiveNames);
 	sprintf(path, "%stexture.MPQ", input_path);
-    pArchiveNames.push_back(path);
+    AddArchiveNameIfExists(path, pArchiveNames);
 	sprintf(path, "%swmo.MPQ", input_path);
-    pArchiveNames.push_back(path);
+    AddArchiveNameIfExists(path, pArchiveNames);
 	sprintf(path, "%sbase.MPQ", input_path);
-    pArchiveNames.push_back(path);
+    AddArchiveNameIfExists(path, pArchiveNames);
     sprintf(path, "%smisc.MPQ", input_path);
-    pArchiveNames.push_back(path);
+    AddArchiveNameIfExists(path, pArchiveNames);
 
 
     // now, scan for the patch levels in the core dir

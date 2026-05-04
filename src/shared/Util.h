@@ -30,7 +30,7 @@
 #include <vector>
 #include <memory>
 
-#include "fmt/core.h"
+#include "fmt/format.h"
 #include "Utilities/robin_hood.h"
 
 extern const char* lsan_output_path;
