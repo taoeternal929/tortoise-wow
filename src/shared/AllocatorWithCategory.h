@@ -221,6 +221,12 @@ template <class _Ty, class _Other, const char* Category1, const char* Category2>
 	return true;
 }
 
+template <class _Ty, class _Other, const char* Category1, const char* Category2>
+[[nodiscard]] _CONSTEXPR20 bool operator!=(const AllocatorWithCategory<_Ty, Category1>& left, const AllocatorWithCategory<_Other, Category2>& right) noexcept
+{
+	return !(left == right);
+}
+
 template<typename Type, const char* CategoryName>
 using turtle_vector = std::vector<Type, AllocatorWithCategory<Type, CategoryName>>;
 

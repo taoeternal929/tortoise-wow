@@ -1,1 +1,0 @@
-UPDATE quest_template SET SrcItemId = 50740 WHERE entry = 40005;

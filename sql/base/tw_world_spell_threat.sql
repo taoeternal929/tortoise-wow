@@ -1,155 +1,54 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `spell_threat`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for spell_threat
--- ----------------------------
 DROP TABLE IF EXISTS `spell_threat`;
-CREATE TABLE `spell_threat`  (
-  `entry` mediumint(8) UNSIGNED NOT NULL,
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `spell_threat` (
+  `entry` mediumint(8) unsigned NOT NULL,
   `Threat` smallint(6) NOT NULL,
   `multiplier` float NOT NULL DEFAULT 1 COMMENT 'threat multiplier for damage/healing',
   `ap_bonus` float NOT NULL DEFAULT 0 COMMENT 'additional threat bonus from attack power',
   PRIMARY KEY (`entry`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of spell_threat
--- ----------------------------
-INSERT INTO `spell_threat` VALUES (78, 20, 1, 0);
-INSERT INTO `spell_threat` VALUES (284, 39, 1, 0);
-INSERT INTO `spell_threat` VALUES (285, 59, 1, 0);
-INSERT INTO `spell_threat` VALUES (770, 108, 1, 0);
-INSERT INTO `spell_threat` VALUES (20243, 101, 1, 0);
-INSERT INTO `spell_threat` VALUES (1608, 78, 1, 0);
-INSERT INTO `spell_threat` VALUES (99, 9, 1, 0);
-INSERT INTO `spell_threat` VALUES (1715, 61, 1, 0);
-INSERT INTO `spell_threat` VALUES (6572, 155, 1, 0);
-INSERT INTO `spell_threat` VALUES (6574, 195, 1, 0);
-INSERT INTO `spell_threat` VALUES (7372, 101, 1, 0);
-INSERT INTO `spell_threat` VALUES (7373, 141, 1, 0);
-INSERT INTO `spell_threat` VALUES (7379, 235, 1, 0);
-INSERT INTO `spell_threat` VALUES (7386, 100, 1, 0);
-INSERT INTO `spell_threat` VALUES (7405, 140, 1, 0);
-INSERT INTO `spell_threat` VALUES (8380, 180, 1, 0);
-INSERT INTO `spell_threat` VALUES (1735, 15, 1, 0);
-INSERT INTO `spell_threat` VALUES (779, 0, 1.75, 0);
-INSERT INTO `spell_threat` VALUES (9490, 20, 1, 0);
-INSERT INTO `spell_threat` VALUES (9747, 30, 1, 0);
-INSERT INTO `spell_threat` VALUES (11564, 98, 1, 0);
-INSERT INTO `spell_threat` VALUES (11565, 118, 1, 0);
-INSERT INTO `spell_threat` VALUES (11566, 137, 1, 0);
-INSERT INTO `spell_threat` VALUES (11567, 145, 1, 0);
-INSERT INTO `spell_threat` VALUES (11596, 220, 1, 0);
-INSERT INTO `spell_threat` VALUES (11597, 261, 1, 0);
-INSERT INTO `spell_threat` VALUES (11600, 275, 1, 0);
-INSERT INTO `spell_threat` VALUES (11601, 315, 1, 0);
-INSERT INTO `spell_threat` VALUES (24640, 5, 1, 0);
-INSERT INTO `spell_threat` VALUES (14274, 200, 1, 0);
-INSERT INTO `spell_threat` VALUES (6807, 0, 1.75, 0);
-INSERT INTO `spell_threat` VALUES (15629, 300, 1, 0);
-INSERT INTO `spell_threat` VALUES (15630, 400, 1, 0);
-INSERT INTO `spell_threat` VALUES (15631, 500, 1, 0);
-INSERT INTO `spell_threat` VALUES (15632, 600, 1, 0);
-INSERT INTO `spell_threat` VALUES (17735, 0, 2, 0);
-INSERT INTO `spell_threat` VALUES (20736, 100, 1, 0);
-INSERT INTO `spell_threat` VALUES (23922, 160, 1, 0);
-INSERT INTO `spell_threat` VALUES (23923, 190, 1, 0);
-INSERT INTO `spell_threat` VALUES (23924, 220, 1, 0);
-INSERT INTO `spell_threat` VALUES (23925, 250, 1, 0);
-INSERT INTO `spell_threat` VALUES (24394, 580, 1, 0);
-INSERT INTO `spell_threat` VALUES (6673, 5, 1, 0);
-INSERT INTO `spell_threat` VALUES (25286, 175, 1, 0);
-INSERT INTO `spell_threat` VALUES (25288, 355, 1, 0);
-INSERT INTO `spell_threat` VALUES (9898, 39, 1, 0);
-INSERT INTO `spell_threat` VALUES (16857, 108, 1, 0);
-INSERT INTO `spell_threat` VALUES (1160, 11, 1, 0);
-INSERT INTO `spell_threat` VALUES (845, 10, 1, 0);
-INSERT INTO `spell_threat` VALUES (72, 180, 1, 0);
-INSERT INTO `spell_threat` VALUES (6343, 17, 1, 0);
-INSERT INTO `spell_threat` VALUES (8198, 40, 1, 0);
-INSERT INTO `spell_threat` VALUES (8204, 64, 1, 0);
-INSERT INTO `spell_threat` VALUES (8205, 96, 1, 0);
-INSERT INTO `spell_threat` VALUES (11580, 143, 1, 0);
-INSERT INTO `spell_threat` VALUES (11581, 180, 1, 0);
-INSERT INTO `spell_threat` VALUES (20925, 20, 1, 0);
-INSERT INTO `spell_threat` VALUES (20927, 30, 1, 0);
-INSERT INTO `spell_threat` VALUES (20928, 40, 1, 0);
-INSERT INTO `spell_threat` VALUES (2139, 300, 1, 0);
-INSERT INTO `spell_threat` VALUES (7369, 40, 1, 0);
-INSERT INTO `spell_threat` VALUES (11608, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (11609, 70, 1, 0);
-INSERT INTO `spell_threat` VALUES (20569, 100, 1, 0);
-INSERT INTO `spell_threat` VALUES (15237, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (19742, 14, 1, 0);
-INSERT INTO `spell_threat` VALUES (5677, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (10491, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (10493, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (10494, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (5672, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (16191, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (17355, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (17360, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (21992, 145, 1, 0);
-INSERT INTO `spell_threat` VALUES (27648, 90, 1, 0);
-INSERT INTO `spell_threat` VALUES (5242, 11, 1, 0);
-INSERT INTO `spell_threat` VALUES (6192, 17, 1, 0);
-INSERT INTO `spell_threat` VALUES (11549, 26, 1, 0);
-INSERT INTO `spell_threat` VALUES (11550, 39, 1, 0);
-INSERT INTO `spell_threat` VALUES (11551, 56, 1, 0);
-INSERT INTO `spell_threat` VALUES (25289, 70, 1, 0);
-INSERT INTO `spell_threat` VALUES (6190, 17, 1, 0);
-INSERT INTO `spell_threat` VALUES (11554, 21, 1, 0);
-INSERT INTO `spell_threat` VALUES (11555, 32, 1, 0);
-INSERT INTO `spell_threat` VALUES (11556, 42, 1, 0);
-INSERT INTO `spell_threat` VALUES (5676, 0, 2, 0);
-INSERT INTO `spell_threat` VALUES (8042, 0, 2, 0);
-INSERT INTO `spell_threat` VALUES (19740, 4, 1, 0);
-INSERT INTO `spell_threat` VALUES (19834, 12, 1, 0);
-INSERT INTO `spell_threat` VALUES (19835, 22, 1, 0);
-INSERT INTO `spell_threat` VALUES (19836, 32, 1, 0);
-INSERT INTO `spell_threat` VALUES (19837, 42, 1, 0);
-INSERT INTO `spell_threat` VALUES (19838, 52, 1, 0);
-INSERT INTO `spell_threat` VALUES (25291, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (20911, 30, 1, 0);
-INSERT INTO `spell_threat` VALUES (20912, 40, 1, 0);
-INSERT INTO `spell_threat` VALUES (20913, 50, 1, 0);
-INSERT INTO `spell_threat` VALUES (20914, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (19977, 40, 1, 0);
-INSERT INTO `spell_threat` VALUES (19978, 50, 1, 0);
-INSERT INTO `spell_threat` VALUES (19979, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (1022, 10, 1, 0);
-INSERT INTO `spell_threat` VALUES (5599, 24, 1, 0);
-INSERT INTO `spell_threat` VALUES (10278, 38, 1, 0);
-INSERT INTO `spell_threat` VALUES (6940, 46, 1, 0);
-INSERT INTO `spell_threat` VALUES (20729, 54, 1, 0);
-INSERT INTO `spell_threat` VALUES (1038, 26, 1, 0);
-INSERT INTO `spell_threat` VALUES (1044, 18, 1, 0);
-INSERT INTO `spell_threat` VALUES (25782, 52, 1, 0);
-INSERT INTO `spell_threat` VALUES (25916, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (25899, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (25894, 0, 0, 0);
-INSERT INTO `spell_threat` VALUES (25890, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (25895, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (25898, 60, 1, 0);
-INSERT INTO `spell_threat` VALUES (633, 0, 2, 0);
-INSERT INTO `spell_threat` VALUES (8092, 0, 2, 0);
+--
+-- Dumping data for table `spell_threat`
+--
 
+LOCK TABLES `spell_threat` WRITE;
+/*!40000 ALTER TABLE `spell_threat` DISABLE KEYS */;
+INSERT INTO `spell_threat` VALUES (78,20,1,0),(284,39,1,0),(285,59,1,0),(770,108,1,0),(20243,101,1,0),(1608,78,1,0),(99,9,1,0),(1715,61,1,0),(6572,155,1,0),(6574,195,1,0),(7372,101,1,0),(7373,141,1,0),(7379,235,1,0),(7386,100,1,0),(7405,140,1,0),(8380,180,1,0),(1735,15,1,0),(779,0,1.75,0),(9490,20,1,0),(9747,30,1,0),(11564,98,1,0),(11565,118,1,0),(11566,137,1,0),(11567,145,1,0),(11596,220,1,0),(11597,261,1,0),(11600,275,1,0),(11601,315,1,0),(24640,5,1,0),(14274,200,1,0),(6807,0,1.75,0),(15629,300,1,0),(15630,400,1,0),(15631,500,1,0),(15632,600,1,0),(17735,0,2,0),(20736,100,1,0),(23922,160,1,0),(23923,190,1,0),(23924,220,1,0),(23925,250,1,0),(24394,580,1,0),(6673,5,1,0),(25286,175,1,0),(25288,355,1,0),(9898,39,1,0),(16857,108,1,0),(1160,11,1,0),(845,10,1,0),(72,180,1,0),(6343,17,1,0),(8198,40,1,0),(8204,64,1,0),(8205,96,1,0),(11580,143,1,0),(11581,180,1,0),(20925,20,1,0),(20927,30,1,0),(20928,40,1,0),(2139,300,1,0),(7369,40,1,0),(11608,60,1,0),(11609,70,1,0),(20569,100,1,0),(15237,0,0,0),(19742,14,1,0),(5677,0,0,0),(10491,0,0,0),(10493,0,0,0),(10494,0,0,0),(5672,0,0,0),(16191,0,0,0),(17355,0,0,0),(17360,0,0,0),(21992,145,1,0),(27648,90,1,0),(5242,11,1,0),(6192,17,1,0),(11549,26,1,0),(11550,39,1,0),(11551,56,1,0),(25289,70,1,0),(6190,17,1,0),(11554,21,1,0),(11555,32,1,0),(11556,42,1,0),(5676,0,2,0),(8042,0,2,0),(19740,4,1,0),(19834,12,1,0),(19835,22,1,0),(19836,32,1,0),(19837,42,1,0),(19838,52,1,0),(25291,60,1,0),(20911,30,1,0),(20912,40,1,0),(20913,50,1,0),(20914,60,1,0),(19977,40,1,0),(19978,50,1,0),(19979,60,1,0),(1022,10,1,0),(5599,24,1,0),(10278,38,1,0),(6940,46,1,0),(20729,54,1,0),(1038,26,1,0),(1044,18,1,0),(25782,52,1,0),(25916,60,1,0),(25899,60,1,0),(25894,0,0,0),(25890,60,1,0),(25895,60,1,0),(25898,60,1,0),(633,0,2,0),(8092,0,2,0);
+/*!40000 ALTER TABLE `spell_threat` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:19

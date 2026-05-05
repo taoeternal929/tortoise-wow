@@ -1,91 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `areatrigger_tavern`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for areatrigger_tavern
--- ----------------------------
 DROP TABLE IF EXISTS `areatrigger_tavern`;
-CREATE TABLE `areatrigger_tavern`  (
-  `id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Identifier',
-  `name` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `areatrigger_tavern` (
+  `id` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Identifier',
+  `name` text DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Trigger System' ROW_FORMAT = Dynamic;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=DYNAMIC COMMENT='Trigger System';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of areatrigger_tavern
--- ----------------------------
-INSERT INTO `areatrigger_tavern` VALUES (71, 'Westfall - Sentinel Hill Inn');
-INSERT INTO `areatrigger_tavern` VALUES (562, 'Elwynn Forest - Goldshire - Lion\'s Pride Inn');
-INSERT INTO `areatrigger_tavern` VALUES (682, 'Redridge Mountains - Lakeshire Inn');
-INSERT INTO `areatrigger_tavern` VALUES (707, 'Duskwood - Darkshire - Scarlet Raven Inn');
-INSERT INTO `areatrigger_tavern` VALUES (708, 'Hillsbrad Foothills - Southshore Inn');
-INSERT INTO `areatrigger_tavern` VALUES (709, 'Dustwallow Marsh - Theramore Isle');
-INSERT INTO `areatrigger_tavern` VALUES (710, 'Dun Morogh - Kharanos - Thunderbrew Distillery');
-INSERT INTO `areatrigger_tavern` VALUES (712, 'Loch Modan - Thelsamar - Stoutlager Inn');
-INSERT INTO `areatrigger_tavern` VALUES (713, 'Wetlands - Menethil Harbor - Deepwater Tavern');
-INSERT INTO `areatrigger_tavern` VALUES (715, 'Teldrassil - Dolanaar');
-INSERT INTO `areatrigger_tavern` VALUES (716, 'Darkshore - Auberdine');
-INSERT INTO `areatrigger_tavern` VALUES (717, 'Ashenvale - Astranaar');
-INSERT INTO `areatrigger_tavern` VALUES (719, 'Tirisfal Glades - Brill - Gallows\' End Tavern');
-INSERT INTO `areatrigger_tavern` VALUES (720, 'Silverpine Forest ');
-INSERT INTO `areatrigger_tavern` VALUES (721, 'Hillsbrad Foothills ');
-INSERT INTO `areatrigger_tavern` VALUES (722, 'Mulgore ');
-INSERT INTO `areatrigger_tavern` VALUES (742, 'The Barrens ');
-INSERT INTO `areatrigger_tavern` VALUES (743, 'The Barrens ');
-INSERT INTO `areatrigger_tavern` VALUES (843, 'Durotar ');
-INSERT INTO `areatrigger_tavern` VALUES (844, 'Swamp of Sorrows ');
-INSERT INTO `areatrigger_tavern` VALUES (862, 'Stranglethorn Vale ');
-INSERT INTO `areatrigger_tavern` VALUES (982, 'The Barrens ');
-INSERT INTO `areatrigger_tavern` VALUES (1022, 'Stonetalon Mountains ');
-INSERT INTO `areatrigger_tavern` VALUES (1023, 'Tanaris ');
-INSERT INTO `areatrigger_tavern` VALUES (1024, 'Feralas ');
-INSERT INTO `areatrigger_tavern` VALUES (1025, 'Feralas ');
-INSERT INTO `areatrigger_tavern` VALUES (1606, 'Badlands ');
-INSERT INTO `areatrigger_tavern` VALUES (1646, 'Arathi Highlands ');
-INSERT INTO `areatrigger_tavern` VALUES (2266, 'Desolace ');
-INSERT INTO `areatrigger_tavern` VALUES (2267, 'Desolace ');
-INSERT INTO `areatrigger_tavern` VALUES (2286, 'Thousand Needles ');
-INSERT INTO `areatrigger_tavern` VALUES (2287, 'Winterspring ');
-INSERT INTO `areatrigger_tavern` VALUES (2610, 'Ashenvale ');
-INSERT INTO `areatrigger_tavern` VALUES (2786, 'Stormwind backup rest');
-INSERT INTO `areatrigger_tavern` VALUES (178, 'Strahnbrad');
-INSERT INTO `areatrigger_tavern` VALUES (1042, 'Wildhammer Keep');
-INSERT INTO `areatrigger_tavern` VALUES (3690, 'Revantusk Village');
-INSERT INTO `areatrigger_tavern` VALUES (3886, 'Grom\'gol Base Camp');
-INSERT INTO `areatrigger_tavern` VALUES (4058, 'Light\'s Hope Chapel');
-INSERT INTO `areatrigger_tavern` VALUES (3985, 'Cenarion Hold');
-INSERT INTO `areatrigger_tavern` VALUES (4090, 'Stonetalon Peak');
-INSERT INTO `areatrigger_tavern` VALUES (3547, 'The Undercity');
-INSERT INTO `areatrigger_tavern` VALUES (206, 'Dustwallow Marsh - Mudsprocket');
-INSERT INTO `areatrigger_tavern` VALUES (210, 'Durotar - Sparkwater Port');
-INSERT INTO `areatrigger_tavern` VALUES (1, 'Wetlands - Hawk\'s Vigil');
-INSERT INTO `areatrigger_tavern` VALUES (2, 'Tirisfal Uplands - Glenshire');
-INSERT INTO `areatrigger_tavern` VALUES (3, 'Quel\'Thalas - Alah\'Thalas');
-INSERT INTO `areatrigger_tavern` VALUES (4, 'Lapidis Isle - Caelan\'s Rest');
-INSERT INTO `areatrigger_tavern` VALUES (5, 'Gillijim\'s Isle - Maul\'ogg Refuge');
-INSERT INTO `areatrigger_tavern` VALUES (6, 'Burning Steppes - Karfang Hold');
-INSERT INTO `areatrigger_tavern` VALUES (204, 'Stonetalon Mountains - Bael Hardul Inn');
-INSERT INTO `areatrigger_tavern` VALUES (4306, 'Stonetalon Mountains - Powder Town Inn');
-INSERT INTO `areatrigger_tavern` VALUES (4310, 'Tel\'Abim - Tel Co. Basecamp');
-INSERT INTO `areatrigger_tavern` VALUES (5336, 'Tirisfal Glades - Steepcliff Port');
-INSERT INTO `areatrigger_tavern` VALUES (5020, 'Blackstone Island - Rustgate Inn');
-INSERT INTO `areatrigger_tavern` VALUES (2708, 'Thalassian Highlands - Brinthilien Inn');
+--
+-- Dumping data for table `areatrigger_tavern`
+--
 
+LOCK TABLES `areatrigger_tavern` WRITE;
+/*!40000 ALTER TABLE `areatrigger_tavern` DISABLE KEYS */;
+INSERT INTO `areatrigger_tavern` VALUES (71,'Westfall - Sentinel Hill Inn'),(562,'Elwynn Forest - Goldshire - Lion\'s Pride Inn'),(682,'Redridge Mountains - Lakeshire Inn'),(707,'Duskwood - Darkshire - Scarlet Raven Inn'),(708,'Hillsbrad Foothills - Southshore Inn'),(709,'Dustwallow Marsh - Theramore Isle'),(710,'Dun Morogh - Kharanos - Thunderbrew Distillery'),(712,'Loch Modan - Thelsamar - Stoutlager Inn'),(713,'Wetlands - Menethil Harbor - Deepwater Tavern'),(715,'Teldrassil - Dolanaar'),(716,'Darkshore - Auberdine'),(717,'Ashenvale - Astranaar'),(719,'Tirisfal Glades - Brill - Gallows\' End Tavern'),(720,'Silverpine Forest '),(721,'Hillsbrad Foothills '),(722,'Mulgore '),(742,'The Barrens '),(743,'The Barrens '),(843,'Durotar '),(844,'Swamp of Sorrows '),(862,'Stranglethorn Vale '),(982,'The Barrens '),(1022,'Stonetalon Mountains '),(1023,'Tanaris '),(1024,'Feralas '),(1025,'Feralas '),(1606,'Badlands '),(1646,'Arathi Highlands '),(2266,'Desolace '),(2267,'Desolace '),(2286,'Thousand Needles '),(2287,'Winterspring '),(2610,'Ashenvale '),(2786,'Stormwind backup rest'),(178,'Strahnbrad'),(1042,'Wildhammer Keep'),(3690,'Revantusk Village'),(3886,'Grom\'gol Base Camp'),(4058,'Light\'s Hope Chapel'),(3985,'Cenarion Hold'),(4090,'Stonetalon Peak'),(3547,'The Undercity'),(206,'Dustwallow Marsh - Mudsprocket'),(210,'Durotar - Sparkwater Port'),(1,'Wetlands - Hawk\'s Vigil'),(2,'Tirisfal Uplands - Glenshire'),(3,'Quel\'Thalas - Alah\'Thalas'),(4,'Lapidis Isle - Caelan\'s Rest'),(5,'Gillijim\'s Isle - Maul\'ogg Refuge'),(6,'Burning Steppes - Karfang Hold'),(204,'Stonetalon Mountains - Bael Hardul Inn'),(4306,'Stonetalon Mountains - Powder Town Inn'),(4310,'Tel\'Abim - Tel Co. Basecamp'),(5336,'Tirisfal Glades - Steepcliff Port'),(5020,'Blackstone Island - Rustgate Inn'),(2708,'Thalassian Highlands - Brinthilien Inn');
+/*!40000 ALTER TABLE `areatrigger_tavern` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:16

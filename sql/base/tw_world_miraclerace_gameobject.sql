@@ -1,59 +1,55 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `miraclerace_gameobject`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for miraclerace_gameobject
--- ----------------------------
 DROP TABLE IF EXISTS `miraclerace_gameobject`;
-CREATE TABLE `miraclerace_gameobject`  (
-  `raceid` int(10) UNSIGNED NOT NULL,
-  `entry` int(10) UNSIGNED NOT NULL,
-  `chance` int(10) UNSIGNED NOT NULL,
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `miraclerace_gameobject` (
+  `raceid` int(10) unsigned NOT NULL,
+  `entry` int(10) unsigned NOT NULL,
+  `chance` int(10) unsigned NOT NULL,
   `positionx` float NOT NULL,
   `positiony` float NOT NULL,
   `positionz` float NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=DYNAMIC;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of miraclerace_gameobject
--- ----------------------------
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 71, -6138.99, -3902.99, -59.8894);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 39, -6033.26, -3867.92, -60.3826);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 62, -5986.01, -3846.16, -60.641);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 93, -5800.41, -3782.72, -61.4215);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 90, -5716.76, -3800.1, -60.7028);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 71, -5647.85, -4058.74, -61.1982);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 76, -5651.06, -3945.75, -61.2005);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 67, -5712.37, -4170.39, -60.8076);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 94, -5819, -4196.16, -61.7695);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 82, -5980.63, -4199.89, -62.2826);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 27, -6181.22, -4191.54, -61.6828);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 58, -6295.57, -4214.81, -61.376);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 20, -6433.23, -4051.22, -63.2977);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 98, -6415.71, -3941.8, -62.6632);
-INSERT INTO `miraclerace_gameobject` VALUES (1, 1000051, 57, -6292.88, -3899.84, -62.8398);
-INSERT INTO `miraclerace_gameobject` VALUES (2, 1000051, 70, -6177.14, -4014.28, -58.7497);
-INSERT INTO `miraclerace_gameobject` VALUES (2, 1000051, 81, -6069.95, -4014.93, -58.7497);
-INSERT INTO `miraclerace_gameobject` VALUES (2, 1000051, 96, -5998.69, -4016.71, -58.7497);
-INSERT INTO `miraclerace_gameobject` VALUES (2, 1000051, 46, -5940.98, -4018.31, -58.7497);
-INSERT INTO `miraclerace_gameobject` VALUES (2, 1000051, 20, -5903.8, -4018.31, -58.7497);
-INSERT INTO `miraclerace_gameobject` VALUES (2, 1000051, 45, -5832.07, -4018.69, -58.7497);
+--
+-- Dumping data for table `miraclerace_gameobject`
+--
 
+LOCK TABLES `miraclerace_gameobject` WRITE;
+/*!40000 ALTER TABLE `miraclerace_gameobject` DISABLE KEYS */;
+INSERT INTO `miraclerace_gameobject` VALUES (1,1000051,71,-6138.99,-3902.99,-59.8894),(1,1000051,39,-6033.26,-3867.92,-60.3826),(1,1000051,62,-5986.01,-3846.16,-60.641),(1,1000051,93,-5800.41,-3782.72,-61.4215),(1,1000051,90,-5716.76,-3800.1,-60.7028),(1,1000051,71,-5647.85,-4058.74,-61.1982),(1,1000051,76,-5651.06,-3945.75,-61.2005),(1,1000051,67,-5712.37,-4170.39,-60.8076),(1,1000051,94,-5819,-4196.16,-61.7695),(1,1000051,82,-5980.63,-4199.89,-62.2826),(1,1000051,27,-6181.22,-4191.54,-61.6828),(1,1000051,58,-6295.57,-4214.81,-61.376),(1,1000051,20,-6433.23,-4051.22,-63.2977),(1,1000051,98,-6415.71,-3941.8,-62.6632),(1,1000051,57,-6292.88,-3899.84,-62.8398),(2,1000051,70,-6177.14,-4014.28,-58.7497),(2,1000051,81,-6069.95,-4014.93,-58.7497),(2,1000051,96,-5998.69,-4016.71,-58.7497),(2,1000051,46,-5940.98,-4018.31,-58.7497),(2,1000051,20,-5903.8,-4018.31,-58.7497),(2,1000051,45,-5832.07,-4018.69,-58.7497);
+/*!40000 ALTER TABLE `miraclerace_gameobject` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

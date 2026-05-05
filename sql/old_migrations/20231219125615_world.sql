@@ -1,1 +1,0 @@
-UPDATE `quest_template` SET `RewSpell` = 23356, `RewSpellCast` = 1579 WHERE `entry` = 60162;

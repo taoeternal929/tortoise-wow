@@ -1,95 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `spell_elixir`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for spell_elixir
--- ----------------------------
 DROP TABLE IF EXISTS `spell_elixir`;
-CREATE TABLE `spell_elixir`  (
-  `entry` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'SpellId of potion',
-  `mask` tinyint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Mask 0x1 battle 0x2 guardian 0x3 flask 0x7 unstable flasks 0xB shattrath flasks',
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `spell_elixir` (
+  `entry` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'SpellId of potion',
+  `mask` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT 'Mask 0x1 battle 0x2 guardian 0x3 flask 0x7 unstable flasks 0xB shattrath flasks',
   PRIMARY KEY (`entry`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Spell System' ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED COMMENT='Spell System';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of spell_elixir
--- ----------------------------
-INSERT INTO `spell_elixir` VALUES (17624, 3);
-INSERT INTO `spell_elixir` VALUES (17626, 3);
-INSERT INTO `spell_elixir` VALUES (17627, 3);
-INSERT INTO `spell_elixir` VALUES (17629, 3);
-INSERT INTO `spell_elixir` VALUES (17628, 3);
-INSERT INTO `spell_elixir` VALUES (2367, 0);
-INSERT INTO `spell_elixir` VALUES (2374, 0);
-INSERT INTO `spell_elixir` VALUES (3160, 0);
-INSERT INTO `spell_elixir` VALUES (3164, 0);
-INSERT INTO `spell_elixir` VALUES (7844, 0);
-INSERT INTO `spell_elixir` VALUES (8212, 0);
-INSERT INTO `spell_elixir` VALUES (10667, 0);
-INSERT INTO `spell_elixir` VALUES (10669, 0);
-INSERT INTO `spell_elixir` VALUES (11328, 0);
-INSERT INTO `spell_elixir` VALUES (11334, 0);
-INSERT INTO `spell_elixir` VALUES (11390, 0);
-INSERT INTO `spell_elixir` VALUES (11405, 0);
-INSERT INTO `spell_elixir` VALUES (11406, 0);
-INSERT INTO `spell_elixir` VALUES (11474, 0);
-INSERT INTO `spell_elixir` VALUES (16322, 0);
-INSERT INTO `spell_elixir` VALUES (16323, 0);
-INSERT INTO `spell_elixir` VALUES (16329, 0);
-INSERT INTO `spell_elixir` VALUES (17038, 0);
-INSERT INTO `spell_elixir` VALUES (17537, 0);
-INSERT INTO `spell_elixir` VALUES (17538, 0);
-INSERT INTO `spell_elixir` VALUES (17539, 0);
-INSERT INTO `spell_elixir` VALUES (21920, 0);
-INSERT INTO `spell_elixir` VALUES (26276, 0);
-INSERT INTO `spell_elixir` VALUES (673, 0);
-INSERT INTO `spell_elixir` VALUES (2378, 0);
-INSERT INTO `spell_elixir` VALUES (2380, 0);
-INSERT INTO `spell_elixir` VALUES (3166, 0);
-INSERT INTO `spell_elixir` VALUES (3219, 0);
-INSERT INTO `spell_elixir` VALUES (3220, 0);
-INSERT INTO `spell_elixir` VALUES (3222, 0);
-INSERT INTO `spell_elixir` VALUES (3223, 0);
-INSERT INTO `spell_elixir` VALUES (3593, 0);
-INSERT INTO `spell_elixir` VALUES (10668, 0);
-INSERT INTO `spell_elixir` VALUES (10692, 0);
-INSERT INTO `spell_elixir` VALUES (10693, 0);
-INSERT INTO `spell_elixir` VALUES (11319, 0);
-INSERT INTO `spell_elixir` VALUES (11348, 0);
-INSERT INTO `spell_elixir` VALUES (11349, 0);
-INSERT INTO `spell_elixir` VALUES (16321, 0);
-INSERT INTO `spell_elixir` VALUES (11364, 0);
-INSERT INTO `spell_elixir` VALUES (11371, 0);
-INSERT INTO `spell_elixir` VALUES (11396, 0);
-INSERT INTO `spell_elixir` VALUES (15231, 0);
-INSERT INTO `spell_elixir` VALUES (15233, 0);
-INSERT INTO `spell_elixir` VALUES (16325, 0);
-INSERT INTO `spell_elixir` VALUES (16326, 0);
-INSERT INTO `spell_elixir` VALUES (16327, 0);
-INSERT INTO `spell_elixir` VALUES (17535, 0);
-INSERT INTO `spell_elixir` VALUES (24361, 0);
-INSERT INTO `spell_elixir` VALUES (24363, 0);
-INSERT INTO `spell_elixir` VALUES (24382, 0);
-INSERT INTO `spell_elixir` VALUES (24383, 0);
-INSERT INTO `spell_elixir` VALUES (24417, 0);
-INSERT INTO `spell_elixir` VALUES (27652, 0);
-INSERT INTO `spell_elixir` VALUES (27653, 0);
+--
+-- Dumping data for table `spell_elixir`
+--
 
+LOCK TABLES `spell_elixir` WRITE;
+/*!40000 ALTER TABLE `spell_elixir` DISABLE KEYS */;
+INSERT INTO `spell_elixir` VALUES (17624,3),(17626,3),(17627,3),(17629,3),(17628,3),(2367,0),(2374,0),(3160,0),(3164,0),(7844,0),(8212,0),(10667,0),(10669,0),(11328,0),(11334,0),(11390,0),(11405,0),(11406,0),(11474,0),(16322,0),(16323,0),(16329,0),(17038,0),(17537,0),(17538,0),(17539,0),(21920,0),(26276,0),(673,0),(2378,0),(2380,0),(3166,0),(3219,0),(3220,0),(3222,0),(3223,0),(3593,0),(10668,0),(10692,0),(10693,0),(11319,0),(11348,0),(11349,0),(16321,0),(11364,0),(11371,0),(11396,0),(15231,0),(15233,0),(16325,0),(16326,0),(16327,0),(17535,0),(24361,0),(24363,0),(24382,0),(24383,0),(24417,0),(27652,0),(27653,0);
+/*!40000 ALTER TABLE `spell_elixir` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

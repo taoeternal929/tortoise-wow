@@ -1,1 +1,0 @@
-UPDATE broadcast_text SET male_text = 'I hope my men have treated you well, we have become somewhat ragged since our departure from Stormwind.' WHERE entry = 92012;

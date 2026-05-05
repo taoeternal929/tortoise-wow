@@ -3,7 +3,7 @@
 
 Some basic guidelines for contributing to this project
 
-- Target 1.17.2 (7207) from April of 2025
+- Target 1.18.1 (7272) from March of 2026
 - Any SQL updates should be placed in sql/wip_updates/ in a SQL script named for its table. They will be merged into a proper full update when deemed appropriate (Mostly when a spec is fully functional)
 - Always comment SQL blocks
 - Test all contributions thoroughly before issuing a PR. ([DPSMate][21] is a great tool to really test changes)

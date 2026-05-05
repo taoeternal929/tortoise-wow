@@ -1,1 +1,0 @@
-UPDATE broadcast_text SET male_text = 'You heard word from Booty Bay? I\'m expecting a shipment.' WHERE entry = 60504;

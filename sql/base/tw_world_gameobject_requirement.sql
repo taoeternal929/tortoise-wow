@@ -1,56 +1,53 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `gameobject_requirement`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for gameobject_requirement
--- ----------------------------
 DROP TABLE IF EXISTS `gameobject_requirement`;
-CREATE TABLE `gameobject_requirement`  (
-  `guid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Global Unique Identifier',
-  `reqType` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Gameobject Identifier',
-  `reqGuid` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Gameobject Identifier',
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gameobject_requirement` (
+  `guid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Global Unique Identifier',
+  `reqType` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Gameobject Identifier',
+  `reqGuid` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Gameobject Identifier',
   PRIMARY KEY (`guid`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 397162 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Gameobject System' ROW_FORMAT = Fixed;
+) ENGINE=MyISAM AUTO_INCREMENT=397162 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED COMMENT='Gameobject System';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of gameobject_requirement
--- ----------------------------
-INSERT INTO `gameobject_requirement` VALUES (43121, 1, 15536);
-INSERT INTO `gameobject_requirement` VALUES (43126, 1, 35801);
-INSERT INTO `gameobject_requirement` VALUES (361752, 0, 44319);
-INSERT INTO `gameobject_requirement` VALUES (43127, 1, 15365);
-INSERT INTO `gameobject_requirement` VALUES (43128, 1, 15364);
-INSERT INTO `gameobject_requirement` VALUES (43135, 1, 15363);
-INSERT INTO `gameobject_requirement` VALUES (43123, 1, 39924);
-INSERT INTO `gameobject_requirement` VALUES (362149, 1, 43094);
-INSERT INTO `gameobject_requirement` VALUES (43137, 1, 43094);
-INSERT INTO `gameobject_requirement` VALUES (43134, 1, 15646);
-INSERT INTO `gameobject_requirement` VALUES (43120, 1, 17904);
-INSERT INTO `gameobject_requirement` VALUES (43136, 1, 15329);
-INSERT INTO `gameobject_requirement` VALUES (43129, 1, 15330);
-INSERT INTO `gameobject_requirement` VALUES (43124, 1, 15331);
-INSERT INTO `gameobject_requirement` VALUES (43122, 1, 15306);
-INSERT INTO `gameobject_requirement` VALUES (43125, 1, 35864);
-INSERT INTO `gameobject_requirement` VALUES (349151, 0, 43469);
-INSERT INTO `gameobject_requirement` VALUES (43219, 1, 43178);
-INSERT INTO `gameobject_requirement` VALUES (27871, 0, 52161);
-INSERT INTO `gameobject_requirement` VALUES (27888, 0, 53693);
+--
+-- Dumping data for table `gameobject_requirement`
+--
 
+LOCK TABLES `gameobject_requirement` WRITE;
+/*!40000 ALTER TABLE `gameobject_requirement` DISABLE KEYS */;
+INSERT INTO `gameobject_requirement` VALUES (43121,1,15536),(43126,1,35801),(361752,0,44319),(43127,1,15365),(43128,1,15364),(43135,1,15363),(43123,1,39924),(362149,1,43094),(43137,1,43094),(43134,1,15646),(43120,1,17904),(43136,1,15329),(43129,1,15330),(43124,1,15331),(43122,1,15306),(43125,1,35864),(349151,0,43469),(43219,1,43178),(27871,0,52161),(27888,0,53693);
+/*!40000 ALTER TABLE `gameobject_requirement` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:17

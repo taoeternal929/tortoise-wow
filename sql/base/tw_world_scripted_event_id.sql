@@ -1,48 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `scripted_event_id`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for scripted_event_id
--- ----------------------------
 DROP TABLE IF EXISTS `scripted_event_id`;
-CREATE TABLE `scripted_event_id`  (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `scripted_event_id` (
   `id` mediumint(9) NOT NULL,
-  `script_name` char(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `script_name` char(64) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Script library scripted events' ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED COMMENT='Script library scripted events';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of scripted_event_id
--- ----------------------------
-INSERT INTO `scripted_event_id` VALUES (8420, 'event_dreadsteed_ritual_start');
-INSERT INTO `scripted_event_id` VALUES (8428, 'event_dreadsteed_ritual_second_part');
-INSERT INTO `scripted_event_id` VALUES (6721, 'event_king_of_the_foulweald');
-INSERT INTO `scripted_event_id` VALUES (4777, 'event_banner_destroyed');
-INSERT INTO `scripted_event_id` VALUES (9104, 'event_summon_gahzranka');
-INSERT INTO `scripted_event_id` VALUES (747, 'event_test_of_endurance');
-INSERT INTO `scripted_event_id` VALUES (5246, 'event_the_principle_source');
-INSERT INTO `scripted_event_id` VALUES (2228, 'event_awaken_stone_keeper');
-INSERT INTO `scripted_event_id` VALUES (2268, 'event_awaken_archaedas');
-INSERT INTO `scripted_event_id` VALUES (4884, 'event_free_pyroguard_emberseer');
-INSERT INTO `scripted_event_id` VALUES (7216, 'event_rysons_beacon_alliance');
-INSERT INTO `scripted_event_id` VALUES (7219, 'event_rysons_beacon_horde');
-INSERT INTO `scripted_event_id` VALUES (7218, 'event_rysons_beacon_destroyed');
+--
+-- Dumping data for table `scripted_event_id`
+--
 
+LOCK TABLES `scripted_event_id` WRITE;
+/*!40000 ALTER TABLE `scripted_event_id` DISABLE KEYS */;
+INSERT INTO `scripted_event_id` VALUES (8420,'event_dreadsteed_ritual_start'),(8428,'event_dreadsteed_ritual_second_part'),(6721,'event_king_of_the_foulweald'),(4777,'event_banner_destroyed'),(9104,'event_summon_gahzranka'),(747,'event_test_of_endurance'),(5246,'event_the_principle_source'),(2228,'event_awaken_stone_keeper'),(2268,'event_awaken_archaedas'),(4884,'event_free_pyroguard_emberseer'),(7216,'event_rysons_beacon_alliance'),(7219,'event_rysons_beacon_horde'),(7218,'event_rysons_beacon_destroyed');
+/*!40000 ALTER TABLE `scripted_event_id` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

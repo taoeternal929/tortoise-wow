@@ -1,59 +1,53 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `spell_pet_auras`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for spell_pet_auras
--- ----------------------------
 DROP TABLE IF EXISTS `spell_pet_auras`;
-CREATE TABLE `spell_pet_auras`  (
-  `spell` mediumint(8) UNSIGNED NOT NULL COMMENT 'dummy spell id',
-  `pet` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'pet id; 0 = all',
-  `aura` mediumint(8) UNSIGNED NOT NULL COMMENT 'pet aura id',
-  PRIMARY KEY (`spell`, `pet`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Fixed;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `spell_pet_auras` (
+  `spell` mediumint(8) unsigned NOT NULL COMMENT 'dummy spell id',
+  `pet` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'pet id; 0 = all',
+  `aura` mediumint(8) unsigned NOT NULL COMMENT 'pet aura id',
+  PRIMARY KEY (`spell`,`pet`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of spell_pet_auras
--- ----------------------------
-INSERT INTO `spell_pet_auras` VALUES (19028, 0, 25228);
-INSERT INTO `spell_pet_auras` VALUES (19578, 0, 19579);
-INSERT INTO `spell_pet_auras` VALUES (20895, 0, 24529);
-INSERT INTO `spell_pet_auras` VALUES (23785, 416, 23759);
-INSERT INTO `spell_pet_auras` VALUES (23822, 416, 23826);
-INSERT INTO `spell_pet_auras` VALUES (23823, 416, 23827);
-INSERT INTO `spell_pet_auras` VALUES (23824, 416, 23828);
-INSERT INTO `spell_pet_auras` VALUES (23825, 416, 23829);
-INSERT INTO `spell_pet_auras` VALUES (23785, 417, 23762);
-INSERT INTO `spell_pet_auras` VALUES (23822, 417, 23837);
-INSERT INTO `spell_pet_auras` VALUES (23823, 417, 23838);
-INSERT INTO `spell_pet_auras` VALUES (23824, 417, 23839);
-INSERT INTO `spell_pet_auras` VALUES (23825, 417, 23840);
-INSERT INTO `spell_pet_auras` VALUES (23785, 1860, 23760);
-INSERT INTO `spell_pet_auras` VALUES (23822, 1860, 23841);
-INSERT INTO `spell_pet_auras` VALUES (23823, 1860, 23842);
-INSERT INTO `spell_pet_auras` VALUES (23824, 1860, 23843);
-INSERT INTO `spell_pet_auras` VALUES (23825, 1860, 23844);
-INSERT INTO `spell_pet_auras` VALUES (23785, 1863, 23761);
-INSERT INTO `spell_pet_auras` VALUES (23822, 1863, 23833);
-INSERT INTO `spell_pet_auras` VALUES (23823, 1863, 23834);
-INSERT INTO `spell_pet_auras` VALUES (23824, 1863, 23835);
-INSERT INTO `spell_pet_auras` VALUES (23825, 1863, 23836);
+--
+-- Dumping data for table `spell_pet_auras`
+--
 
+LOCK TABLES `spell_pet_auras` WRITE;
+/*!40000 ALTER TABLE `spell_pet_auras` DISABLE KEYS */;
+INSERT INTO `spell_pet_auras` VALUES (19028,0,25228),(19578,0,19579),(20895,0,24529),(23785,416,23759),(23822,416,23826),(23823,416,23827),(23824,416,23828),(23825,416,23829),(23785,417,23762),(23822,417,23837),(23823,417,23838),(23824,417,23839),(23825,417,23840),(23785,1860,23760),(23822,1860,23841),(23823,1860,23842),(23824,1860,23843),(23825,1860,23844),(23785,1863,23761),(23822,1863,23833),(23823,1863,23834),(23824,1863,23835),(23825,1863,23836);
+/*!40000 ALTER TABLE `spell_pet_auras` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:19

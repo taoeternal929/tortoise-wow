@@ -1,1 +1,0 @@
-UPDATE spell_template SET effectRealPointsPerLevel1 = 0.25, effectRealPointsPerLevel2 = 0.25, EffectBaseDice1 = 0, EffectBaseDice2 = 0, effectBasePoints2 = 0 WHERE entry=24870;

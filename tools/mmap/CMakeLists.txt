@@ -27,6 +27,7 @@ include_directories(
     ../../src
     ../../src/shared
     ../../src/game
+    ../../src/game/Protocol
     ../../src/game/vmap
     ../../src/game/Maps
     ../../src/game/Commands

@@ -1,2 +1,0 @@
-UPDATE quest_template SET RewRepFaction1 = 729, RewRepFaction2 = 76, RewRepValue1 = 100, RewRepValue2 = 100 WHERE entry = 7101;
-UPDATE quest_template SET RewRepFaction1 = 729, RewRepFaction2 = 76, RewRepValue1 = 100, RewRepValue2 = 100 WHERE entry = 7082;

@@ -1,1 +1,0 @@
-update item_template set disenchant_id = 1 where entry = 6730; -- Ironforge Chain

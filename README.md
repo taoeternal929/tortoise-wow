@@ -1,13 +1,13 @@
 
 # Tortoise-WoW
 
-This is an unofficial, community driven, restoration of the 1.17.2 patch of Turtle-WoW, with some additions for solo play.  
+This is an unofficial, community driven, restoration of the 1.18.1 patch of Turtle-WoW, with some additions for solo play.  
 This project is not to be used for profit or to misrepresent itself, or anyone using it, as the original creators  
-This project targets version 1.17.2 build 7207, mainly because it has the most complete data available, version 1.18.x requires packet sniffs and a ton of manual reimplementation.
+This project targets version 1.18.1 build 7272
 
 ## Client Version
 
-The client version targetted is patch 1.17.2, build 7207  
+The client version targetted is patch 1.18.1, build 7272  
 Any client that does not match this version or build will likely have a myriad of issues
 
 ## Additions

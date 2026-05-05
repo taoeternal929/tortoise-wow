@@ -1,1 +1,0 @@
-UPDATE `spell_template` SET `effectBasePoints2`='19', `effectDieSides2`='1' WHERE  `entry`=45604;

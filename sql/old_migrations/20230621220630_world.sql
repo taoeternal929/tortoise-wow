@@ -1,1 +1,0 @@
-UPDATE quest_template SET RequiredRaces = 0 WHERE entry IN (40427, 40426);

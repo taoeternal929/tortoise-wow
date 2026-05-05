@@ -1,1 +1,0 @@
-UPDATE `creature_template` SET `loot_id` = '61226' WHERE `entry` = '61225';

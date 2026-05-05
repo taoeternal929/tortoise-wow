@@ -1,1 +1,0 @@
-UPDATE `spell_template` SET `effectRealPointsPerLevel2`='0' WHERE  `entry`=12686;

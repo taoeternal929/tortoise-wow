@@ -97,7 +97,7 @@ float CONF_float_to_int16_limit = 2048.0f;   // Max accuracy = val/65536
 float CONF_flat_height_delta_limit = 0.005f; // If max - min less this value - surface is flat
 float CONF_flat_liquid_delta_limit = 0.001f; // If max - min less this value - liquid surface is flat
 
-// List MPQ for extract from
+// List MPQ for extract from.
 const char* CONF_mpq_list[] =
 {
     "dbc.MPQ",
@@ -106,7 +106,11 @@ const char* CONF_mpq_list[] =
     "patch-2.MPQ",
     "patch-3.MPQ",
     "patch-4.MPQ",
-    "patch-5.MPQ"
+    "patch-5.MPQ",
+    "patch-6.MPQ",
+    "patch-7.MPQ",
+    "patch-8.MPQ",
+    "patch-9.MPQ"
 };
 
 static std::unordered_multimap<uint32, std::pair<uint32, uint32>> shangAdts =
@@ -159,6 +163,32 @@ bool FileExists(const char* FileName)
         return true;
     }
 
+    return false;
+}
+
+bool ResolveMPQFilename(char* FileName)
+{
+    if (FileExists(FileName))
+        return true;
+
+    size_t len = strlen(FileName);
+    if (len < 4 || FileName[len - 4] != '.')
+        return false;
+
+    char originalExt[4];
+    memcpy(originalExt, FileName + len - 3, sizeof(originalExt));
+
+    for (int mask = 0; mask < 8; ++mask)
+    {
+        FileName[len - 3] = (mask & 1) ? 'M' : 'm';
+        FileName[len - 2] = (mask & 2) ? 'P' : 'p';
+        FileName[len - 1] = (mask & 4) ? 'Q' : 'q';
+
+        if (FileExists(FileName))
+            return true;
+    }
+
+    memcpy(FileName + len - 3, originalExt, sizeof(originalExt));
     return false;
 }
 
@@ -987,7 +1017,7 @@ void LoadCommonMPQFiles()
     for (int i = 0; i < count; ++i)
     {
         sprintf(filename, "%s/Data/%s", input_path, CONF_mpq_list[i]);
-        if (FileExists(filename))
+        if (ResolveMPQFilename(filename))
             new MPQArchive(filename);
     }
 }

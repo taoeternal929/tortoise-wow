@@ -1,1 +1,0 @@
-UPDATE item_template SET name = 'Finkle\'s Accelerator' WHERE entry = 60789;

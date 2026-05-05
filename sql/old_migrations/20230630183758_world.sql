@@ -1,1 +1,0 @@
-UPDATE quest_template SET OfferRewardText = 'You the new delivery $G boy:girl from Razor Hill? Didn\'t really think that old orc would get the order here that quick. You better not tell him we’ve just been giving him flak! He might start to think he\'s doing too good a job, or something!' WHERE entry = 55002;

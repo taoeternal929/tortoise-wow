@@ -1,112 +1,51 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `spell_disabled`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for spell_disabled
--- ----------------------------
 DROP TABLE IF EXISTS `spell_disabled`;
-CREATE TABLE `spell_disabled`  (
-  `entry` int(10) UNSIGNED NOT NULL COMMENT 'Disabled spell',
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `spell_disabled` (
+  `entry` int(10) unsigned NOT NULL COMMENT 'Disabled spell',
   PRIMARY KEY (`entry`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of spell_disabled
--- ----------------------------
-INSERT INTO `spell_disabled` VALUES (3602);
-INSERT INTO `spell_disabled` VALUES (12165);
-INSERT INTO `spell_disabled` VALUES (12307);
-INSERT INTO `spell_disabled` VALUES (12830);
-INSERT INTO `spell_disabled` VALUES (12831);
-INSERT INTO `spell_disabled` VALUES (12832);
-INSERT INTO `spell_disabled` VALUES (12833);
-INSERT INTO `spell_disabled` VALUES (12944);
-INSERT INTO `spell_disabled` VALUES (13707);
-INSERT INTO `spell_disabled` VALUES (13966);
-INSERT INTO `spell_disabled` VALUES (13967);
-INSERT INTO `spell_disabled` VALUES (13968);
-INSERT INTO `spell_disabled` VALUES (13969);
-INSERT INTO `spell_disabled` VALUES (14095);
-INSERT INTO `spell_disabled` VALUES (16164);
-INSERT INTO `spell_disabled` VALUES (16252);
-INSERT INTO `spell_disabled` VALUES (16254);
-INSERT INTO `spell_disabled` VALUES (16269);
-INSERT INTO `spell_disabled` VALUES (16271);
-INSERT INTO `spell_disabled` VALUES (16272);
-INSERT INTO `spell_disabled` VALUES (16273);
-INSERT INTO `spell_disabled` VALUES (16274);
-INSERT INTO `spell_disabled` VALUES (16306);
-INSERT INTO `spell_disabled` VALUES (16307);
-INSERT INTO `spell_disabled` VALUES (16308);
-INSERT INTO `spell_disabled` VALUES (16309);
-INSERT INTO `spell_disabled` VALUES (16902);
-INSERT INTO `spell_disabled` VALUES (16903);
-INSERT INTO `spell_disabled` VALUES (16904);
-INSERT INTO `spell_disabled` VALUES (16905);
-INSERT INTO `spell_disabled` VALUES (16906);
-INSERT INTO `spell_disabled` VALUES (16925);
-INSERT INTO `spell_disabled` VALUES (16926);
-INSERT INTO `spell_disabled` VALUES (16932);
-INSERT INTO `spell_disabled` VALUES (16933);
-INSERT INTO `spell_disabled` VALUES (16950);
-INSERT INTO `spell_disabled` VALUES (16951);
-INSERT INTO `spell_disabled` VALUES (16952);
-INSERT INTO `spell_disabled` VALUES (16954);
-INSERT INTO `spell_disabled` VALUES (16958);
-INSERT INTO `spell_disabled` VALUES (16961);
-INSERT INTO `spell_disabled` VALUES (17079);
-INSERT INTO `spell_disabled` VALUES (17082);
-INSERT INTO `spell_disabled` VALUES (17804);
-INSERT INTO `spell_disabled` VALUES (17805);
-INSERT INTO `spell_disabled` VALUES (17806);
-INSERT INTO `spell_disabled` VALUES (17807);
-INSERT INTO `spell_disabled` VALUES (17808);
-INSERT INTO `spell_disabled` VALUES (17864);
-INSERT INTO `spell_disabled` VALUES (18393);
-INSERT INTO `spell_disabled` VALUES (18745);
-INSERT INTO `spell_disabled` VALUES (18746);
-INSERT INTO `spell_disabled` VALUES (18751);
-INSERT INTO `spell_disabled` VALUES (18752);
-INSERT INTO `spell_disabled` VALUES (18821);
-INSERT INTO `spell_disabled` VALUES (18822);
-INSERT INTO `spell_disabled` VALUES (18823);
-INSERT INTO `spell_disabled` VALUES (18824);
-INSERT INTO `spell_disabled` VALUES (18825);
-INSERT INTO `spell_disabled` VALUES (19151);
-INSERT INTO `spell_disabled` VALUES (19152);
-INSERT INTO `spell_disabled` VALUES (19153);
-INSERT INTO `spell_disabled` VALUES (19389);
-INSERT INTO `spell_disabled` VALUES (19390);
-INSERT INTO `spell_disabled` VALUES (20127);
-INSERT INTO `spell_disabled` VALUES (20130);
-INSERT INTO `spell_disabled` VALUES (20135);
-INSERT INTO `spell_disabled` VALUES (20136);
-INSERT INTO `spell_disabled` VALUES (20137);
-INSERT INTO `spell_disabled` VALUES (20359);
-INSERT INTO `spell_disabled` VALUES (20360);
-INSERT INTO `spell_disabled` VALUES (20361);
-INSERT INTO `spell_disabled` VALUES (21563);
-INSERT INTO `spell_disabled` VALUES (24293);
-INSERT INTO `spell_disabled` VALUES (24294);
-INSERT INTO `spell_disabled` VALUES (24295);
-INSERT INTO `spell_disabled` VALUES (27839);
-INSERT INTO `spell_disabled` VALUES (27840);
+--
+-- Dumping data for table `spell_disabled`
+--
 
+LOCK TABLES `spell_disabled` WRITE;
+/*!40000 ALTER TABLE `spell_disabled` DISABLE KEYS */;
+INSERT INTO `spell_disabled` VALUES (3602),(12165),(12307),(12830),(12831),(12832),(12833),(12944),(13707),(13966),(13967),(13968),(13969),(14095),(16164),(16252),(16254),(16269),(16271),(16272),(16273),(16274),(16306),(16307),(16308),(16309),(16902),(16903),(16904),(16905),(16906),(16925),(16926),(16932),(16933),(16950),(16951),(16952),(16954),(16958),(16961),(17079),(17082),(17804),(17805),(17806),(17807),(17808),(17864),(18393),(18745),(18746),(18751),(18752),(18821),(18822),(18823),(18824),(18825),(19151),(19152),(19153),(19389),(19390),(20127),(20130),(20135),(20136),(20137),(20359),(20360),(20361),(21563),(24293),(24294),(24295),(27839),(27840);
+/*!40000 ALTER TABLE `spell_disabled` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:18

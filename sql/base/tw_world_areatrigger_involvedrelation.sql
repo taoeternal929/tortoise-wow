@@ -1,73 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `areatrigger_involvedrelation`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for areatrigger_involvedrelation
--- ----------------------------
 DROP TABLE IF EXISTS `areatrigger_involvedrelation`;
-CREATE TABLE `areatrigger_involvedrelation`  (
-  `id` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Identifier',
-  `quest` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Quest Identifier',
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `areatrigger_involvedrelation` (
+  `id` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Identifier',
+  `quest` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Quest Identifier',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'Trigger System' ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED COMMENT='Trigger System';
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of areatrigger_involvedrelation
--- ----------------------------
-INSERT INTO `areatrigger_involvedrelation` VALUES (2946, 6421);
-INSERT INTO `areatrigger_involvedrelation` VALUES (3366, 6025);
-INSERT INTO `areatrigger_involvedrelation` VALUES (2327, 4842);
-INSERT INTO `areatrigger_involvedrelation` VALUES (2486, 4811);
-INSERT INTO `areatrigger_involvedrelation` VALUES (1205, 2989);
-INSERT INTO `areatrigger_involvedrelation` VALUES (482, 1699);
-INSERT INTO `areatrigger_involvedrelation` VALUES (362, 1448);
-INSERT INTO `areatrigger_involvedrelation` VALUES (231, 984);
-INSERT INTO `areatrigger_involvedrelation` VALUES (230, 954);
-INSERT INTO `areatrigger_involvedrelation` VALUES (223, 944);
-INSERT INTO `areatrigger_involvedrelation` VALUES (216, 870);
-INSERT INTO `areatrigger_involvedrelation` VALUES (196, 578);
-INSERT INTO `areatrigger_involvedrelation` VALUES (97, 287);
-INSERT INTO `areatrigger_involvedrelation` VALUES (98, 201);
-INSERT INTO `areatrigger_involvedrelation` VALUES (78, 155);
-INSERT INTO `areatrigger_involvedrelation` VALUES (178, 503);
-INSERT INTO `areatrigger_involvedrelation` VALUES (87, 76);
-INSERT INTO `areatrigger_involvedrelation` VALUES (88, 62);
-INSERT INTO `areatrigger_involvedrelation` VALUES (3986, 8286);
-INSERT INTO `areatrigger_involvedrelation` VALUES (1387, 3505);
-INSERT INTO `areatrigger_involvedrelation` VALUES (175, 455);
-INSERT INTO `areatrigger_involvedrelation` VALUES (246, 1149);
-INSERT INTO `areatrigger_involvedrelation` VALUES (232, 984);
-INSERT INTO `areatrigger_involvedrelation` VALUES (235, 984);
-INSERT INTO `areatrigger_involvedrelation` VALUES (2926, 25);
-INSERT INTO `areatrigger_involvedrelation` VALUES (522, 1719);
-INSERT INTO `areatrigger_involvedrelation` VALUES (197, 62);
-INSERT INTO `areatrigger_involvedrelation` VALUES (342, 76);
-INSERT INTO `areatrigger_involvedrelation` VALUES (2206, 5156);
-INSERT INTO `areatrigger_involvedrelation` VALUES (2207, 5156);
-INSERT INTO `areatrigger_involvedrelation` VALUES (2208, 5156);
-INSERT INTO `areatrigger_involvedrelation` VALUES (822, 2240);
-INSERT INTO `areatrigger_involvedrelation` VALUES (173, 437);
-INSERT INTO `areatrigger_involvedrelation` VALUES (3991, 1658);
-INSERT INTO `areatrigger_involvedrelation` VALUES (2726, 6185);
-INSERT INTO `areatrigger_involvedrelation` VALUES (4101, 9263);
-INSERT INTO `areatrigger_involvedrelation` VALUES (4103, 9264);
-INSERT INTO `areatrigger_involvedrelation` VALUES (4100, 9265);
+--
+-- Dumping data for table `areatrigger_involvedrelation`
+--
 
+LOCK TABLES `areatrigger_involvedrelation` WRITE;
+/*!40000 ALTER TABLE `areatrigger_involvedrelation` DISABLE KEYS */;
+INSERT INTO `areatrigger_involvedrelation` VALUES (2946,6421),(3366,6025),(2327,4842),(2486,4811),(1205,2989),(482,1699),(362,1448),(231,984),(230,954),(223,944),(216,870),(196,578),(97,287),(98,201),(78,155),(178,503),(87,76),(88,62),(3986,8286),(1387,3505),(175,455),(246,1149),(232,984),(235,984),(2926,25),(522,1719),(197,62),(342,76),(2206,5156),(2207,5156),(2208,5156),(822,2240),(173,437),(3991,1658),(2726,6185),(4101,9263),(4103,9264),(4100,9265);
+/*!40000 ALTER TABLE `areatrigger_involvedrelation` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:16

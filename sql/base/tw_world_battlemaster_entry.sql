@@ -1,63 +1,52 @@
-/*
- Navicat MySQL Data Transfer
+/*M!999999\- enable the sandbox mode */ 
+-- MariaDB dump 10.19  Distrib 10.6.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: tw_world
+-- ------------------------------------------------------
+-- Server version	10.6.22-MariaDB-0ubuntu0.22.04.1
 
- Source Server         : _localhost
- Source Server Type    : MariaDB
- Source Server Version : 100428 (10.4.28-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tw_world
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Target Server Type    : MariaDB
- Target Server Version : 100428 (10.4.28-MariaDB)
- File Encoding         : 65001
+--
+-- Table structure for table `battlemaster_entry`
+--
 
- Date: 11/01/2024 13:18:56
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for battlemaster_entry
--- ----------------------------
 DROP TABLE IF EXISTS `battlemaster_entry`;
-CREATE TABLE `battlemaster_entry`  (
-  `entry` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Entry of a creature',
-  `bg_template` mediumint(8) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Battleground template id',
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `battlemaster_entry` (
+  `entry` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Entry of a creature',
+  `bg_template` mediumint(8) unsigned NOT NULL DEFAULT 0 COMMENT 'Battleground template id',
   PRIMARY KEY (`entry`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci ROW_FORMAT=FIXED;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of battlemaster_entry
--- ----------------------------
-INSERT INTO `battlemaster_entry` VALUES (347, 1);
-INSERT INTO `battlemaster_entry` VALUES (5118, 1);
-INSERT INTO `battlemaster_entry` VALUES (7410, 1);
-INSERT INTO `battlemaster_entry` VALUES (7427, 1);
-INSERT INTO `battlemaster_entry` VALUES (12197, 1);
-INSERT INTO `battlemaster_entry` VALUES (14942, 1);
-INSERT INTO `battlemaster_entry` VALUES (2302, 2);
-INSERT INTO `battlemaster_entry` VALUES (2804, 2);
-INSERT INTO `battlemaster_entry` VALUES (3890, 2);
-INSERT INTO `battlemaster_entry` VALUES (10360, 2);
-INSERT INTO `battlemaster_entry` VALUES (14981, 2);
-INSERT INTO `battlemaster_entry` VALUES (14982, 2);
-INSERT INTO `battlemaster_entry` VALUES (857, 3);
-INSERT INTO `battlemaster_entry` VALUES (907, 3);
-INSERT INTO `battlemaster_entry` VALUES (12198, 3);
-INSERT INTO `battlemaster_entry` VALUES (15006, 3);
-INSERT INTO `battlemaster_entry` VALUES (15007, 3);
-INSERT INTO `battlemaster_entry` VALUES (15008, 3);
-INSERT INTO `battlemaster_entry` VALUES (14990, 3);
-INSERT INTO `battlemaster_entry` VALUES (14991, 3);
-INSERT INTO `battlemaster_entry` VALUES (15102, 2);
-INSERT INTO `battlemaster_entry` VALUES (15105, 2);
-INSERT INTO `battlemaster_entry` VALUES (15106, 1);
-INSERT INTO `battlemaster_entry` VALUES (15103, 1);
-INSERT INTO `battlemaster_entry` VALUES (13761, 5);
-INSERT INTO `battlemaster_entry` VALUES (20121, 4);
-INSERT INTO `battlemaster_entry` VALUES (20122, 4);
-INSERT INTO `battlemaster_entry` VALUES (20123, 5);
+--
+-- Dumping data for table `battlemaster_entry`
+--
 
+LOCK TABLES `battlemaster_entry` WRITE;
+/*!40000 ALTER TABLE `battlemaster_entry` DISABLE KEYS */;
+INSERT INTO `battlemaster_entry` VALUES (347,1),(5118,1),(7410,1),(7427,1),(12197,1),(14942,1),(2302,2),(2804,2),(3890,2),(10360,2),(14981,2),(14982,2),(857,3),(907,3),(12198,3),(15006,3),(15007,3),(15008,3),(14990,3),(14991,3),(15102,2),(15105,2),(15106,1),(15103,1),(13761,5),(20121,4),(20122,4),(20123,5);
+/*!40000 ALTER TABLE `battlemaster_entry` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-03 13:35:16
