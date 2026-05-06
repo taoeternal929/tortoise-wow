@@ -28,7 +28,7 @@
 #include <unordered_set>
 #include <mutex>
 #include <shared_mutex>
-
+#include <optional>
 #include "PerformanceMonitor.h"
 
 enum AccountOpResult
