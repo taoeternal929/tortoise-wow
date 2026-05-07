@@ -394,7 +394,7 @@ endif()
 
 if(ALLOW_TURTLE_ADDONS)
   message(STATUS "Allow Turtle Addons   : Yes")
-  add_compile_definitions(ALLOW_TURTLE_ADDONS)
+  set(DEFINITIONS ${DEFINITIONS} ALLOW_TURTLE_ADDONS)
 else()
   message(STATUS "Allow Turtle Addons   : No (default)")
 endif()
