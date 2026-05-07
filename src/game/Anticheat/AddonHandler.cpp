@@ -85,10 +85,12 @@ static constexpr char *sFingerprintAddons[] =
     "Blizzard_RaidUI",
 };
 
+#ifdef ALLOW_TURTLE_ADDONS
 bool IsTurtleSignedAddon(std::string const& addonName)
 {
     return addonName == "Turtle_General" || addonName == "Turtle_GroupUI";
 }
+#endif
 }
 
 namespace Anticheat
@@ -157,7 +159,8 @@ bool SessionAnticheat::ReadAddonInfo(WorldPacket *authSession, WorldPacket &out)
         0xC3, 0xFB, 0x1B, 0x8C, 0x29, 0xEF, 0x8E, 0xE5, 0x34, 0xCB, 0xD1, 0x2A, 0xCE, 0x79, 0xC3, 0x9A,
         0x0D, 0x36, 0xEA, 0x01, 0xE0, 0xAA, 0x91, 0x20, 0x54, 0xF0, 0x72, 0xD8, 0x1E, 0xC7, 0x89, 0xD2
     };
-
+    
+#ifdef ALLOW_TURTLE_ADDONS
     static constexpr uint8 turtleAddonPublicKey[] =
     {
         0xF1, 0x78, 0x32, 0x50, 0x77, 0x49, 0x34, 0x92, 0x79, 0x9E, 0x76, 0x7E, 0x1C, 0x91, 0x34, 0xB6,
@@ -177,6 +180,7 @@ bool SessionAnticheat::ReadAddonInfo(WorldPacket *authSession, WorldPacket &out)
         0xA6, 0x3F, 0xB3, 0xDC, 0x77, 0xA5, 0x61, 0x0F, 0xC7, 0xF0, 0x97, 0x6F, 0xBC, 0x0A, 0xC5, 0x3A,
         0xC8, 0x39, 0x4D, 0xC1, 0x54, 0xD2, 0x21, 0xE2, 0x14, 0x71, 0x73, 0x46, 0xA5, 0x13, 0x97, 0xAB
     };
+#endif
 
     static constexpr size_t fingerprintAddonCount = sizeof(sFingerprintAddons) / sizeof(sFingerprintAddons[0]);
     static_assert(fingerprintAddonCount == sizeof(uint32), "Bad size for fingerprint calculations");
@@ -266,6 +270,7 @@ bool SessionAnticheat::ReadAddonInfo(WorldPacket *authSession, WorldPacket &out)
     {
         out << static_cast<uint8>(2);
 
+    #ifdef ALLOW_TURTLE_ADDONS
         if (IsTurtleSignedAddon(addon.name))
         {
             out << static_cast<uint8>(1);
@@ -275,6 +280,7 @@ bool SessionAnticheat::ReadAddonInfo(WorldPacket *authSession, WorldPacket &out)
             out << static_cast<uint8>(0);
             continue;
         }
+    #endif
         
         bool flagsWritten = false;
 

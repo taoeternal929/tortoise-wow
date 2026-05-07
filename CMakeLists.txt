@@ -45,6 +45,9 @@ option(USE_REALMMERGE "Compile helper tool for merging character databases" OFF)
 option(USE_ADDRESS_SANITIZER "Enable clang address sanitizer - debug feature that slowing down server, but allow to catch memory corruption" OFF)
 option(ENABLE_PROFILING "(Windows only) Enable Optick integration, which allows to profile CPU and Memory. Also disabling some async code" OFF)
 option(ENABLE_LSAN "Enables Leak Sanitizer" OFF)
+# Allow enabling official Turtle addon support
+option(ALLOW_TURTLE_ADDONS "Allow Turtle addons" OFF)
+
 
 if(UNIX)
   option(DEBUG_SYMBOLS "Include Debug Symbols" ON)
@@ -386,6 +389,14 @@ if(USE_DISCORD_BOT)
   add_compile_definitions(USING_DISCORD_BOT)
 else()
   message(STATUS "Build Discord Bot     : No (default)")
+endif()
+
+
+if(ALLOW_TURTLE_ADDONS)
+  message(STATUS "Allow Turtle Addons   : Yes")
+  add_compile_definitions(ALLOW_TURTLE_ADDONS)
+else()
+  message(STATUS "Allow Turtle Addons   : No (default)")
 endif()
 
 
