@@ -1081,7 +1081,8 @@ enum class PlayerVariables : uint32
     HardcoreMessageLevel,
     UnlockedSpecTabs,
     FreeTalentResets,
-    OriginalSkinByte
+    OriginalSkinByte,
+    PendingChallengeMask
 };
 
 struct PlayerEggLoot
