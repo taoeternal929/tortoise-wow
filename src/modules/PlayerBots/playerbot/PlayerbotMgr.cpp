@@ -696,7 +696,7 @@ void PlayerbotHolder::OnBotLogin(Player * const bot)
     }
 
     if(!ai->HasRealPlayerMaster())
-        OnBotLoginInternal(bot);
+	    OnBotLoginInternal(bot);
 
     playerBots[bot->GetGUIDLow()] = bot;
 
@@ -731,8 +731,8 @@ void PlayerbotHolder::OnBotLogin(Player * const bot)
                 }
             }
 
-            // Don't disband alt groups when master goes away  
-            // (will need to manually disband with leave command)  
+            // Don't disband alt groups when master goes away
+            // (will need to manually disband with leave command)
             uint32 account = sObjectMgr.GetPlayerAccountIdByGUID(member);
             if (!sPlayerbotAIConfig.IsInRandomAccountList(account))
             {
@@ -762,6 +762,11 @@ void PlayerbotHolder::OnBotLogin(Player * const bot)
     {
         bot->GetMotionMaster()->MovementExpired();
     }
+
+    // check activity
+    ai->AllowActivity(ALL_ACTIVITY, true);
+    // set delay on login
+    ai->SetActionDuration(urand(2000, 4000));
 
     ai->TellPlayer(ai->GetMaster(), BOT_TEXT("hello"));
 
