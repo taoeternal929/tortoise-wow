@@ -93,10 +93,9 @@ std::list<ObjectGuid> NearestDynamicObjects::Calculate()
 {
     std::list<DynamicObject*> targets;
 
-    // Penqle has no DynamicObjectListSearcher grid template — dynamic objects
-    // are not iterated via grid searchers in this codebase. Leave the list
-    // empty; the bot strategy degrades gracefully (returns empty list) until
-    // a host hook lands.
+    // Sprint 10 cmangos/playerbots port — Penqle has no DynamicObjectListSearcher grid template.
+    // DynamicObjects are not iterated via grid searchers in this codebase. Leave list empty.
+    // This bot strategy degrades gracefully (returns empty list); harmless until host hook lands.
 
     std::list<ObjectGuid> result;
     for (std::list<DynamicObject*>::iterator tIter = targets.begin(); tIter != targets.end(); ++tIter)

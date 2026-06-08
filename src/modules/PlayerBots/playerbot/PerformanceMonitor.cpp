@@ -5,6 +5,7 @@
 #include "Database/DatabaseEnv.h"
 #include "PlayerbotAI.h"
 
+// Sprint 10 cmangos/playerbots port — wrap method bodies in bot_perf namespace to match header.
 namespace bot_perf {
 
 PerformanceMonitor::PerformanceMonitor()

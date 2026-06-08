@@ -82,7 +82,7 @@ struct TransportTemplate
 };
 
 
-struct TransportAnimation;  // Defined in src/modules/PlayerBots/cmangos-compat-shim.h.
+struct TransportAnimation;  // Sprint 10 cmangos/playerbots port — defined in cmangos-compat-shim.h
 
 class TransportMgr
 {
@@ -90,7 +90,7 @@ class TransportMgr
 
     public:
 
-        // bot calls GetTransportAnimInfo for elevator pathing.
+        // Sprint 10 cmangos/playerbots port — bot calls GetTransportAnimInfo for elevator pathing.
         // Penqle has no TransportAnim.dbc; stub returns nullptr.
         TransportAnimation const* GetTransportAnimInfo(uint32 /*entry*/) const { return nullptr; }
 

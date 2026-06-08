@@ -1,4 +1,4 @@
-# Copyri/ht (C) 2005-2011 MaNGOS <http://getmangos.com/>
+# Copyright (C) 2005-2011 MaNGOS <http://getmangos.com/>
 # Copyright (C) 2009-2011 MaNGOSZero <https://github.com/mangos/zero>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -47,10 +47,8 @@ option(ENABLE_PROFILING "(Windows only) Enable Optick integration, which allows 
 option(ENABLE_LSAN "Enables Leak Sanitizer" OFF)
 # Allow enabling official Turtle addon support
 option(ALLOW_TURTLE_ADDONS "Allow Turtle addons" OFF)
-# Build cmangos/playerbots — bot AI vendored under src/modules/PlayerBots/.
-# When ON, mangosd links the bot subsystem; runtime activation is gated by
-# AiPlayerbot.Enabled in aiplayerbot.conf.
-option(BUILD_PLAYERBOTS "Build the cmangos/playerbots subsystem" OFF)
+# Sprint 10 — cmangos/playerbots port (see bot-deployment-sprint-plan.md)
+option(BUILD_PLAYERBOTS "Build cmangos/playerbots module (Sprint 10 port; OFF until Phase 3 host hooks land)" OFF)
 
 
 if(UNIX)
@@ -147,21 +145,8 @@ if(WIN32)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 endif()
 
-if(WIN32)
-set(Boost_SYSTEM_NO_DEPRECATED ON)
-set(boost_system_FOUND TRUE)
-set(Boost_SYSTEM_FOUND TRUE)
 find_package(Platform REQUIRED)
 find_package(Git)
-find_package(Boost REQUIRED COMPONENTS filesystem thread)
-
-endif()
-
-if(UNIX)
-find_package(Platform REQUIRED)
-find_package(Git)
-find_package(Boost REQUIRED COMPONENTS system filesystem thread)
-endif()
 
 # Output description of this script
 message(STATUS
@@ -468,8 +453,8 @@ if(UNIX)
 elseif(WIN32)
   # Disable warnings in Visual Studio 8 and above and add /MP
   if(MSVC AND NOT CMAKE_GENERATOR MATCHES "Visual Studio 7")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS_RELEASE} /wd4996 /wd4355 /wd4244 /wd4985 /wd4267 /MP /EHsc")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_RELEASE} /wd4996 /wd4355 /wd4244 /wd4267 /MP /EHsc")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS_RELEASE} /wd4996 /wd4355 /wd4244 /wd4985 /wd4267 /EHsc")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_RELEASE} /wd4996 /wd4355 /wd4244 /wd4267 /EHsc")
   endif()
 endif()
 
@@ -569,19 +554,11 @@ message(STATUS "Build flags (DEBUG)   : ${CMAKE_CXX_FLAGS_DEBUG}")
 add_subdirectory(src)
 add_subdirectory(dep)
 
-# cmangos/playerbots vendored module
+# Sprint 10 — cmangos/playerbots vendored module
 if (BUILD_PLAYERBOTS)
     message(STATUS "BUILD_PLAYERBOTS=ON - adding cmangos/playerbots vendored module at src/modules/PlayerBots/")
     set(PCH ${USE_PCH})
     add_subdirectory(src/modules/PlayerBots)
-    # Vendor-tree feature gates the playerbots source expects:
-    #   CMANGOS         - selects the cmangos codepath in vendored headers
-    #                     (vs. TrinityCore / MaNGOS-Zero alternates).
-    #   MANGOSBOT_ZERO  - Classic (1.12). Switches level caps, talent trees,
-    #                     spell ranges. Use MANGOSBOT_ONE for TBC,
-    #                     MANGOSBOT_TWO for WotLK if re-vendoring later.
-    #   ENABLE_PLAYERBOTS - turns the subsystem on inside the vendor tree's
-    #                       own ifdef walls.
     target_compile_definitions(playerbots PRIVATE CMANGOS MANGOSBOT_ZERO ENABLE_PLAYERBOTS)
     target_include_directories(playerbots PUBLIC
         ${CMAKE_SOURCE_DIR}/src/modules/PlayerBots/cmangos-compat-stubs

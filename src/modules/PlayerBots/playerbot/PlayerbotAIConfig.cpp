@@ -22,7 +22,7 @@
 
 std::vector<std::string> ConfigAccess::GetValues(const std::string& name) const
 {
-    // The original cmangos implementation iterates m_entries
+    // Sprint 10 cmangos/playerbots port — original cmangos impl iterates m_entries
     // (unordered_map populated by cmangos's own Config parser). Penqle's Config (which
     // ConfigAccess is reinterpret_cast'd onto) has a totally different layout — that
     // map doesn't exist at this offset, and iterating it segfaults.
@@ -490,9 +490,8 @@ bool PlayerbotAIConfig::Initialize()
     randomBotGroupNearby = config.GetBoolDefault("AiPlayerbot.RandomBotGroupNearby", true);
     randomBotRaidNearby = config.GetBoolDefault("AiPlayerbot.RandomBotRaidNearby", true);
     randomBotGuildNearby = config.GetBoolDefault("AiPlayerbot.RandomBotGuildNearby", true);
-    inviteChat = config.GetBoolDefault("AiPlayerbot.InviteChat", true);
-    botsSilent = config.GetBoolDefault("AiPlayerbot.BotsSilent", false);
-    enableActionLog = config.GetBoolDefault("AiPlayerbot.EnableActionLog", false);
+    inviteChat = config.GetBoolDefault("AiPlayerbot.InviteChat", false); // SoloCommander default: silence the public "Sure I will join you." reply. Whisper "hi" still fires via TellPlayer.
+    botsSilent = config.GetBoolDefault("AiPlayerbot.BotsSilent", true); // SoloCommander master mute: skips all PlayerbotAI::Say / Yell, RP emotes, and the auto-talk emote on whisper.
     enableOffSpecStrategies = config.GetBoolDefault("AiPlayerbot.EnableOffSpecStrategies", true);
     useWanderAsDefaultFollowStrategy = config.GetBoolDefault("AiPlayerbot.UseWanderAsDefaultFollowStrategy", true);
     defaultFormation = config.GetStringDefault("AiPlayerbot.DefaultFormation", "near");

@@ -56,7 +56,7 @@ bool MonitorNotOnMap::IsConditionMet(const std::string& monitorStr, Player* bot,
     if (!botPos)
         return true;
 
-    // Penqle's MapEntry::name is a single char* (not a localized array).
+    // Sprint 10 cmangos/playerbots port — Penqle's MapEntry::name is a single char* (not localized array).
     std::string currentMapName = botPos.getMapEntry()->name ? botPos.getMapEntry()->name : "";
 
     if (currentMapName != wantMapName)

@@ -57,40 +57,45 @@
 #include <ace/Dev_Poll_Reactor.h>
 #include <signal.h>
 
-// Windows crash-dump capture. Catches each major failure path:
-//   - unhandled SEH exceptions (SetUnhandledExceptionFilter)
-//   - vectored handler for paths that bypass SEH dispatch (fast-fail,
-//     heap-corruption RaiseFailFastException, invalid CRT parameter,
-//     pure-virtual call)
-//   - C++ runtime aborts (std::terminate, signal handlers)
-// Writes a .dmp + a .txt sibling next to the running mangosd.exe so an
-// unattended crash leaves enough state for post-mortem analysis.
+// Sprint12 (sc-overnight): Windows minidump on crash, so we always have
+// a stack trace post-mortem. Without this, an unhandled access-violation
+// just terminates mangosd silently and we have no diagnostics — exactly
+// what bit us on the .rndbot remove crash on 2026-05-02. See
+// runtime/HANDOFF_RNDBOT_REMOVE_CRASH.md.
+//
+// 2026-05-05 (sc-overnight option-1): expanded crash capture to cover
+// failure modes that bypass `SetUnhandledExceptionFilter`:
+//   - heap corruption (0xC0000374): ntdll's RtlReportFatalFailure path
+//     uses RaiseFailFastException → fast-fail abort, NO SEH dispatch.
+//   - C runtime aborts (assert / abort / std::terminate): bypass SEH.
+//   - invalid CRT parameter: fast-fails the process.
+//   - pure virtual call: fast-fails via _purecall_handler.
+// We add a vectored exception handler (fires before SEH frame walk on
+// ALL exceptions, ALL threads) plus C++ runtime hooks. Symptom that
+// drove this: 0xC0000374 heap-corruption crash 1-2min into bot combat
+// on 2026-05-05 left no minidump because SEH was bypassed.
 #ifdef WIN32
 #include <windows.h>
 #include <dbghelp.h>
+#include <signal.h>
 #include <new>          // _set_new_handler
 #include <cstdlib>      // _set_invalid_parameter_handler
 #include <stdlib.h>
 #include <crtdbg.h>
 #pragma comment(lib, "dbghelp.lib")
 
-#ifdef BUILD_PLAYERBOTS
-// Forward-decl the SC_PHASE TLS into mangosd so the crash handler can read
-// it without #including any playerbots header (which would pull the whole
-// vendor tree's include chain into mangosd). Definitions live in
-// BotDiagnostics.cpp; writes happen in SC_PHASE iff AiPlayerbot.EnableActionLog=1.
-// The matching read site (Mangosd_WriteCrashDump) guards the read with
-// __try/__except so the TLS being corrupted by the crash we're trying to
-// dump can't crash the dump path itself.
-namespace ai { namespace botdiag {
-    extern thread_local const char* gLastPhaseTag;
-    extern thread_local const char* gLastPhaseBotName;
+// SC_PHASE thread-locals: the crashing thread's last-known "what is
+// the bot AI doing" tag. Read in the unhandled-exception filter and
+// written to the companion .txt next to the .dmp so we don't need
+// symbols to figure out which phase blew up. See SoloCommander.h.
+namespace ai { namespace solocommander {
+    extern __declspec(thread) const char* gLastPhaseTag;
+    extern __declspec(thread) const char* gLastPhaseBotName;
 }}
-#endif
 
 // Re-entrancy guard: if our handler itself crashes, we must NOT recurse —
 // just let the process die. Per-thread so concurrent crashes are handled.
-static thread_local int g_inCrashHandler = 0;
+static __declspec(thread) int g_inCrashHandler = 0;
 
 // Shared minidump-write helper. Called from every crash entry-point we
 // install (vectored, SEH-unhandled, terminate, signal, invalid-param,
@@ -176,21 +181,17 @@ static void Mangosd_WriteCrashDump(EXCEPTION_POINTERS* ep, DWORD synthCode, cons
     CloseHandle(hFile);
 
     // Read SC_PHASE thread-locals (guarded — TLS itself can be corrupted
-    // when the corruption was in arbitrary memory). The TLS is only set
-    // when AiPlayerbot.EnableActionLog=1; otherwise these stay nullptr
-    // and we report "(no phase set)".
+    // when the corruption was in arbitrary memory).
     const char* phaseTag = "(no phase set)";
     const char* phaseBot = "(no bot)";
-#ifdef BUILD_PLAYERBOTS
     __try
     {
-        if (ai::botdiag::gLastPhaseTag)
-            phaseTag = ai::botdiag::gLastPhaseTag;
-        if (ai::botdiag::gLastPhaseBotName)
-            phaseBot = ai::botdiag::gLastPhaseBotName;
+        if (ai::solocommander::gLastPhaseTag)
+            phaseTag = ai::solocommander::gLastPhaseTag;
+        if (ai::solocommander::gLastPhaseBotName)
+            phaseBot = ai::solocommander::gLastPhaseBotName;
     }
     __except (EXCEPTION_EXECUTE_HANDLER) {}
-#endif
 
     char txtFilename[512];
     snprintf(txtFilename, sizeof(txtFilename), "%s.txt", filename);
@@ -293,12 +294,6 @@ static LONG WINAPI MangosdUnhandledExceptionFilter(EXCEPTION_POINTERS* ep)
                             "SEH-unhandled");
     return EXCEPTION_EXECUTE_HANDLER;
 }
-
-// Synthetic exception codes used by the non-SEH crash paths below. Reusing
-// real NT status values means the .dmp opens in WinDbg / Visual Studio
-// without a "missing status code" warning, and the analyst sees a familiar
-// tag instead of zero. (0xC0000602 = STATUS_FAIL_FAST_EXCEPTION,
-// 0xC0000420 = STATUS_ASSERTION_FAILURE.)
 
 // std::terminate() — uncaught C++ exception, set_terminate target,
 // or std::terminate() called explicitly. Bypasses SEH entirely.
@@ -466,11 +461,12 @@ Master::~Master()
 int Master::Run()
 {
 #ifdef WIN32
-    // Install crash-dump capture ASAP so any startup-time crash
-    // (e.g. DBC load failure) also produces a usable dump. VEH + CRT
-    // hooks catch heap corruption / fast-fail / std::terminate paths
-    // that bypass SetUnhandledExceptionFilter. See
-    // MangosdInstallCrashHandlers above for the full hook inventory.
+    // Sprint12: install crash-dump capture ASAP so any startup-time
+    // crash (e.g. DBC load failure) also produces a usable dump.
+    // 2026-05-05: expanded from a single SEH filter to VEH + CRT hooks
+    // to catch heap corruption / fast-fail / std::terminate paths that
+    // bypass `SetUnhandledExceptionFilter`. See MangosdInstallCrashHandlers
+    // above for the full hook inventory.
     MangosdInstallCrashHandlers();
 #endif
 

@@ -18,7 +18,7 @@
 using namespace ai;
 using namespace MaNGOS;
 
-// Penqle's Singleton<> requires an explicit instantiation in a .cpp file.
+// Sprint 10 cmangos/playerbots port — instantiate Singleton<TravelNodeMap> static members.
 INSTANTIATE_SINGLETON_1(ai::TravelNodeMap);
 
 //TravelNodePath(float distance = 0.1f, float extraCost = 0, TravelNodePathType pathType = TravelNodePathType::walk, uint64 pathObject = 0, bool calculated = false, std::vector<uint8> maxLevelCreature = { 0,0,0 }, float swimDistance = 0)
@@ -1122,13 +1122,10 @@ void TravelPath::ClipPath(PlayerbotAI* ai, Unit* mover, bool ignoreEnemyTargets)
 {
     auto startP = getNextPoint(mover, 0.0f, false);
 
-    // If no next point found, nothing to clip.
+    cutTo(*startP, false);
+
     if (startP == fullPath.end())
         return;
-
-    // cutTo may modify fullPath and invalidate iterators, so only call it
-    // after confirming startP is valid.
-    cutTo(*startP, false);
 
     AiObjectContext* context = ai->GetAiObjectContext();
     std::list<ObjectGuid> targets;

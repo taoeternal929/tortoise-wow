@@ -164,9 +164,9 @@ EntryTravelPurposeMap EntryTravelPurposeMapValue::Calculate()
         if (!gInfo)
             continue;
 
-        // Penqle's GameObjectInfo has no ExtraFlags (cmangos uses it for invisible
-        // markers; the bot is checking a creature flag here — likely a bot-side
-        // bug). Skip the invisibility check; harmless until a host hook lands.
+        // Sprint 10 cmangos/playerbots port — GameObjectInfo has no ExtraFlags in Penqle.
+        // (cmangos uses ExtraFlags for invisible markers; bot is checking a creature flag here, likely a bot bug.)
+        // Skip the invisibility check; harmless until host hook lands.
 
         uint32 purpose = 0;
 

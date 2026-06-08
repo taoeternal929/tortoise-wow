@@ -149,10 +149,9 @@ FactionTemplateEntry const* ServerFacade::GetFactionTemplateEntry(Unit *unit)
 #endif
 }
 
-// Penqle's ChaseMovementGenerator is a template. The static_cast dance the
-// bot module uses against cmangos's non-templated version is fragile here,
-// so return safe defaults. Wiring actual chase-generator inspection is
-// future work.
+// Sprint 10 cmangos/playerbots port — Penqle's ChaseMovementGenerator is a template.
+// The static-cast dance bot does is fragile; for Wave 1 return safe defaults.
+// Wave 5+ candidate to wire actual chase-generator inspection if needed.
 Unit* ServerFacade::GetChaseTarget(Unit* target) {
     return target ? target->GetVictim() : nullptr;
 }

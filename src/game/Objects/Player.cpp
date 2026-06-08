@@ -75,30 +75,30 @@
 #include "ZoneScript.h"
 #include "ZoneScriptMgr.h"
 
-// Player-scoped variant of SC_PHASE — stamps the current thread's last-known
-// phase into TLS read by mangosd's crash handler. Symbols defined in
-// BotDiagnostics.cpp; flag check makes it ~free when diagnostics are off.
-#ifdef BUILD_PLAYERBOTS
-namespace ai { namespace botdiag {
-    bool IsActionLogEnabled();
-    extern thread_local const char* gLastPhaseTag;
-    extern thread_local const char* gLastPhaseBotName;
+// SC_PHASE crash diagnostic — thread-local "what's the bot AI thread
+// doing right now" marker. Defined in src/modules/PlayerBots/playerbot/
+// SoloCommander.cpp; the symbol resolves at final mangosd.exe link.
+// Read by the unhandled-exception filter in Master.cpp on crash, dumped
+// to crash_<ts>.dmp.txt next to the minidump.
+#ifdef WIN32
+namespace ai { namespace solocommander {
+    extern __declspec(thread) const char* gLastPhaseTag;
+    extern __declspec(thread) const char* gLastPhaseBotName;
 }}
 #define SC_PHASE_PLAYER(tag) do { \
-    if (ai::botdiag::IsActionLogEnabled()) { \
-        ai::botdiag::gLastPhaseTag     = (tag); \
-        ai::botdiag::gLastPhaseBotName = GetName(); \
-    } \
+    ai::solocommander::gLastPhaseTag = (tag); \
+    ai::solocommander::gLastPhaseBotName = GetName(); \
 } while (0)
 #else
 #define SC_PHASE_PLAYER(tag) do {} while (0)
 #endif
-// PlayerBotMgr.h + PlayerBotAI.h removed (Penqle stub binned). The bot
-// module pulls in its own PlayerbotMgr.h / PlayerbotAI.h via the playerbots
-// vendor tree. PlayerAI.h is restored as a direct include (was previously
-// transitively included via PlayerBotAI.h). PlayerAI / PlayerControlledAI
-// are non-bot classes used for AI control of players (mind control, charm,
-// etc.) and are unrelated to the bot system.
+// PlayerBotMgr.h + PlayerBotAI.h removed — Penqle stub binned for cmangos
+// port (Sprint 10). cmangos's PlayerbotMgr.h + PlayerbotAI.h get included
+// in Phase 3 host hooks.
+// PlayerAI.h restored as a DIRECT include (it was previously transitively
+// included via PlayerBotAI.h). PlayerAI/PlayerControlledAI are non-bot
+// classes used for AI control of players (mind control, charm, etc.) and
+// are unrelated to the bot system.
 #include "AI/PlayerAI.h"
 #include "AccountMgr.h"
 #include "MoveSpline.h"
@@ -486,6 +486,18 @@ bool HasOverrideAttributes(SpellEntry const* triggerSpell, SpellEntry const* mod
 bool SpellModifier::isAffectedOnSpell(SpellEntry const *spell) const
 {
     SpellEntry const *affect_spell = sSpellMgr.GetSpellEntry(spellId);
+    // Cold Blood (Rogue talent 14177) explicit allowlist for new patch9 finishers
+    // that don't carry a CF_ROGUE family flag (Tortoise customs created without
+    // family bits). Without this, the family check below would reject the
+    // override even when the player intentionally has Cold Blood up.
+    // Noxious Assault 52714 — Sprint 5.5.
+    if (spellId == 14177 && spell)
+    {
+        switch (spell->Id)
+        {
+            case 52714: return true;  // Noxious Assault
+        }
+    }
     // False if affect_spell == nullptr or spellFamily not equal
     if (!affect_spell || affect_spell->SpellFamilyName != spell->SpellFamilyName)
         return false;
@@ -1602,7 +1614,7 @@ void Player::Update(uint32 update_diff, uint32 p_time)
         i_AI->UpdateAI(p_time);
     SetCanDelayTeleport(false);
 
-    // per-Player bot tick.
+    // Sprint 10 cmangos/playerbots port — Phase 3d Wave 2: per-Player bot tick.
     // If this Player is a bot (has m_playerbotAI), tick its AI; if it's a real player driving bots
     // (has m_playerbotMgr), tick the manager so its bots respond. Both call sites are no-ops if
     // the corresponding pointer is null.
@@ -2142,6 +2154,13 @@ void Player::SetDeathState(DeathState s)
 
         if (m_zoneScript)
             m_zoneScript->OnPlayerDeath(this);
+
+        // Spirit of Redemption (Priest patch9 talent 20711) — Sprint 5.4:
+        // priest with the talent transitions to Spirit of Redemption form for
+        // 15s on death. 27827 = the form-transition spell (existing in DB:
+        // SPIRIT_HEAL + GHOST + SHAPESHIFT to FORM_SPIRIT_OF_REDEMPTION).
+        if (HasAura(20711))
+            CastSpell(this, 27827, true);
     }
 
     Unit::SetDeathState(s);
@@ -2962,6 +2981,9 @@ void Player::AddToWorld()
 
     if (HasItemCount(ITEM_SHELL_COIN, 1, true))
         sWorld.AddShellCoinOwner(GetObjectGuid());
+
+    // sPlayerBotMgr.OnPlayerInWorld(this) removed — Penqle stub binned.
+    // cmangos's bot session attach happens via different hooks in Phase 3.
 }
 
 void Player::RemoveFromWorld()
@@ -2995,7 +3017,7 @@ void Player::RemoveFromWorld()
     ///- The player should only be removed when logging out
     if (IsInWorld())
     {
-        // GetAntiCheat() is null for
+        // Sprint12 (sc-overnight) bot crash fix: GetAntiCheat() is null for
         // synthetic bot sessions. See CheckAreaExploreAndOutdoor for the
         // canonical write-up. This call site fires on bot logout —
         // unguarded it would crash on every bot disconnect.
@@ -7670,7 +7692,7 @@ void Player::CheckAreaExploreAndOutdoor()
         else
         {
             SC_PHASE_PLAYER("CheckAreaExploreAndOutdoor.anticheatOnExplore");
-            // GetAntiCheat() returns
+            // Sprint12 (sc-overnight) bot crash fix: GetAntiCheat() returns
             // null for synthetic bot sessions (cmangos/playerbots constructs
             // WorldSessions directly via NewSession, bypassing the WorldSocket
             // auth handshake that calls InitAntiCheatSession). Other call
@@ -16440,7 +16462,7 @@ bool Player::LoadFromDB(ObjectGuid guid, SqlQueryHolder *holder)
 
     // check if the character's account in the db and the logged in account match.
     // player should be able to load/delete character only with correct account!
-    // (Penqle's !GetBot() bypass removed — cmangos bots use synthetic sessions.)
+    // (Penqle's !GetBot() bypass removed — cmangos uses isRealPlayer() in Phase 3)
     if (dbAccountId != GetSession()->GetAccountId())
     {
         sLog.outError("%s loading from wrong account (is: %u, should be: %u)",
@@ -16639,8 +16661,8 @@ bool Player::LoadFromDB(ObjectGuid guid, SqlQueryHolder *holder)
         }
     }
 
-    // Penqle stub's BeforeAddToMap bot hook removed; cmangos's bot init is
-    // handled inside the bot module's BotFactory.
+    // Penqle stub's BeforeAddToMap bot hook removed — cmangos's bot init
+    // is handled inside its own BotFactory in Phase 3.
 
     // player bounded instance saves loaded in _LoadBoundInstances, group versions at group loading
     DungeonPersistentState* state = GetBoundInstanceSaveForSelfOrGroup(GetMapId());
@@ -19061,7 +19083,7 @@ void Player::TextEmote(std::string const& text) const
         SendMessageToSetInRange(&data, sWorld.getConfig(CONFIG_FLOAT_LISTEN_RANGE_TEXTEMOTE), true, !sWorld.getConfig(CONFIG_BOOL_ALLOW_TWO_SIDE_INTERACTION_CHAT));
 }
 
-// bot calls bot->Whisper(text, lang, target_guid).
+// Sprint 10 cmangos/playerbots port — bot calls bot->Whisper(text, lang, target_guid).
 // Build a CHAT_MSG_WHISPER packet from this player and send to receiver's session.
 void Player::Whisper(const std::string& text, uint32 language, ObjectGuid receiver)
 {
@@ -19126,11 +19148,8 @@ Player* Player::GetMaster() const
     return nullptr;
 }
 
-// Player::Create/Remove Playerbot{AI,Mgr} and Player::UpdatePlayerbotHooks
-// — host hooks for bot lifecycle. Real implementations live in the
-// playerbots module (src/modules/PlayerBots/playerbot/HostHooks.cpp, where
-// PlayerbotAI is fully defined); stub implementations for BUILD_PLAYERBOTS=OFF
-// live in src/game/PlayerbotStubs.cpp.
+// Sprint 10 cmangos/playerbots port — Phase 3d host hooks for bot lifecycle.
+// Implementations live in src/modules/PlayerBots/playerbot/HostHooks.cpp where PlayerbotAI is fully defined.
 
 uint32 Player::GetMailSize()
 {

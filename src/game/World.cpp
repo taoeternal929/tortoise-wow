@@ -65,7 +65,7 @@
 #include "LFGMgr.h"
 #include "AutoBroadCastMgr.h"
 #include "Transports/TransportMgr.h"
-// PlayerBotMgr.h removed — Penqle stub binned for cmangos port
+// PlayerBotMgr.h removed — Penqle stub binned for cmangos port (Sprint 10).
 #include "ZoneScriptMgr.h"
 #include "CharacterDatabaseCache.h"
 #include "CreatureGroups.h"
@@ -190,13 +190,13 @@ World::~World()
 {
 }
 
-// return Penqle's existing sLFGMgr.
+// Sprint 10 cmangos/playerbots port — return Penqle's existing sLFGMgr.
 LFGQueue& World::GetLFGQueue()
 {
     return sLFGMgr;
 }
 
-// World::GetGraveyardManager stub returns empty map (Penqle uses multimap).
+// Sprint 10 cmangos/playerbots port — World::GetGraveyardManager stub returns empty map (Penqle uses multimap).
 // GetGraveyardMap() is templated in the header; only its instance is created here.
 World::WorldGraveyardManagerStub& World::GetGraveyardManager()
 {
@@ -743,7 +743,7 @@ void World::LoadConfigSettingsCommonPart(bool reload)
     sLog.outString("VMap support included. LineOfSight: %i | getHeight: %i | indoorCheck: %i.", enableLOS, enableHeight, getConfig(CONFIG_BOOL_VMAP_INDOOR_CHECK) ? 1 : 0);
     sLog.outString("MMap pathfinding %sabled.", getConfig(CONFIG_BOOL_MMAP_ENABLED) ? "en" : "dis");
 
-    // initialize bot config + managers.
+    // Sprint 10 cmangos/playerbots port — Phase 3d Wave 5: initialize bot config + managers.
     // InitPlayerbotsAtStartup is in src/modules/PlayerBots/playerbot/HostHooks.cpp; it loads
     // aiplayerbot.conf, instantiates sPlayerbotAIConfig / sRandomPlayerbotMgr / sAhBot, and
     // logs the bot subsystem state. No-op if config absent or AiPlayerbot.Enabled = 0.
@@ -2290,7 +2290,7 @@ void LoadPlayerEggLoot();
     sLog.outString("Caching player pets...");
 	sCharacterDatabaseCache.LoadAll();
     // Penqle's "Loading player bot manager... / sPlayerBotMgr.Load()" removed.
-    // cmangos's RandomPlayerbotMgr is instantiated by InitPlayerbotsAtStartup() below.
+    // cmangos's RandomPlayerbotMgr instantiation lands here in Phase 3.
     sLog.outString("Loading faction change reputations...");
 	sObjectMgr.LoadFactionChangeReputations();
     sLog.outString("Loading faction change spells...");
@@ -2555,7 +2555,7 @@ void World::Update(uint32 diff)
     sZoneScriptMgr.Update(diff);
     sDynamicVisMgr.UpdateVisibility(diff);
 
-    // hook into bot module update.
+    // Sprint 10 cmangos/playerbots port — Phase 3d Wave 2 hook into bot module update.
     // RandomPlayerbotMgr::UpdateAI ticks all logged-in random bots and the bot login queue.
     // Implementation lives in the bot module; declared via host hook in playerbot/HostHooks.cpp.
     UpdatePlayerbotsTick(diff);
@@ -2684,8 +2684,7 @@ void World::Update(uint32 diff)
         m_MaintenanceTimeChecker -= diff;
 
     // PlayerBotMgr update removed — Penqle stub binned. cmangos's
-    // sRandomPlayerbotMgr.UpdateAIInternal(diff) is called from World::UpdatePlayerbotsTick().
-
+    // sRandomPlayerbotMgr.UpdateAIInternal(diff) lands here in Phase 3.
     // Update AutoBroadcast
     sAutoBroadCastMgr.Update(diff);
     // Update liste des ban si besoin

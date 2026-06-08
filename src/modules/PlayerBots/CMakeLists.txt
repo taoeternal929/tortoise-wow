@@ -124,7 +124,7 @@ if (BUILD_PLAYERBOTS)
 endif()
 
 # Define Core
-# Penqle's project name is "TurtleWoW", not "CMaNGOS" or "MaNGOS".
+# Sprint 10 cmangos/playerbots port — Penqle's project name is "TurtleWoW", not "CMaNGOS" or "MaNGOS".
 # Define CMANGOS so bot's #ifdef CMANGOS branches activate. We adapt cmangos-style int/uint32 triggered
 # flags via shim TRIGGERED_* defines (mapped to bool literals). Without this, both branches skip and
 # bot misses critical code paths.
@@ -158,76 +158,29 @@ endif()
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SRCS})
 
-if(MSVC)
-    # Constrain the MSVC inliner on the bot module only.
-    #
-    # The vendored cmangos/playerbots tree has very heavily-templated code
-    # (Strategy/Action queues, Singleton<> instantiations, the storage
-    # proxies in cmangos-compat-shim.h). MSVC's default /Ob2 (auto-inline
-    # any function the heuristic deems worthwhile) can ICE the optimizer
-    # with C1001 in xhash / vector / type_traits when expanding these
-    # template instantiations during phase-2 codegen.
-    #
-    # /Ob1 honors only explicit `inline` / `__forceinline` keywords — still
-    # gets /O2 speed, just doesn't auto-inline normal functions. Drops
-    # bot-AI tick performance by an estimated 3-5%; in exchange the bot
-    # module builds deterministically. game.lib / scripts.lib / etc. keep
-    # the default /Ob2.
-    target_compile_options(${LIBRARY_NAME} PRIVATE $<$<CONFIG:Release>:/Ob1>)
-endif()
-
-if(UNIX)
 target_link_libraries(${LIBRARY_NAME}
   PRIVATE shared
   PRIVATE Detour
   PRIVATE g3dlite
-  PRIVATE ${ZLIB_LIBRARIES}
-  PRIVATE Boost::system
-  PRIVATE Boost::thread
-  PRIVATE Boost::filesystem
+  PRIVATE zlib
 )
-endif()
-
 if(WIN32)
   target_link_libraries(${LIBRARY_NAME}
-    PRIVATE shared
-    PRIVATE Detour
-    PRIVATE g3dlite
-    PRIVATE ${ZLIB_LIBRARIES}
-    PRIVATE Boost::headers
-    PRIVATE Boost::thread
-    PRIVATE Boost::filesystem  
     PRIVATE ws2_32
   )
 endif()
 
-if(WIN32)
 target_include_directories(${LIBRARY_NAME}
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
-  # include paths for transitive Penqle headers
-  # (MapNodes/AbstractPlayer.h, Detour navmesh, framework Network).
-  PRIVATE ${CMAKE_SOURCE_DIR}/src/game/MapNodes
-  PRIVATE ${CMAKE_SOURCE_DIR}/dep/recastnavigation
-  PRIVATE ${CMAKE_SOURCE_DIR}/src/framework/Network
-  ${ACE_INCLUDE_DIR}
-  ${MYSQL_INCLUDE_DIR}
-  ${OPENSSL_INCLUDE_DIR}
-)
-endif()
-
-if(UNIX)
-target_include_directories(${LIBRARY_NAME}
-  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
-  # include paths for transitive Penqle headers
+  # Sprint 10 cmangos/playerbots port — include paths for transitive Penqle headers
   # (MapNodes/AbstractPlayer.h, Detour navmesh, framework Network).
   PRIVATE ${CMAKE_SOURCE_DIR}/src/game/MapNodes
   PRIVATE ${CMAKE_SOURCE_DIR}/dep/recastnavigation
   PRIVATE ${CMAKE_SOURCE_DIR}/src/framework/Network
 )
-endif()
 
 # Install config files
-if ( ${CMAKE_PROJECT_NAME} MATCHES "TurtleWoW")
+if ( ${CMAKE_PROJECT_NAME} MATCHES "Classic")
 	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/playerbot/aiplayerbot.conf.dist.in ${CMAKE_CURRENT_BINARY_DIR}/aiplayerbot.conf.dist)
 endif()	
 if ( ${CMAKE_PROJECT_NAME} MATCHES "TBC")

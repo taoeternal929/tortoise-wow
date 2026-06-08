@@ -41,7 +41,7 @@
 #include "MapManager.h"
 #include "SocialMgr.h"
 
-// PlayerBotMgr.h include removed — Penqle stub binned for cmangos port.
+// PlayerBotMgr.h include removed — Penqle stub binned for Sprint 10 cmangos port.
 #include "Anticheat/Anticheat.h"
 #include "Anticheat/Movement/Movement.hpp"
 #include "Language.h"
@@ -215,7 +215,7 @@ void WorldSession::SendPacket(WorldPacket const* packet)
     }
 #endif
 
-    // outgoing-packet interceptor for bots.
+    // Sprint 10 cmangos/playerbots port — Wave 9: outgoing-packet interceptor for bots.
     // cmangos's WorldSession::SendPacket calls the bot AI's HandleBotOutgoingPacket here so
     // the AI can react to server-originated events: group invites (auto-accept), vendor errors,
     // BG queue status, resurrect requests, etc. Real-player sessions have m_playerbotAI=null
@@ -269,13 +269,6 @@ uint32 GetChatPacketProcessingType(ChatPacketHeader* header)
     }
 
     return PACKET_PROCESS_WORLD;
-}
-
-/// Bot-side convenience overload: copy a (potentially stack-allocated) inline
-/// WorldPacket onto the heap so QueuePacket(WorldPacket*) can take ownership.
-void WorldSession::QueuePacket(WorldPacket const& new_packet)
-{
-    QueuePacket(new WorldPacket(new_packet));
 }
 
 /// Add an incoming packet to the queue
@@ -386,7 +379,8 @@ bool WorldSession::Update(PacketFilter& updater)
     if (updater.ProcessLogout())
     {
         // Penqle stub's m_bot/PB_STATE_OFFLINE early-logout removed. cmangos
-        // adds its own logout handling for offline bots 
+        // adds its own logout handling for offline bots in Phase 3.
+
         if (_clientHashComputeStep == HASH_COMPUTED && GetPlayer())
             _clientHashComputeStep = HASH_NOTIFIED;
 
@@ -408,7 +402,7 @@ bool WorldSession::Update(PacketFilter& updater)
         ///- If necessary, log the player out
         time_t currTime = time(nullptr);
         // Bot-driven forceConnection / m_bot guards removed (Penqle stub binned).
-        // cmangos's bot session handling re-introduces equivalent guards.
+        // cmangos's bot session handling re-introduces equivalent guards in Phase 3.
         if ((!m_Socket || (ShouldLogOut(currTime) && !m_playerLoading)))
             LogoutPlayer(true);
 
@@ -431,7 +425,7 @@ bool WorldSession::Update(PacketFilter& updater)
 bool WorldSession::CanProcessPackets() const
 {
     // sPlayerBotMgr.IsChatBot() clause removed — Penqle stub binned. cmangos's
-    // bot system uses isRealPlayer() guards in instead.
+    // bot system uses isRealPlayer() guards in Phase 3 instead.
     return (m_Socket && !m_Socket->IsClosed());
 }
 
@@ -612,7 +606,7 @@ void WorldSession::LogoutPlayer(bool Save)
     bool doBanPlayer = false;
     bool disabledSocials = false;
 
-    // detach bot AI/mgr before logout
+    // Sprint 10 cmangos/playerbots port — Phase 3d Wave 3: detach bot AI/mgr before logout
     // tears down the Player. Safe to call on real players / bots (no-op when ptr is null).
     if (_player)
     {
@@ -847,7 +841,7 @@ void WorldSession::KickPlayer()
 
 /// Cancel channeling handler
 
-// bot calls session->SendPlaySpellVisual(guid, kit).
+// Sprint 10 cmangos/playerbots port — bot calls session->SendPlaySpellVisual(guid, kit).
 void WorldSession::SendPlaySpellVisual(ObjectGuid guid, uint32 spellArtKit)
 {
     WorldPacket data(SMSG_PLAY_SPELL_VISUAL, 8 + 4);

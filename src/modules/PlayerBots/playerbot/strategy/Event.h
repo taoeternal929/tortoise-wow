@@ -10,10 +10,10 @@ namespace ai
     class Event
 	{
 	public:
-        // Penqle's WorldPacket has a deleted copy operator= (it has a user-defined
-        // move ctor, which implicitly deletes copy=). Use the member init list for
-        // the copy ctor (WorldPacket's copy CTOR IS available) and an explicit
-        // operator= that copy-constructs + move-assigns.
+        // Sprint 10 cmangos→Penqle: Penqle's WorldPacket has deleted copy operator=
+        // (because it has a user-defined move ctor — implicitly deletes copy=).
+        // Use member init list for the copy ctor (calls WorldPacket's copy CTOR which IS available),
+        // and explicit operator= that copy-constructs + move-assigns.
         Event(Event const& other)
             : source(other.source)
             , param(other.param)

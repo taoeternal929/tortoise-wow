@@ -90,7 +90,7 @@ Map::~Map()
     --PerfStats::g_totalMaps;
 }
 
-// stub graveyard manager forwards to sObjectMgr.
+// Sprint 10 cmangos/playerbots port — stub graveyard manager forwards to sObjectMgr.
 WorldSafeLocsEntry const* Map::GraveyardManagerStub::GetClosestGraveYard(float x, float y, float z, uint32 MapId, Team team) const
 {
     return sObjectMgr.GetClosestGraveYard(x, y, z, MapId, team);

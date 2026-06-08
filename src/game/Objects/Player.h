@@ -65,7 +65,7 @@ class ZoneScript;
 class PlayerAI;
 class PlayerBroadcaster;
 class MapReference;
-// Forward decls for bot host hooks (defined in the playerbots module).
+// Sprint 10 cmangos/playerbots port — forward decls for bot system Wave 5 host hooks
 class PlayerbotAI;
 class PlayerbotMgr;
 
@@ -1112,7 +1112,7 @@ class Player final: public Unit
         static void InitVisibleBits();
 
         bool Create(uint32 guidlow, std::string const& name, uint8 race, uint8 class_, uint8 gender, uint8 skin, uint8 face, uint8 hairStyle, uint8 hairColor, uint8 facialHair);
-        // cmangos's 11-arg form (extra outfitId, ignored).
+        // Sprint 10 cmangos/playerbots port — cmangos's 11-arg form (extra outfitId, ignored).
         bool Create(uint32 guidlow, std::string const& name, uint8 race, uint8 class_, uint8 gender, uint8 skin, uint8 face, uint8 hairStyle, uint8 hairColor, uint8 facialHair, uint8 /*outfitId*/) {
             return Create(guidlow, name, race, class_, gender, skin, face, hairStyle, hairColor, facialHair);
         }
@@ -1231,7 +1231,7 @@ class Player final: public Unit
         bool CheckAmmoCompatibility(const ItemPrototype* ammo_proto) const;
         void QuickEquipItem(uint16 pos, Item* pItem);
         void VisualizeItem(uint8 slot, Item* pItem);
-    public:
+    public: // Sprint 10 cmangos/playerbots port — make SetVisibleItemSlot public for bot module.
         void SetVisibleItemSlot(uint8 slot, Item* pItem);
     private:
         // in trade, guild bank, mail....
@@ -1377,7 +1377,7 @@ class Player final: public Unit
         void LogItem(Item* item, LogItemAction action, uint32 count = 0);
 
         float GetReputationPriceDiscount(Creature const* pCreature) const;
-        // bot passes FactionTemplateEntry. Stub.
+        // Sprint 10 cmangos/playerbots port — bot passes FactionTemplateEntry. Stub.
         float GetReputationPriceDiscount(FactionTemplateEntry const* /*ft*/) const { return 1.0f; }
 
         Player* GetTrader() const { return m_trade ? m_trade->GetTrader() : nullptr; }
@@ -1456,7 +1456,7 @@ class Player final: public Unit
         bool CanGiveQuestSourceItemIfNeed(Quest const* pQuest, ItemPosCountVec* dest = nullptr) const;
         void GiveQuestSourceItemIfNeed(Quest const* pQuest);
 
-    public:
+    public:  // Sprint 10 cmangos/playerbots port — make quest slot accessors public for bot module.
         uint16 FindQuestSlot(uint32 quest_id) const;
         uint32 GetQuestSlotQuestId(uint16 slot) const { return GetUInt32Value(PLAYER_QUEST_LOG_1_1 + slot * MAX_QUEST_OFFSET + QUEST_ID_OFFSET); }
         void SetQuestSlot(uint16 slot, uint32 quest_id, uint32 timer = 0)
@@ -1698,7 +1698,7 @@ class Player final: public Unit
         bool HasSpell(uint32 spell) const override;
         bool HasActiveSpell(uint32 spell) const;            // show in spellbook
         TrainerSpellState GetTrainerSpellState(TrainerSpell const* trainer_spell) const;
-        // cmangos passes (spell, reqLevel); ignore reqLevel.
+        // Sprint 10 cmangos/playerbots port — cmangos passes (spell, reqLevel); ignore reqLevel.
         TrainerSpellState GetTrainerSpellState(TrainerSpell const* trainer_spell, uint32 /*reqLevel*/) const { return GetTrainerSpellState(trainer_spell); }
         bool IsSpellFitByClassAndRace(uint32 spell_id, uint32* pReqlevel = nullptr) const;
         bool IsImmuneToSpellEffect(SpellEntry const* spellInfo, SpellEffectIndex index, bool castOnSelf) const override;
@@ -1710,7 +1710,7 @@ class Player final: public Unit
 
         void LearnSpell(uint32 spell_id, bool dependent, bool talent = false);
         void RemoveSpell(uint32 spell_id, bool disabled = false, bool learn_low_rank = true, bool hardReset = false);
-        // cmangos camelCase + 2-arg form.
+        // Sprint 10 cmangos/playerbots port — cmangos camelCase + 2-arg form.
         void removeSpell(uint32 spell_id, bool disabled = false, bool learn_low_rank = true) { RemoveSpell(spell_id, disabled, learn_low_rank); }
         void ResetSpells();
         void LearnDefaultSpells();
@@ -1753,12 +1753,12 @@ class Player final: public Unit
         uint32 m_usedTalentCount;
         uint32 m_extraBonusTalentCount;
 
-    public:
+    public: // Sprint 10 cmangos/playerbots port — make UpdateFreeTalentPoints public for bot module.
         void UpdateFreeTalentPoints(bool resetIfNeed = true);
     private:
         uint32 GetResetTalentsCost() const;
         void UpdateResetTalentsMultiplier() const;
-        // moved to public; bot's Talentspec.h
+        // Sprint 10 cmangos/playerbots port — moved to public; bot's Talentspec.h
         // calls this on bot Player instances. No encapsulation concern (pure getter).
         void SendTalentWipeConfirm(ObjectGuid guid) const;
     public:
@@ -1784,6 +1784,10 @@ class Player final: public Unit
         float m_carryHealthRegen;
         ObjectGuid m_comboTargetGuid;
         int8 m_comboPoints;
+        // Book of Prayer (Priest Sprint 5.4 talent 52943/52944) — last
+        // direct-heal target for the "different target than previous heal"
+        // mana-refund gate.
+        ObjectGuid m_lastHealTargetGuid;
         uint32 m_weaponChangeTimer;
         bool m_canParry;
         bool m_canBlock;
@@ -1830,6 +1834,11 @@ class Player final: public Unit
         void AddComboPoints(Unit* target, int8 count);
         void ClearComboPoints();
         void SetComboPoints();
+
+        // Book of Prayer (Priest Sprint 5.4 talent 52943/52944): refund only on
+        // heals that change target.
+        ObjectGuid const& GetLastHealTargetGuid() const { return m_lastHealTargetGuid; }
+        void SetLastHealTargetGuid(ObjectGuid g) { m_lastHealTargetGuid = g; }
 
         bool UpdateStats(Stats stat) override;
         bool UpdateAllStats() override;
@@ -1897,13 +1906,13 @@ class Player final: public Unit
         /***                   SKILLS SYSTEM                   ***/
         /*********************************************************/
 
-    public:
+    public: // Sprint 10 cmangos/playerbots port — make InitPrimaryProfessions public for bot module.
         void InitPrimaryProfessions();
     private:
         void UpdateSkillTrainedSpells(uint16 id, uint16 currVal);                                   // learns/unlearns spells dependent on a skill
         void UpdateSpellTrainedSkills(uint32 spellId, bool apply, bool hardReset = false);                                  // learns/unlearns skills dependent on a spell
         void UpdateOldRidingSkillToNew(bool has_epic_mount);
-    public:
+    public: // Sprint 10 cmangos/playerbots port — make UpdateSkillsForLevel public for bot module.
         void UpdateSkillsForLevel();
         void UpdateSkillsForLevel(uint32 /*level*/) { UpdateSkillsForLevel(); }
     private:
@@ -2094,7 +2103,7 @@ class Player final: public Unit
         {
             m_fallStartZ = fallStartZ;
         }
-        // cmangos passes (time, fallStartZ).
+        // Sprint 10 cmangos/playerbots port — cmangos passes (time, fallStartZ).
         void SetFallInformation(uint32 /*time*/, float fallStartZ) { m_fallStartZ = fallStartZ; }
         void HandleFall(MovementInfo const& movementInfo);
         bool IsFalling() const { return m_fallStartZ != 0; }
@@ -2179,7 +2188,7 @@ class Player final: public Unit
 
         uint32 GetHomeBindMap() const { return m_homebindMapId; }
         uint16 GetHomeBindAreaId() const { return m_homebindAreaId; }
-        // cmangos GetHomebindLocation populates out-params.
+        // Sprint 10 cmangos/playerbots port — cmangos GetHomebindLocation populates out-params.
         void GetHomebindLocation(float& x, float& y, float& z, uint32& mapId) const {
             x = m_homebindX; y = m_homebindY; z = m_homebindZ; mapId = m_homebindMapId;
         }
@@ -2281,7 +2290,7 @@ class Player final: public Unit
         /***                    TAXI SYSTEM                    ***/
         /*********************************************************/
         
-    public:
+    public: // Sprint 10 cmangos/playerbots port — bot accesses m_taxi directly.
         PlayerTaxi m_taxi;
         PlayerTaxi& GetTaxi() { return m_taxi; }
         PlayerTaxi const& GetTaxi() const { return m_taxi; }
@@ -2356,25 +2365,7 @@ class Player final: public Unit
         bool ChangeRace(uint8 newRace, uint8 newGender, uint32 playerbyte1, uint32 playerbyte2);
         void RemoveAI();
 
-        // =========================================================================
-        // Bot host interface + cmangos compat aliases.
-        //
-        // Compiled unconditionally (no #ifdef BUILD_PLAYERBOTS). When bots are
-        // disabled, src/game/PlayerbotStubs.cpp provides empty bodies for the
-        // non-inline members so the host still links. The vendored playerbots
-        // module in src/modules/PlayerBots/ provides the real implementations.
-        //
-        // Three groups follow:
-        //   1. Bot-lifecycle hooks: Create/Remove PlayerbotAI/Mgr, accessors,
-        //      isRealPlayer, UpdatePlayerbotHooks.
-        //   2. cmangos camelCase / signature aliases — one-line forwarders to
-        //      the Penqle-named equivalent so the vendored bot source compiles
-        //      unmodified. Each is tagged with the cmangos name it shadows.
-        //   3. Stub no-ops for cmangos APIs Penqle doesn't have (SetCanFly,
-        //      OnTaxiFlightEject, GetCurrentCell, ...). Safe because the bot
-        //      module tolerates no-op behavior at these sites.
-        // =========================================================================
-
+        // Sprint 10 cmangos/playerbots port — Phase 3d host hooks.
         // m_playerbotAI is set by CreatePlayerbotAI() during PlayerbotHolder::OnBotLogin.
         // m_playerbotMgr is set when a real Player logs in (mgr drives all their bots).
         PlayerbotAI* GetPlayerbotAI() const { return m_playerbotAI; }
@@ -2385,7 +2376,7 @@ class Player final: public Unit
         // cmangos-style aliases the bot module uses on Player:
         // IsInGroup(other) — checks if `other` is in the same group as this player.
         // IsInGroup(other, sub) — same; sub flag is cmangos's "same subgroup" check;
-        //   stub to ignore
+        //   stub to ignore (Wave 5 candidate to wire properly).
         bool IsInGroup(Player const* other, bool /*sub*/ = false) const { return other && GetGroup() && GetGroup() == other->GetGroup(); }
         bool IsInGroup(Unit const* other, bool /*sub*/ = false) const {
             Player const* p = (other && other->GetTypeId() == TYPEID_PLAYER) ? (Player const*)other : nullptr;
@@ -2441,7 +2432,7 @@ class Player final: public Unit
         // GetDbGuid: cmangos returns DB-side player guid (low part).
         uint32 GetDbGuid() const { return GetGUIDLow(); }
         // SetCanFly: cmangos sets the unit's flying capability flag; Penqle uses different mechanism.
-        // Stub no-op;
+        // Stub no-op; Wave 5+ candidate.
         void SetCanFly(bool /*can*/) {}
         // getStandState: cmangos camelCase alias.
         uint8 getStandState() const { return GetStandState(); }
@@ -2541,6 +2532,8 @@ class Player final: public Unit
         float GetAngleAt(float x, float y) const { return GetAngle(x, y); }
         // IsStunned: cmangos shorthand for HasUnitState(UNIT_STAT_STUNNED).
         bool IsStunned() const { return HasUnitState(UNIT_STAT_STUNNED); }
+        // duel field alias: bot uses bot->duel; Penqle has m_duel — keep an inline-method-style alias name (duel_) NOT used,
+        // bot module rewritten to m_duel directly.
 
         void ModPossessPet(Pet* pet, bool apply, AuraRemoveMode m_removeMode = AURA_REMOVE_BY_DEFAULT);
 
@@ -2569,7 +2562,7 @@ class Player final: public Unit
         void SendMessageToSet(WorldPacket* data, bool self) const override;
         void SendMessageToSetInRange(WorldPacket* data, float fist, bool self) const override;
         void SendMessageToSetInRange(WorldPacket* data, float dist, bool self, bool own_team_only) const;
-        // bot module calls these with WorldPacket& by value.
+        // Sprint 10 cmangos/playerbots port — bot module calls these with WorldPacket& by value.
         void SendMessageToSet(WorldPacket& data, bool self) const { SendMessageToSet(&data, self); }
         void SendMessageToSetInRange(WorldPacket& data, float dist, bool self) const { SendMessageToSetInRange(&data, dist, self); }
         void SendInitWorldStates(uint32 zone) const;
@@ -2724,7 +2717,7 @@ class Player final: public Unit
         void ClearResurrectRequestData() { SetResurrectRequestData(ObjectGuid(), 0, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0); }
         bool IsRessurectRequestedBy(ObjectGuid guid) const { return m_resurrectData.resurrectorGuid == guid; }
         bool IsRessurectRequested() const { return !m_resurrectData.resurrectorGuid.IsEmpty(); }
-        // bot uses cmangos camelCase isRessurectRequested.
+        // Sprint 10 cmangos/playerbots port — bot uses cmangos camelCase isRessurectRequested.
         bool isRessurectRequested() const { return IsRessurectRequested(); }
         ObjectGuid const& GetResurrector() const { return m_resurrectData.resurrectorGuid; }
         void ResurectUsingRequestData();
@@ -2998,7 +2991,7 @@ public:
         void RewardHonor(Unit* uVictim, uint32 groupSize);
         void RewardHonorOnDeath();
         bool IsHonorOrXPTarget(Unit* pVictim) const;
-        // cmangos camelCase alias.
+        // Sprint 10 cmangos/playerbots port — cmangos camelCase alias.
         bool isHonorOrXPTarget(Unit* pVictim) const { return IsHonorOrXPTarget(pVictim); }
 
         HonorMgr&       GetHonorMgr() { return m_honorMgr; }
@@ -3308,7 +3301,7 @@ public:
         void SendAddonMessage(std::string prefix, std::string message);
         void SendAddonMessage(std::string prefix, std::string message, Player* from);
 
-        // Bot state members.
+        // Sprint 10 cmangos/playerbots port — Phase 3d host hooks for bot integration.
         // m_playerbotAI: non-null if this Player is a bot; null otherwise.
         // m_playerbotMgr: non-null if this Player has bots under its control (real player driving bots).
     private:
@@ -3319,13 +3312,13 @@ public:
 void AddItemsSetItem(Player*player,Item* item);
 void RemoveItemsSetItem(Player*player,ItemPrototype const* proto);
 
-// outgoing-packet interceptor for bots.
+// Sprint 10 cmangos/playerbots port — outgoing-packet interceptor for bots.
 // WorldSession::SendPacket calls this; if the player has a PlayerbotAI attached, the AI
 // processes the packet (group invites, BG status, vendor errors, etc.) and returns true
 // to suppress network send. Real players (no AI) return false. Implementation in HostHooks.cpp.
 bool Player_DispatchBotOutgoingPacket(Player* player, class WorldPacket const& packet);
 
-// chat-message dispatcher for bots.
+// Sprint 10 cmangos/playerbots port — chat-message dispatcher for bots.
 // WorldSession::HandleMessagechatOpcode calls this after validating the master's chat input,
 // so each bot under the master's PlayerbotMgr (and matching random bots) gets the message
 // fed to their PlayerbotAI::HandleCommand for parsing as a bot command (/party "co" etc).

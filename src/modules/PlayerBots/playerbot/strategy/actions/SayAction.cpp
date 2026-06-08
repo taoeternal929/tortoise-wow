@@ -442,9 +442,7 @@ delayedPackets ChatReplyAction::GenerateResponsePackets(const std::string json
     if (!debugLines.empty())
     {
         debugPackets = LinesToPackets(debugLines, systemTemplate, true, 1);
-	packets.insert(packets.begin(),
-               std::make_move_iterator(debugPackets.begin()),
-               std::make_move_iterator(debugPackets.end()));
+        packets.insert(packets.begin(), debugPackets.begin(), debugPackets.end());
     }
 
     return packets;

@@ -82,7 +82,7 @@ namespace ai
 
             WorldPosition botPos(bot);
 
-            // Penqle has no GetCurrentCell; use the bot's WorldPosition instead.
+            // Sprint 10 cmangos/playerbots port — Penqle has no GetCurrentCell; use the bot's WorldPosition.
             Cell cell{}; (void)cell;
 
             GridPair grid = botPos.getGridPair();

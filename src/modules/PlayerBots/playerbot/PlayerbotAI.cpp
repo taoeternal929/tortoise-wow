@@ -18,7 +18,7 @@
 #include "LootObjectStack.h"
 #include "playerbot/PlayerbotAIConfig.h"
 #include "PlayerbotAI.h"
-#include "BotDiagnostics.h"
+#include "SoloCommander.h"
 #include "playerbot/PlayerbotFactory.h"
 #include "PlayerbotSecurity.h"
 #include "Group/Group.h"
@@ -84,7 +84,7 @@ void PacketHandlingHelper::Handle(ExternalEventHelper &helper)
     if (!m_botPacketMutex.try_lock()) //Packets do not have to be handled now. Handle them later.
         return;
 
-    // queue holds unique_ptr<WorldPacket> due to Penqle's move-only WorldPacket.
+    // Sprint 10 cmangos/playerbots port — queue holds unique_ptr<WorldPacket> due to Penqle's move-only WorldPacket.
     std::stack<std::unique_ptr<WorldPacket>> delayed;
 
     while (!queue.empty())
@@ -262,7 +262,7 @@ void PlayerbotAI::UpdateAI(uint32 elapsed, bool minimal)
 
     SC_PHASE("UpdateAI.entry", bot ? bot->GetName() : "(null)");
 
-    // revalidate the
+    // Sprint12 (sc-overnight) 2026-05-05 crash fix: revalidate the
     // cached master pointer against ObjectAccessor BEFORE any code
     // path can deref it. If the master Player was destroyed since
     // SetMaster() was called (typical when master logs out /
@@ -280,6 +280,21 @@ void PlayerbotAI::UpdateAI(uint32 elapsed, bool minimal)
         }
     }
 
+    // SoloCommander addon (sprint12) — emit periodic HP/MP/TGT/STRAT
+    // heartbeat to the bot's master if one is connected. Internally
+    // throttles by combat state so the cost on idle bots is minimal.
+    SC_PHASE("UpdateAI.TickHeartbeat", bot ? bot->GetName() : "(null)");
+    ai::solocommander::Commander::TickHeartbeat(this, elapsed);
+
+    // SoloCommander raid-encounter awareness (sprint12-late). Re-enabled
+    // 2026-05-03 after defensive rewrite (uses bot->GetMap()->GetUnit()
+    // instead of cached Unit*; bails early if bot not in world). With
+    // SC_LOG instrumentation in place we can see exactly where it
+    // crashes if it does.
+    SC_PHASE("UpdateAI.TickEncounter", bot ? bot->GetName() : "(null)");
+    ai::solocommander::Commander::TickEncounter(this);
+    SC_PHASE("UpdateAI.afterSCHooks", bot ? bot->GetName() : "(null)");
+    
     if(aiInternalUpdateDelay > elapsed)
     {
         aiInternalUpdateDelay -= elapsed;
@@ -331,9 +346,9 @@ void PlayerbotAI::UpdateAI(uint32 elapsed, bool minimal)
                 if (lootObject.IsUnit())
                 {
                     Unit* unitTarget = (Unit*)loot->GetLootTarget();
-                    // Unit doesn't have m_loot; only Creature does.
+                    // Sprint 10 cmangos/playerbots port — Unit doesn't have m_loot; only Creature does.
                     Loot* utLoot = (unitTarget && unitTarget->GetTypeId() == TYPEID_UNIT) ? ((Creature*)unitTarget)->m_loot : nullptr;
-                    // LootAccess wraps Loot* now (no more reinterpret_cast layout-cheat).
+                    // Sprint 10: LootAccess wraps Loot* now (no more reinterpret_cast layout-cheat).
                     LootAccess lootAccess(utLoot);
                     if (utLoot && lootAccess.playersLooting().count(bot->GetObjectGuid()) == 0)
                     {
@@ -344,7 +359,7 @@ void PlayerbotAI::UpdateAI(uint32 elapsed, bool minimal)
                 else if (lootObject.IsGameObject())
                 {
                     GameObject* gameobjectTarget = (GameObject*)loot->GetLootTarget();
-                    // LootAccess wraps Loot* now.
+                    // Sprint 10: LootAccess wraps Loot* now.
                     LootAccess lootAccess(gameobjectTarget ? gameobjectTarget->m_loot : nullptr);
                     if (!lootAccess.playersLooting().count(bot->GetObjectGuid()))
                     {
@@ -1993,7 +2008,7 @@ void PlayerbotAI::HandleBotOutgoingPacket(const WorldPacket& packet)
         return;
     }
 	default:
-		// log group invite arrivals so we
+		// Sprint12 (sc-overnight) 2026-05-07: log group invite arrivals so we
 		// can verify the auto-accept handler fires. If we see this line in
 		// the server log but no subsequent "AcceptInvitationAction" event,
 		// the strategy/trigger is registered but the action isn't being
@@ -2967,7 +2982,7 @@ const AreaTableEntry* PlayerbotAI::GetCurrentZone()
 */
 std::string PlayerbotAI::GetLocalizedAreaName(const AreaTableEntry* entry)
 {
-    // Penqle's area_name is single char* (no locale array).
+    // Sprint 10 cmangos/playerbots port — Penqle's area_name is single char* (no locale array).
     return entry && entry->area_name ? std::string(entry->area_name) : std::string();
 }
 
@@ -3427,6 +3442,10 @@ bool PlayerbotAI::SayToRaid(std::string msg)
 
 bool PlayerbotAI::Yell(std::string msg, bool likePlayer)
 {
+    // SoloCommander silence gate: block ALL public yells from bots.
+    if (sPlayerbotAIConfig.botsSilent)
+        return false;
+
     uint32 lang = LANG_UNIVERSAL;
     if (bot->GetTeam() == ALLIANCE)
     {
@@ -3462,6 +3481,10 @@ bool PlayerbotAI::Yell(std::string msg, bool likePlayer)
 
 bool PlayerbotAI::Say(std::string msg, bool likePlayer)
 {
+    // SoloCommander silence gate: block ALL public says from bots.
+    if (sPlayerbotAIConfig.botsSilent)
+        return false;
+
     uint32 lang = LANG_UNIVERSAL;
     if (bot->GetTeam() == ALLIANCE)
     {
@@ -3695,7 +3718,10 @@ bool PlayerbotAI::TellPlayer(Player* player, std::string text, PlayerbotSecurity
         if (!sServerFacade.IsInFront(bot, player, sPlayerbotAIConfig.sightDistance, EMOTE_ANGLE_IN_FRONT))
             sServerFacade.SetFacingTo(bot, player);
 
-        bot->HandleEmoteCommand(EMOTE_ONESHOT_TALK);
+        // SoloCommander silence gate: skip the auto-talk emote animation. The user wants no emojis at all,
+        // and EMOTE_ONESHOT_TALK fires every time the bot whispers (e.g. on every TellPlayer reply).
+        if (!sPlayerbotAIConfig.botsSilent)
+            bot->HandleEmoteCommand(EMOTE_ONESHOT_TALK);
     }
 
     return true;
@@ -6524,6 +6550,11 @@ void PlayerbotAI::EnsureDefaultMovementStrategy(Player* requester)
 
 std::string PlayerbotAI::HandleRemoteCommand(std::string command)
 {
+    // SoloCommander addon (sprint12) — claim "sc:*" before the legacy
+    // vocabulary so the addon's protocol vocabulary is reserved cleanly.
+    if (ai::solocommander::Commander::ClaimsCommand(command))
+        return ai::solocommander::Commander::HandleCommand(this, command);
+
     if (command == "state")
     {
         switch (currentState)
@@ -7181,7 +7212,7 @@ bool PlayerbotAI::HasQuestItemsInWOLootList(WorldObject* wo)
 
     LootItemList lootItemList = {};
 
-    // Penqle's loot is on Creature/GameObject; dispatch via cast.
+    // Sprint 10 cmangos/playerbots port — Penqle's loot is on Creature/GameObject; dispatch via cast.
     Loot* woLoot = nullptr;
     if (wo->IsCreature()) woLoot = ((Creature*)wo)->m_loot;
     else if (wo->IsGameObject()) woLoot = ((GameObject*)wo)->m_loot;
@@ -7747,7 +7778,7 @@ void PlayerbotAI::AccelerateRespawn(Creature* creature, float accelMod)
 
     if (!m_corpseAccelerationDecayDelay && creature->m_loot)
     {
-        // LootAccess wraps Loot* now.
+        // Sprint 10: LootAccess wraps Loot* now.
         LootAccess lootAccess(creature->m_loot);
 
         if (lootAccess.IsLootedForAll()) //No loot left. Just despawn the corpse.
@@ -8562,7 +8593,7 @@ bool PlayerbotAI::PlayAttackEmote(float chanceMultiplier)
 
 void PlayerbotAI::QueuePacket(WorldPacket& pkt)
 {
-    // Penqle WorldPacket has deleted copy-assign; copy-construct + move-assign.
+    // Sprint 10 cmangos/playerbots port — Penqle WorldPacket has deleted copy-assign; copy-construct + move-assign.
     std::unique_ptr<WorldPacket> packet(new WorldPacket(pkt));
     bot->GetSession()->QueuePacket(std::move(packet));
 }

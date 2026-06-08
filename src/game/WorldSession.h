@@ -68,7 +68,8 @@ class MasterPlayer;
 
 struct OpcodeHandler;
 // PlayerBotEntry forward decl removed — Penqle's PlayerBots stub binned in
-// cmangos's bot module adds its own forward decls in the host-hooks pass.
+// favor of cmangos/playerbots port (Sprint 10, see bot-deployment-sprint-plan.md).
+// cmangos's bot module adds its own forward decls in the Phase 3 host-hooks pass.
 
 enum ClientOSType
 {
@@ -313,7 +314,7 @@ class WorldSession
         bool PlayerLoading() const { return m_playerLoading; }
         bool PlayerLogout() const { return m_playerLogout; }
         bool PlayerLogoutWithSave() const { return m_playerLogout && m_playerSave; }
-        // bot's AddPlayerBot flow needs to flag
+        // Sprint 10 cmangos/playerbots port — bot's AddPlayerBot flow needs to flag
         // the synthetic session as loading before HandlePlayerLogin is reached.
         void SetPlayerLoading(bool loading) { m_playerLoading = loading; }
 
@@ -322,13 +323,14 @@ class WorldSession
         void SizeError(WorldPacket const& packet, uint32 size) const;
 
         void SendPacket(WorldPacket const* packet);
-        // bot module calls SendPacket(packet) by value.
+        // Sprint 10 cmangos/playerbots port — bot module calls SendPacket(packet) by value.
         // Add reference overload that forwards to the pointer version.
         void SendPacket(WorldPacket const& packet) { SendPacket(&packet); }
         // SendPlaySpellVisual: cmangos has it on WorldSession; Penqle has it on Unit.
         // Build SMSG_PLAY_SPELL_VISUAL packet from session and dispatch.
         void SendPlaySpellVisual(ObjectGuid guid, uint32 spellArtKit);
         // SetNoAnticheat: cmangos disables anticheat for bot sessions. Stub no-op
+        // (we run anticheat off for the whole bot project per CLAUDE.md note).
         void SetNoAnticheat(bool /*disable*/ = true) {}
         // SetOffline: cmangos marks session as offline. Stub no-op.
         void SetOffline() {}
@@ -413,21 +415,17 @@ class WorldSession
         }
 
         void LogoutPlayer(bool Save);
-        // cmangos's 0-arg form (always saves).
+        // Sprint 10 cmangos/playerbots port — cmangos's 0-arg form (always saves).
         void LogoutPlayer() { LogoutPlayer(true); }
         void KickPlayer();
         // Session can be safely deleted if returns false
         bool ForcePlayerLogoutDelay();
 
         void QueuePacket(WorldPacket* new_packet);
-        // bot wraps packets in unique_ptr.
+        // Sprint 10 cmangos/playerbots port — bot wraps packets in unique_ptr.
         void QueuePacket(std::unique_ptr<WorldPacket> new_packet) { QueuePacket(new_packet.release()); }
-        // Const-reference overload (bot sometimes constructs an inline WorldPacket).
-        // Copies into a fresh heap WorldPacket so QueuePacket(WorldPacket*) — which
-        // takes ownership and may delete on the unknown-opcode path — never sees
-        // a non-owning pointer to a stack object. Body is out-of-line because
-        // this header only forward-declares WorldPacket.
-        void QueuePacket(WorldPacket const& new_packet);
+        // Reference overload (bot sometimes constructs an inline WorldPacket).
+        void QueuePacket(WorldPacket& new_packet) { QueuePacket(&new_packet); }
 
         bool Update(PacketFilter& updater);
         /**
@@ -571,7 +569,8 @@ class WorldSession
         void SetLastPubChanMsgTime(time_t time) { m_lastPubChannelMsgTime = time; }
 
         // Bot system — Penqle stub removed. cmangos/playerbots adds its own
-        // GetPlayerbotAI() / GetPlayerbotMgr() / SetNoAnticheat() on Player.
+        // GetPlayerbotAI()/GetPlayerbotMgr()/SetNoAnticheat() in Phase 3.
+        std::stringstream _chatBotHistory;
 
         // Player online / socket offline system
         void SetDisconnectedSession(); // Remove from World::m_session. Used when an account gets disconnected.
@@ -988,7 +987,7 @@ class WorldSession
 
         //BattleGround
         void HandleBattlefieldJoinOpcode( WorldPacket &recv_data );
-        // cmangos has HandleBattlefieldPortOpcode; Penqle has equivalent flow elsewhere.
+        // Sprint 10 cmangos/playerbots port — cmangos has HandleBattlefieldPortOpcode; Penqle has equivalent flow elsewhere.
         // Stub: forward to Join handler (closest semantic; bot uses this to enter the BG).
         void HandleBattlefieldPortOpcode(WorldPacket& recv_data) { HandleBattlefieldJoinOpcode(recv_data); }
         void HandleBattlemasterHelloOpcode(WorldPacket &recv_data);
@@ -1064,7 +1063,7 @@ class WorldSession
         uint32 _floodPacketsCount[FLOOD_MAX_OPCODES_TYPE];
 
         std::unordered_map<uint32, std::pair<uint32, uint32>> m_requeuePacketCount;
-        // m_bot field removed — Penqle stub binned (cmangos port).
+        // m_bot field removed — Penqle stub binned (Sprint 10 cmangos port).
         uint32 m_lastReceivedPacketTime;
         ClientIdentifiersMap _clientIdentifiers;
         std::string     _clientHash;

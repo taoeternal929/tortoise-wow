@@ -7,8 +7,8 @@
 #include "playerbot/ServerFacade.h"
 #include "playerbot/TravelMgr.h"
 #include "playerbot/PlayerbotLoginMgr.h"
-#include "BotDiagnostics.h"
-#include "BotActionLog.h"
+#include "playerbot/SoloCommander.h"
+#include "playerbot/BotActionLog.h"
 #include "Chat/ChannelMgr.h"
 #include "SocialMgr.h"
 #include "AccountMgr.h"
@@ -28,7 +28,7 @@
 
 class CharacterHandler;
 
-// real bot login flow.
+// Sprint 10 cmangos/playerbots port — Phase 3d Wave 3: real bot login flow.
 //
 // AddPlayerBot creates a synthetic WorldSession for the bot if needed, queues the bot's
 // character data load via the standard Penqle CharacterDatabase pipeline, and routes the
@@ -75,7 +75,7 @@ void PlayerbotHolder::AddPlayerBot(uint32 guidLow, uint32 masterAccountId)
         return;
     }
 
-    // 2b. ghost-online guard.
+    // 2b. SoloCommander ghost-online guard. Sprint12 (sc-overnight) 2026-05-07.
     // The Player object can sit in the global HashMapHolder<Player> registry
     // while not being in any Map (i.e. IsInWorld() == false). This happens
     // when a bot far-teleport starts (Player is removed from world map) but
@@ -185,7 +185,7 @@ void PlayerbotHolder::HandlePlayerBotLoginCallback(QueryResult* /*dummy*/, SqlQu
     // Allocate the bot's dedicated WorldSession. NOT added to sWorld.m_sessions — this session
     // exists only to own the bot Player and route its packets (which the null-socket guard drops).
     //
-    // CRITICAL: remote_ip MUST be "disconnected/bot", not "".
+    // CRITICAL (sc-overnight 2026-05-07): remote_ip MUST be "disconnected/bot", not "".
     // PlayerbotAI::IsRealPlayer() uses this exact string as the bot-vs-real-player discriminator:
     //   bool IsRealPlayer() { return bot->GetSession()->GetRemoteAddress() != "disconnected/bot"; }
     // If we pass "", `"" != "disconnected/bot"` is TRUE so IsRealPlayer() returns TRUE for our bots.
@@ -212,7 +212,7 @@ void PlayerbotHolder::HandlePlayerBotLoginCallback(QueryResult* /*dummy*/, SqlQu
         sLog.outError("[PlayerBots] HandlePlayerBotLoginCallback: bot %u failed to enter world",
                       info.botGuid.GetCounter());
         // botSession leaks here — but only on failure; LogoutPlayerBot would do the cleanup
-        // in the success path normally. Acceptable for smoke testing; fix if needed.
+        // in the success path normally. Acceptable for smoke testing; fix in Wave 8 if needed.
         return;
     }
 
@@ -480,11 +480,11 @@ void PlayerbotHolder::LogoutPlayerBot(uint32 guid, bool allowInstant, bool forDe
         // BotActionLog: write LIFECYCLE LOGOUT and close the per-bot log
         // file. Done early in the logout sequence so the file flushes
         // before any potentially-crashing teardown work runs.
-        ai::botdiag::BotActionLog::Write(ai, "LIFECYCLE",
+        ai::solocommander::BotActionLog::Write(ai, "LIFECYCLE",
             "event=LOGOUT bot=%s guid=%u allowInstant=%d forDelete=%d",
             bot->GetName(), guid, (int)allowInstant, (int)forDelete);
-        ai::botdiag::BotActionLog::LogState(ai, "pre-logout");
-        ai::botdiag::BotActionLog::Close(ai);
+        ai::solocommander::BotActionLog::LogState(ai, "pre-logout");
+        ai::solocommander::BotActionLog::Close(ai);
 
         if (!sPlayerbotAIConfig.bExplicitDbStoreSave)
         {
@@ -696,7 +696,7 @@ void PlayerbotHolder::OnBotLogin(Player * const bot)
     }
 
     if(!ai->HasRealPlayerMaster())
-        OnBotLoginInternal(bot);
+	    OnBotLoginInternal(bot);
 
     playerBots[bot->GetGUIDLow()] = bot;
 
@@ -731,8 +731,8 @@ void PlayerbotHolder::OnBotLogin(Player * const bot)
                 }
             }
 
-            // Don't disband alt groups when master goes away  
-            // (will need to manually disband with leave command)  
+            // Don't disband alt groups when master goes away
+            // (will need to manually disband with leave command)
             uint32 account = sObjectMgr.GetPlayerAccountIdByGUID(member);
             if (!sPlayerbotAIConfig.IsInRandomAccountList(account))
             {
@@ -752,18 +752,22 @@ void PlayerbotHolder::OnBotLogin(Player * const bot)
 
     ai->ResetStrategies();
 
-    // check activity  
-    ai->AllowActivity(ALL_ACTIVITY, true);
-    // set delay on login  
-    ai->SetActionDuration(urand(2000, 4000));
-
-    // Moved after SetActionDuration to ensure delay is active before movement expiration  
     if (master && !master->IsTaxiFlying())
     {
         bot->GetMotionMaster()->MovementExpired();
     }
 
+    // check activity
+    ai->AllowActivity(ALL_ACTIVITY, true);
+    // set delay on login
+    ai->SetActionDuration(urand(2000, 4000));
+
     ai->TellPlayer(ai->GetMaster(), BOT_TEXT("hello"));
+
+    // SoloCommander addon (sprint12) — Phase 1a wires the call site; the
+    // body (level/gear sync to match master) lands in Phase 1c. Stubbed
+    // implementation is a no-op so this is safe to call now.
+    ai::solocommander::Commander::OnBotSummoned(ai);
 
     JoinChatChannels(bot);
 
@@ -1208,14 +1212,14 @@ void PlayerbotMgr::UpdateAIInternal(uint32 elapsed, bool minimal)
     SetAIInternalUpdateDelay(sPlayerbotAIConfig.reactDelay);
     CheckTellErrors(elapsed);
 
-    // Tick our bots' sessions so any queued bot-only handling fires per
-    // master frame. Most importantly:
+    // Sprint12 (sc-overnight) 2026-05-07: tick our bots' sessions so any
+    // queued bot-only handling fires per master frame. Most importantly:
     // HandleTeleportAck for cross-map teleports — without this call, a
     // bot scheduled for a far-teleport via TeleportTo() stays in
     // IsBeingTeleported() forever (no client to ACK), its UpdateAI
     // early-exits, and the bot is effectively frozen on the source map.
     // This call was defined in PlayerbotHolder but never wired in the
-    // cmangos→Penqle port. Symptom: `.bot add a bot` (alt on different
+    // cmangos→Penqle port. Symptom: `.bot add Sdegfg` (alt on different
     // continent) auto-teleport to master never completes, bot doesn't
     // appear in /who, can't be invited.
     UpdateSessions(elapsed);
@@ -2122,7 +2126,7 @@ std::string PlayerbotHolder::HandleBotAddLogin(Player* bot, Player* master, cons
     return "ok";
 }
 
-// `.bot summon <name>` (also aliased as
+// Sprint12 (sc-overnight) 2026-05-07: `.bot summon <name>` (also aliased as
 // `recall` / `come`). Teleports an already-online bot to the master's
 // current position. Distinct from `.bot add` which brings the bot online
 // at its last logout location. Useful when:
@@ -2200,7 +2204,7 @@ std::string PlayerbotHolder::HandleBotRemoveLogout(Player* bot, Player* master, 
     SC_LOG("HandleBotRemoveLogout botAccount=%u masterAccount=%u isMaster=%d isRandom=%d",
            botAccount, masterAccountId, (int)isMasterAccount, (int)isRandomAccount);
 
-    //:
+    // Sprint12 Tier-2 crash workaround (see runtime/HANDOFF_RNDBOT_REMOVE_CRASH.md):
     // Refuse `.rndbot remove` for random-account bots that aren't currently
     // master-linked to the player issuing the command. Symptom we're guarding
     // against: WorldSession::LogoutPlayer crashed during the group-cleanup

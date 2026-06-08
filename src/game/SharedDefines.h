@@ -1005,6 +1005,7 @@ enum CreatureFamily
     CREATURE_FAMILY_OWL            = 26,
     CREATURE_FAMILY_WIND_SERPENT   = 27,
     CREATURE_FAMILY_REMOTE_CONTROL = 28,
+    CREATURE_FAMILY_MOTH           = 39,  // patch9 Pet Moth scaffolding
 };
 
 enum CreatureTypeFlags
@@ -1232,6 +1233,7 @@ enum SkillType
     SKILL_PET_HYENA                = 654,
     SKILL_PET_OWL                  = 655,
     SKILL_PET_WIND_SERPENT         = 656,
+    SKILL_PET_MOTH                 = 1011,  // patch9 Pet Moth scaffolding
     SKILL_LANG_GUTTERSPEAK         = 673,
     SKILL_RIDING_KODO              = 713,
     SKILL_RACIAL_TROLL             = 733,
@@ -1902,12 +1904,6 @@ struct Position
     float GetPositionY() const { return y; }
     float GetPositionZ() const { return z; }
     float GetPositionO() const { return o; }
-
-    // Returns the SQUARED 3D distance, matching cmangos convention. Callers
-    // must wrap in std::sqrt() to get the real distance. Kept as-is rather
-    // than renamed because the vendored bot code (e.g. PlayerbotAI.cpp:5334,
-    // strategy/actions/BattleGroundTactics.cpp:4109) calls it as `GetDistance`
-    // and already sqrt()s the result.
     float GetDistance(Position const& other) const {
         float dx = x - other.x, dy = y - other.y, dz = z - other.z;
         return dx*dx + dy*dy + dz*dz;
