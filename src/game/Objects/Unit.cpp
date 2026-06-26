@@ -912,6 +912,18 @@ uint32 Unit::DealDamage(Unit* pVictim, uint32 damage, CleanDamage const* cleanDa
             pVictim->ModifyHealth(-(int32)dmg);
         }
 
+        if (pVictim->HasAura(51993) && damage > 0)
+        {
+            if (roll_chance_i(80))
+            {
+                pVictim->RemoveAurasDueToSpell(51993);
+                pVictim->InterruptSpell(CURRENT_CHANNELED_SPELL);
+
+                int32 shatterDamage = (int32)(pVictim->GetCreateHealth() * 0.30f);
+                pVictim->CastCustomSpell(pVictim, 51994, &shatterDamage, nullptr, nullptr, true);
+            }
+        }
+
         if (damagetype != DOT)
         {
             if (!GetVictim())

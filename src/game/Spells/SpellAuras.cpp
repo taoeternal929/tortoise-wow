@@ -1626,6 +1626,44 @@ void Aura::TriggerSpell()
         }
     }
 
+    static const std::set<uint32> iciclesMissileTriggers = { 51992, 51996, 51998, 52517 };
+    if (iciclesMissileTriggers.count(trigger_spell_id))
+    {
+        Unit* icicleTarget = nullptr;
+
+        // First try: channel object if it's not the caster themselves
+        if (WorldObject* channelObj = triggerCaster->GetMap()->GetWorldObject(triggerCaster->GetChannelObjectGuid()))
+            if (channelObj->isType(TYPEMASK_UNIT) && channelObj != triggerCaster)
+                icicleTarget = (Unit*)channelObj;
+
+        // Second try: triggerCaster's current victim
+        if (!icicleTarget)
+            icicleTarget = triggerCaster->GetVictim();
+
+        // Third try: original aura caster's victim
+        if (!icicleTarget)
+            if (Unit* caster = GetCaster())
+                icicleTarget = caster->GetVictim();
+
+        // Fourth try: player's selected target (handles rooted mage vs attacking creature)
+        if (!icicleTarget)
+            if (Player* player = triggerCaster->ToPlayer())
+                if (Unit* selected = ObjectAccessor::GetUnit(*triggerCaster, player->GetSelectionGuid()))
+                    if (!triggerCaster->IsFriendlyTo(selected))
+                        icicleTarget = selected;
+
+        // Fifth try: find the creature attacking the mage
+        if (!icicleTarget)
+            if (Unit* attacker = triggerCaster->GetAttackerForHelper())
+                if (!triggerCaster->IsFriendlyTo(attacker))
+                    icicleTarget = attacker;
+
+        if (!icicleTarget || !icicleTarget->IsAlive() || triggerCaster->IsFriendlyTo(icicleTarget))
+            return;
+
+        triggerTarget = icicleTarget;
+    }
+
     // All ok cast by default case
     if (triggeredSpellInfo)
     {
